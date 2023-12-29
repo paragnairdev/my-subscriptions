@@ -6,6 +6,7 @@ import SubscriptionSummary from './components/SubscriptionSummary/SubscriptionSu
 import SubscriptionCharts from './components/SubscriptionCharts/SubscriptionCharts';
 import { faLineChart } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { addSubscription, loadData, removeSubscription, resetData } from './services/dataService';
 
 const App = () => {
     const [subscriptions, setSubscriptions] = useState([]);
@@ -16,44 +17,41 @@ const App = () => {
 
     // Load subscriptions from localStorage when the component mounts
     useEffect(() => {
-        const savedSubscriptions = getSubscriptionsFromLocalStorage();
-        if (savedSubscriptions) {
-            setSubscriptions(savedSubscriptions);
+        const { subscriptions } = loadData();
+        setSubscriptions(subscriptions);
+
+        // if there are no subscriptions, show the form
+        if (subscriptions.length === 0) {
+            setShowForm(true);
+
+            // hide the list and charts
+            setShowList(false);
+            setShowChart(false);
         }
     }, []);
 
-    // Save data to localStorage
-    const saveSubscriptionsToLocalStorage = (data) => {
-        try {
-            const serializedData = JSON.stringify(data);
-            localStorage.setItem('subscriptions', serializedData);
-        } catch (error) {
-            console.error('Failed to save to localStorage:', error);
-        }
-    };
+    const addNewSubscription = (newSubscription) => {
+      addSubscription(newSubscription);
+      setSubscriptions(loadData().subscriptions);
 
-    // Retrieve data from localStorage
-    const getSubscriptionsFromLocalStorage = () => {
-        try {
-            const serializedData = localStorage.getItem('subscriptions');
-            return serializedData ? JSON.parse(serializedData) : [];
-        } catch (error) {
-            console.error('Failed to retrieve from localStorage:', error);
-            return [];
-        }
-    };
-
-    // Handler to update subscriptions both in state and localStorage
-    const updateSubscriptions = (newSubscription) => {
-        const updatedSubscriptions = [...subscriptions, newSubscription];
-        setSubscriptions(updatedSubscriptions);
-        saveSubscriptionsToLocalStorage(updatedSubscriptions);
+      // if there is only one subscription, show the list and charts
+      if (subscriptions.length === 0) {
+          setShowList(true);
+          setShowChart(true);
+      }
     };
 
     const deleteSubscription = (index) => {
-      const updatedSubscriptions = subscriptions.filter((_, idx) => idx !== index);
-      setSubscriptions(updatedSubscriptions);
-      saveSubscriptionsToLocalStorage(updatedSubscriptions);
+      removeSubscription(index);
+      setSubscriptions(loadData().subscriptions);
+    };
+
+    const clearData = () => {
+      resetData();
+      setSubscriptions([]);
+      setShowList(false);
+      setShowChart(false);
+      setShowForm(true);
     };
 
     const toggleListVisibility = () => {
@@ -72,12 +70,24 @@ const App = () => {
       setShowChart(!showChart);
     };
 
+    const exportToJson = (data) => {
+      const jsonString = `data:text/json;charset=utf-8,${encodeURIComponent(
+          JSON.stringify(data)
+      )}`;
+      const link = document.createElement("a");
+      link.href = jsonString;
+      link.download = "subscriptions.json";
+      link.click();
+    };
+
     return (
         <div className="App">
             <header className="App-header">
               <img src="logo.png" alt="Subscription App Logo" className="app-logo" />
               <h1>Subscription Tracker</h1>
-              <div></div>
+              <div>
+                <button onClick={() => exportToJson(subscriptions)}>Export</button>
+              </div>
             </header>
 
             <main className='App-body'>
@@ -91,7 +101,7 @@ const App = () => {
                   {showForm ? 'Hide Form' : 'Add Subscriptions'}
               </button>
               {showForm && (
-                <SubscriptionForm updateSubscriptions={updateSubscriptions} />
+                <SubscriptionForm addNewSubscription={addNewSubscription} />
               )}
               <button onClick={toggleListVisibility}>
                   {showList ? 'Hide' : 'Show'} Subscriptions
@@ -100,6 +110,7 @@ const App = () => {
                   <SubscriptionList 
                       subscriptions={subscriptions} 
                       onDeleteSubscription={deleteSubscription} 
+                      onClear={clearData}
                   />
               )}
               <button onClick={toggleChartVisibility}>

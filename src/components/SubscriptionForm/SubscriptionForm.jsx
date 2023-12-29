@@ -1,23 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import './SubscriptionForm.scss';
+import { loadData, addCategory } from '../../services/dataService';
 
-const SubscriptionForm = ({ updateSubscriptions }) => {
+const SubscriptionForm = ({ addNewSubscription }) => {
     const [newSubscription, setNewSubscription] = useState({
         name: '',
         category: '',
         customCategory: '',
         amount: '',
-        type: 'monthly', // Default to 'monthly', can also be 'annually'
+        type: 'monthly',
     });
 
     // Predefined categories
     const [categories, setCategories] = useState([]);
 
     useEffect(() => {
-        // Load categories from localStorage or use default categories
-        const storedCategories = JSON.parse(localStorage.getItem('subscriptionCategories')) || 
-                                 ["Entertainment", "Productivity", "Finance", "Education", "Health & Fitness"];
-        setCategories(storedCategories);
+        const { categories } = loadData();
+        setCategories(categories);
     }, []);
 
     const handleInputChange = (event) => {
@@ -30,12 +29,13 @@ const SubscriptionForm = ({ updateSubscriptions }) => {
         if (newSubscription.category === 'Other') {
             finalCategory = newSubscription.customCategory;
             if (finalCategory && !categories.includes(finalCategory)) {
-                const updatedCategories = [...categories, finalCategory];
-                localStorage.setItem('subscriptionCategories', JSON.stringify(updatedCategories));
-                setCategories(updatedCategories);
+                addCategory(finalCategory);
+
+                // Update categories in state
+                setCategories([...categories, finalCategory]);
             }
         }
-        updateSubscriptions({ ...newSubscription, category: finalCategory });
+        addNewSubscription({ ...newSubscription, category: finalCategory });
         setNewSubscription({ name: '', category: '', customCategory: '', amount: '', type: 'monthly' });
     };
 

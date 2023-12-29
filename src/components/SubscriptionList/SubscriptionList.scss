@@ -6,6 +6,11 @@
     background-color: #354049;
     color: #8B97A4;
 
+    &__header {
+        display: flex;
+        justify-content: space-between;
+    }
+
     &__item {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr 100px;

@@ -1,8 +1,16 @@
 .subscription-charts {
     display: grid;
     grid-template-columns: 1fr;
+    gap: 20px;
 
     &--two-column {
         grid-template-columns: 1fr 1fr;
+    }
+
+    &__views {
+        display: flex;
+        gap: 0;
+        align-items: center;
+        justify-content: flex-end;
     }
 }

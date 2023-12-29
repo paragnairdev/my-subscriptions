@@ -1,14 +1,17 @@
 import React from 'react';
 import './SubscriptionList.scss';
 
-const SubscriptionList = ({ subscriptions, onDeleteSubscription }) => {
+const SubscriptionList = ({ subscriptions, onDeleteSubscription, onClear }) => {
     if (!subscriptions || subscriptions.length === 0) {
         return <p>No subscriptions added yet.</p>;
     }
 
     return (
         <div>
-            <h2>My Subscriptions</h2>
+            <div className='subscription-list__header'>
+                <h2>My Subscriptions</h2>
+                <button className='clear-btn' onClick={onClear}>Clear All</button>
+            </div>
             <ul className="subscription-list">
                 <li className="subscription-list__item subscription-list__item--header">
                     <div>Name</div>
