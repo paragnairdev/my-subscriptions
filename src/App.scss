@@ -1,0 +1,170 @@
+@import 'Variables';
+
+
+.App, body, html {
+  margin: 0 auto;
+  font-family: 'Arial', sans-serif;
+  background-color: $main-background-color;
+  color: $color-white;
+
+  &-header {
+    display: grid;
+    grid-template-columns: 50px 1fr 50px;
+    align-items: center;
+    background-color: $primary-color;
+
+    h1 {
+      color: $primary-color-foreground;
+    }
+  }
+
+  &-body {
+    padding: 20px;
+  }
+
+  &__section {
+    background-color: $secondary-background-color;
+    padding: 20px;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+h1 {
+  color: #333;
+  text-align: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+input, select, button {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+input, select {
+  background-color: $color-input-background;
+  color: $color-input-text;
+  border: solid 1px $color-input-border;
+}
+
+button {
+  background-color: $color-btn-primary;
+  color: $color-btn-primary-foreground;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border: solid 1px $color-btn-primary-border;
+  margin: 5px;
+
+  &:hover {
+    background-color: $color-btn-primary-hover;
+    color: $color-white;
+    border: solid 1px $color-btn-primary-hover;
+  }
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  border-radius: 4px;
+  border: solid 1px #354049;
+  background-color: #354049;
+  color: #8B97A4;
+}
+
+li {
+  align-items: center;
+  padding: 15px;
+  margin-bottom: 0;
+
+  &:hover {
+    background-color: #2B333D;
+  }
+
+  // first child rounded top corners
+  &:first-child {
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    font-weight: bold;
+    color: #F6F6F6;
+  }
+
+  // last child rounded bottom corners
+  &:last-child {
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+  }
+}
+
+li div {
+  margin-bottom: 5px;
+}
+
+.app-logo {
+  height: 50px; // Adjust the size as needed
+  margin-right: 10px;
+}
+
+.delete-btn {
+  background-color: $color-status-danger;
+  border: none;
+  padding: 5px 10px;
+  font-size: 14px;
+  color: #FCF0EF;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.delete-btn:hover {
+  background-color: #bd2130;
+}
+
+.chart-container {
+  canvas {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+// forms
+.form {
+  &__section {
+    background-color: #374149;
+    padding: 20px;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__body {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+
+    &--2-col {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  &__group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+
+  &__footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+  }
+}

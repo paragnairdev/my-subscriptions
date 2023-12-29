@@ -1,0 +1,64 @@
+@import '../../variables.scss';
+
+.card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    // margin-bottom: 20px;
+    color: $color-white;
+    display: grid;
+    grid-template-columns: 1fr 2fr; // Two equal columns
+    align-items: center; // Vertically align content
+    grid-template-areas: 
+        "icon metric"
+        "icon label";
+
+    &__icon {
+        grid-area: icon;
+        font-size: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__label {
+        grid-area: label;
+        font-weight: bold;
+        margin-bottom: 30px;
+        text-align: right;
+    }
+
+    &__metric {
+        grid-area: metric;
+        font-size: 24px;
+        margin-bottom: 10px;
+        text-align: right;
+    }
+
+    &--no-icon {
+        grid-template-columns: 1fr; // Single column when no icon
+        grid-template-areas: "metric" "label";
+        text-align: center; // Center align the text
+
+        .card__label, .card__metric {
+            text-align: center;
+        }
+    }
+
+    &--green{
+        background-color: $color-green;
+    }
+
+    &--blue{
+        background-color: $color-blue;
+    }
+
+    &--purple{
+        background-color: $color-purple;
+    }
+
+    &--orange{
+        background-color: $color-orange;
+    }
+}

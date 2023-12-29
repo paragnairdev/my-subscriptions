@@ -1,0 +1,8 @@
+.subscription-charts {
+    display: grid;
+    grid-template-columns: 1fr;
+
+    &--two-column {
+        grid-template-columns: 1fr 1fr;
+    }
+}
