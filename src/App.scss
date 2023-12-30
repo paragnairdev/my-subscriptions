@@ -50,6 +50,12 @@ body, html {
     margin: 10px 0;
   }
 
+  &__actions {
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+  }
+
   &__row {
     display: grid;
     grid-template-columns: 1fr;
@@ -263,5 +269,54 @@ li div {
 
   &.info-tooltip {
     background-color: $color-status-info;
+  }
+}
+
+// responsive styles
+
+// phones
+@media screen and (max-width: 767px) {
+  .App {
+    max-width: 700px;
+    margin: 0 auto;
+
+    &__section {
+      padding: 20px;
+      border-radius: 4px;
+      display: flex;
+      flex-direction: column;
+      margin: 10px 0;
+    }
+
+    &__actions {
+      display: grid;
+      grid-template-columns: 1fr;
+      justify-content: flex-start;
+      gap: 10px;
+
+      button {
+        width: 100%;
+      }
+    }
+
+    &__row {
+      display: grid;
+      grid-template-columns: 1fr;
+      padding: 0;
+      margin-bottom: 0;
+      gap: 20px;
+
+      &--2-col {
+        grid-template-columns: 1fr;
+      }
+
+      &--3-col {
+        grid-template-columns: 1fr;
+      }
+
+      &--4-col {
+        grid-template-columns: 1fr;
+      }
+    }
   }
 }

@@ -13,4 +13,15 @@
         align-items: center;
         justify-content: flex-end;
     }
+
+    // responsive on phone
+    @media (max-width: 600px) {
+        &--two-column {
+            grid-template-columns: 1fr;
+        }
+
+        &__views {
+            display: none;
+        }
+    }
 }
