@@ -34,6 +34,7 @@ const SubscriptionList = ({ subscriptions, onDeleteSubscription, onClear }) => {
             </div>
             <ul className="subscription-list subscription-list--md">
                 <li className="subscription-list__item subscription-list__item--header">
+                    <div>#</div>
                     <div>Service</div>
                     <div>Category</div>
                     <div className="subscription-list__item-amount">Amount</div>
@@ -43,6 +44,7 @@ const SubscriptionList = ({ subscriptions, onDeleteSubscription, onClear }) => {
                 {finalSubscriptions.map((subscription, index) => (
                     <li key={index} className="subscription-list__item">
                         {/* Subscription details */}
+                        <div>{index+1}</div>
                         <div>{subscription.name}</div>
                         <div>{subscription.category}</div>
                         <div className="subscription-list__item-amount">£{parseFloat(subscription.amount).toFixed(2)}</div>
