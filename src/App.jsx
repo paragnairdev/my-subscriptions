@@ -50,13 +50,11 @@ const App = () => {
     };
 
     const clearData = () => {
-      if (window.confirm('Are you sure you want to delete all the subscriptions?')) {
-        resetData();
-        setSubscriptions([]);
-        setShowList(false);
-        setShowChart(false);
-        setShowForm(true);
-      }
+      resetData();
+      setSubscriptions([]);
+      setShowList(false);
+      setShowChart(false);
+      setShowForm(true);
     };
 
     const toggleListVisibility = () => {
