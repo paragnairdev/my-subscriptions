@@ -19,8 +19,11 @@ const SubscriptionForm = ({ addNewSubscription, onClose }) => {
     useEffect(() => {
         const { categories } = loadData();
         setCategories(categories);
-        nameInputRef.current.focus();
-        setIsSubmitted(false);
+        
+        if (isSubmitted) {
+            nameInputRef.current.focus();
+            setIsSubmitted(false);
+        }
     }, []);
 
     const handleInputChange = (event) => {
