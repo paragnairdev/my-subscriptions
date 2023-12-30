@@ -2,7 +2,7 @@ name: Deploy AWS
 on:
   push:
     branches:
-      -  master
+      - master
 env:
   REACT_APP_MAIN_TEXT: "Successfully deployed in AWS"
   AWS_S3_BUCKET: ${{ secrets.AWS_BUCKET_NAME }}
@@ -14,25 +14,20 @@ env:
 jobs:
   build:
     runs-on: ubuntu-latest
-
-strategy:
+    strategy:
       matrix:
         node-version: [16.x]
-
-steps:
-    - uses: actions/checkout@v1
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
-
-    - name: Yarn Install
-          run: yarn install
-
-    - name: Staging Build
-          run: yarn build
-
-    - name: Deploy to S3
-          uses: jakejarvis/s3-sync-action@master
-          with:
-            args: --acl public-read --follow-symlinks --delete
+    steps:
+      - uses: actions/checkout@v1
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Yarn Install
+        run: yarn install
+      - name: Staging Build
+        run: yarn build
+      - name: Deploy to S3
+        uses: jakejarvis/s3-sync-action@master
+        with:
+          args: --acl public-read --follow-symlinks --delete
