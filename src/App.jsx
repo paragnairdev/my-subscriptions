@@ -17,11 +17,13 @@ const App = () => {
     const [showChart, setShowChart] = useState(true);
     const [showForm, setShowForm] = useState(false);
     const [showSummary, setShowSummary] = useState(true);
+    const [currency, setCurrency] = useState('£');
 
     // Load subscriptions from localStorage when the component mounts
     useEffect(() => {
-        const { subscriptions } = loadData();
+        const { subscriptions, currencySymbol } = loadData();
         setSubscriptions(subscriptions);
+        setCurrency(currencySymbol);
 
         // if there are no subscriptions, show the form
         if (subscriptions.length === 0) {
