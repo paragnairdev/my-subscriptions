@@ -1,21 +1,40 @@
 @import 'Variables';
 
-
-.App, body, html {
+body, html {
   margin: 0 auto;
+  padding: 0;
+  height: 100%;
+  width: 100%;
   font-family: 'Arial', sans-serif;
   background-color: $main-background-color;
   color: $color-white;
+}
+
+.App {
+  margin: 0 auto;
 
   &-header {
     display: grid;
     grid-template-columns: 50px 1fr 100px;
     align-items: center;
     background-color: $primary-color;
+    padding: 0 20px;
 
     h1 {
       color: $primary-color-foreground;
     }
+  }
+
+  &__logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    background-color: $primary-color;
+  }
+
+  &__title {
+    font-size: 1.5em;
   }
 
   &-body {
@@ -84,6 +103,9 @@ button {
   transition: background-color 0.3s ease;
   border: solid 1px $color-btn-primary-border;
   margin: 5px;
+  display: inline-flex;
+  justify-content: center;
+  gap: 10px;
 
   &:hover {
     background-color: $color-btn-primary-hover;
@@ -226,4 +248,20 @@ li div {
 // font colours in canvas
 .chartjs-render-monitor {
   color: $color-white;
+}
+
+// react-tooltip styles
+.react-tooltip {
+  color: $color-white;
+  padding: 10px;
+  font-size: 1em;
+  text-align: center;
+
+  &.danger-tooltip {
+    background-color: $color-status-danger;
+  }
+
+  &.info-tooltip {
+    background-color: $color-status-info;
+  }
 }

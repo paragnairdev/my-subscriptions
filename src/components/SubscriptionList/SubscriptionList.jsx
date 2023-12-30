@@ -1,5 +1,7 @@
 import React from 'react';
 import './SubscriptionList.scss';
+import { VscClearAll } from "react-icons/vsc";
+import { Tooltip } from 'react-tooltip';
 
 const SubscriptionList = ({ subscriptions, onDeleteSubscription, onClear }) => {
     if (!subscriptions || subscriptions.length === 0) {
@@ -10,14 +12,17 @@ const SubscriptionList = ({ subscriptions, onDeleteSubscription, onClear }) => {
         <div>
             <div className='subscription-list__header'>
                 <h2>My Subscriptions</h2>
-                <button className='clear-btn' onClick={onClear}>Clear All</button>
+                <div className='subscription-list__actions'>
+                    <button data-tooltip-id="clearAllTip" data-tooltip-content="This will delete all the subscriptions" className='clear-btn' onClick={onClear}><VscClearAll /> Clear All</button>
+                    <Tooltip id="clearAllTip" className="danger-tooltip" />
+                </div>
             </div>
             <ul className="subscription-list">
                 <li className="subscription-list__item subscription-list__item--header">
                     <div>Name</div>
                     <div>Category</div>
                     <div>Amount</div>
-                    <div>Occurrence</div>
+                    <div>Billing</div>
                 </li>
                 {subscriptions.map((subscription, index) => (
                     <li key={index} className="subscription-list__item">

@@ -4,10 +4,11 @@ import SubscriptionForm from './components/SubscriptionForm/SubscriptionForm';
 import SubscriptionList from './components/SubscriptionList/SubscriptionList';
 import SubscriptionSummary from './components/SubscriptionSummary/SubscriptionSummary';
 import SubscriptionCharts from './components/SubscriptionCharts/SubscriptionCharts';
-import { faChargingStation, faChartGantt, faLineChart, faPlus } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { addSubscription, loadData, removeSubscription, resetData } from './services/dataService';
-import ChartCard from './components/ChartCard/ChartCard';
+import { FaBarsStaggered } from 'react-icons/fa6';
+import { FaChartLine } from 'react-icons/fa';
+import { MdFormatListBulleted, MdFormatListBulletedAdd } from 'react-icons/md';
+import { Tooltip } from 'react-tooltip';
 
 const App = () => {
     const [subscriptions, setSubscriptions] = useState([]);
@@ -81,40 +82,54 @@ const App = () => {
       link.click();
     };
 
+    const onFormClosed = () => {
+      setShowForm(false);
+    };
+
     return (
         <div className="App">
             <header className="App-header">
-              <img src="logo.png" alt="Subscription App Logo" className="app-logo" />
-              <h1>Subscription Tracker</h1>
+              <div className="App__logo-container">
+                <img src="logo.png" alt="Subscription App Logo" className="app-logo" />
+              </div>
+              <div className="App__title">Subscription Tracker</div>
               <div>
-                <button onClick={() => exportToJson(subscriptions)}>Export</button>
+                <button onClick={() => exportToJson(subscriptions)} 
+                  data-tooltip-id="exportTip" 
+                  data-tooltip-content="Download the subscriptions in a json format"
+                  data-tooltip-place="bottom"
+                  >Export</button>
+                <Tooltip id="exportTip" />
               </div>
             </header>
 
             <main className='App-body'>
+
+              {!showForm && (
+                <button onClick={toggleFormVisibility}>
+                  <MdFormatListBulletedAdd /> Add Subscription
+                </button>
+              )}
               <button onClick={toggleSummaryVisibility}>
-                  {showSummary ? 'Hide' : 'Show'} Summary <FontAwesomeIcon icon={faChargingStation} />
+                <FaBarsStaggered /> {showSummary ? 'Hide' : 'Show'} Summary
               </button>
+              <button onClick={toggleListVisibility}>
+                <MdFormatListBulleted /> {showList ? 'Hide' : 'Show'} Subscriptions
+              </button>
+              <button onClick={toggleChartVisibility}>
+                <FaChartLine /> {showChart ? 'Hide' : 'Show'} Charts
+              </button>
+
+              <hr />
+
               {showSummary && (
                 <SubscriptionSummary subscriptions={subscriptions} />
               )}
-              {showForm ? 
-                (<button onClick={toggleFormVisibility}>Hide Form</button>) : 
-                (
-                  <button onClick={toggleFormVisibility}>
-                    <FontAwesomeIcon icon={faPlus} /> Add Subscription
-                  </button>
-                )
-              }
-              {/* <button onClick={toggleFormVisibility}>
-                  {showForm ? 'Hide Form' : `Add Subscriptions ${<FontAwesomeIcon icon={faChartGantt} />}`}
-              </button> */}
+              
               {showForm && (
-                <SubscriptionForm addNewSubscription={addNewSubscription} />
+                <SubscriptionForm addNewSubscription={addNewSubscription} onClose={onFormClosed}/>
               )}
-              <button onClick={toggleListVisibility}>
-                  {showList ? 'Hide' : 'Show'} Subscriptions
-              </button>
+              
               {showList && (
                   <SubscriptionList 
                       subscriptions={subscriptions} 
@@ -122,9 +137,7 @@ const App = () => {
                       onClear={clearData}
                   />
               )}
-              <button onClick={toggleChartVisibility}>
-                  {showChart ? 'Hide' : 'Show'} <FontAwesomeIcon icon={faLineChart} />
-              </button>
+              
               {showChart && (
                 <div className='App__section'>
                   <SubscriptionCharts subscriptions={subscriptions} />
