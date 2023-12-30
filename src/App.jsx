@@ -8,6 +8,7 @@ import { addSubscription, loadData, removeSubscription, resetData } from './serv
 import { FaBarsStaggered } from 'react-icons/fa6';
 import { FaChartLine } from 'react-icons/fa';
 import { MdFormatListBulleted, MdFormatListBulletedAdd } from 'react-icons/md';
+import { Tooltip } from 'react-tooltip';
 
 const App = () => {
     const [subscriptions, setSubscriptions] = useState([]);
@@ -81,40 +82,50 @@ const App = () => {
       link.click();
     };
 
+    const onFormClosed = () => {
+      setShowForm(false);
+    };
+
     return (
         <div className="App">
             <header className="App-header">
               <img src="logo.png" alt="Subscription App Logo" className="app-logo" />
               <h1>Subscription Tracker</h1>
               <div>
-                <button onClick={() => exportToJson(subscriptions)}>Export</button>
+                <button onClick={() => exportToJson(subscriptions)} 
+                  data-tooltip-id="exportTip" 
+                  data-tooltip-content="Download the subscriptions in a json format"
+                  data-tooltip-place="bottom"
+                  >Export</button>
+                <Tooltip id="exportTip" />
               </div>
             </header>
 
             <main className='App-body'>
+
+              {!showForm && (
+                <button onClick={toggleFormVisibility}>
+                  <MdFormatListBulletedAdd /> Add Subscription
+                </button>
+              )}
               <button onClick={toggleSummaryVisibility}>
-              <FaBarsStaggered /> {showSummary ? 'Hide' : 'Show'} Summary
+                <FaBarsStaggered /> {showSummary ? 'Hide' : 'Show'} Summary
               </button>
-              {showSummary && (
-                <SubscriptionSummary subscriptions={subscriptions} />
-              )}
-              {showForm ? 
-                (<button onClick={toggleFormVisibility}>Hide Form</button>) : 
-                (
-                  <button onClick={toggleFormVisibility}>
-                    <MdFormatListBulletedAdd /> Add Subscription
-                  </button>
-                )
-              }
-              {/* <button onClick={toggleFormVisibility}>
-                  {showForm ? 'Hide Form' : `Add Subscriptions ${<FontAwesomeIcon icon={faChartGantt} />}`}
-              </button> */}
-              {showForm && (
-                <SubscriptionForm addNewSubscription={addNewSubscription} />
-              )}
               <button onClick={toggleListVisibility}>
                 <MdFormatListBulleted /> {showList ? 'Hide' : 'Show'} Subscriptions
               </button>
+              <button onClick={toggleChartVisibility}>
+                <FaChartLine /> {showChart ? 'Hide' : 'Show'} Charts
+              </button>
+
+              {showSummary && (
+                <SubscriptionSummary subscriptions={subscriptions} />
+              )}
+              
+              {showForm && (
+                <SubscriptionForm addNewSubscription={addNewSubscription} onClose={onFormClosed}/>
+              )}
+              
               {showList && (
                   <SubscriptionList 
                       subscriptions={subscriptions} 
@@ -122,9 +133,7 @@ const App = () => {
                       onClear={clearData}
                   />
               )}
-              <button onClick={toggleChartVisibility}>
-                  {showChart ? 'Hide' : 'Show'} <FaChartLine />
-              </button>
+              
               {showChart && (
                 <div className='App__section'>
                   <SubscriptionCharts subscriptions={subscriptions} />

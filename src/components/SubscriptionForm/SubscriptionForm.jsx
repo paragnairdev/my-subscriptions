@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './SubscriptionForm.scss';
 import { loadData, addCategory } from '../../services/dataService';
 
-const SubscriptionForm = ({ addNewSubscription }) => {
+const SubscriptionForm = ({ addNewSubscription, onClose }) => {
     const [newSubscription, setNewSubscription] = useState({
         name: '',
         category: '',
@@ -101,6 +101,7 @@ const SubscriptionForm = ({ addNewSubscription }) => {
                 </div>
             </div>
             <div className='form__footer'>
+                <button onClick={onClose}>Cancel</button>
                 <button type="submit">Add Subscription</button>
             </div>
         </form>

@@ -230,3 +230,19 @@ li div {
 .chartjs-render-monitor {
   color: $color-white;
 }
+
+// react-tooltip styles
+.react-tooltip {
+  color: $color-white;
+  padding: 10px;
+  font-size: 1em;
+  text-align: center;
+
+  &.danger-tooltip {
+    background-color: $color-status-danger;
+  }
+
+  &.info-tooltip {
+    background-color: $color-status-info;
+  }
+}
