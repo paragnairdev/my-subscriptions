@@ -24,7 +24,7 @@ const SubscriptionForm = ({ addNewSubscription, onClose }) => {
             nameInputRef.current.focus();
             setIsSubmitted(false);
         }
-    }, []);
+    }, [isSubmitted]);
 
     const handleInputChange = (event) => {
         setNewSubscription({ ...newSubscription, [event.target.name]: event.target.value });
