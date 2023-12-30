@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import './SubscriptionForm.scss';
 import { loadData, addCategory } from '../../services/dataService';
 
 const SubscriptionForm = ({ addNewSubscription, onClose }) => {
