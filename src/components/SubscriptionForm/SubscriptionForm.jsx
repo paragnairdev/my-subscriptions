@@ -1,7 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { loadData, addCategory } from '../../services/dataService';
 
 const SubscriptionForm = ({ addNewSubscription, onClose }) => {
+    const [isSubmitted, setIsSubmitted] = useState(false);
+    const nameInputRef = useRef(null);
+
     const [newSubscription, setNewSubscription] = useState({
         name: '',
         category: '',
@@ -16,6 +19,8 @@ const SubscriptionForm = ({ addNewSubscription, onClose }) => {
     useEffect(() => {
         const { categories } = loadData();
         setCategories(categories);
+        nameInputRef.current.focus();
+        setIsSubmitted(false);
     }, []);
 
     const handleInputChange = (event) => {
@@ -36,6 +41,8 @@ const SubscriptionForm = ({ addNewSubscription, onClose }) => {
         }
         addNewSubscription({ ...newSubscription, category: finalCategory });
         setNewSubscription({ name: '', category: '', customCategory: '', amount: '', type: 'monthly' });
+        setIsSubmitted(true);
+        nameInputRef.current.focus();
     };
 
     return (
@@ -44,6 +51,7 @@ const SubscriptionForm = ({ addNewSubscription, onClose }) => {
                 <div className='form__group'>
                     <label>Name:</label>
                     <input
+                        ref={nameInputRef}
                         type="text"
                         name="name"
                         value={newSubscription.name}

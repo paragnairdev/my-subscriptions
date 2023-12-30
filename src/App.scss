@@ -326,6 +326,18 @@ li div {
     }
   }
 
+  .form {
+    &__body {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+
+      &--2-col {
+        grid-template-columns: 1fr;
+      }
+    }
+  }
+
   .btn-export, .btn-import {
     display: none;
   }

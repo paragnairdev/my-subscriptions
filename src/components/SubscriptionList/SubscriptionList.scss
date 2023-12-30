@@ -77,6 +77,10 @@
                 font-weight: normal;
             }
 
+            &:last-child {
+                border-bottom: none;
+            }
+
             &-category {
                 color: $color-green-secondary;
                 font-size: 0.8em;

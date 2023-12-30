@@ -135,12 +135,12 @@ const App = () => {
 
               <hr />
 
-              {showSummary && (
-                <SubscriptionSummary subscriptions={subscriptions} />
-              )}
-              
               {showForm && (
                 <SubscriptionForm addNewSubscription={addNewSubscription} onClose={onFormClosed}/>
+              )}
+
+              {showSummary && (
+                <SubscriptionSummary subscriptions={subscriptions} />
               )}
               
               {showList && (

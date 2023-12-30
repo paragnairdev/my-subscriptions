@@ -52,7 +52,7 @@ const SubscriptionList = ({ subscriptions, onDeleteSubscription, onClear }) => {
                         </div>
                         <div className="subscription-list__item-amount">£{parseFloat(subscription.amount).toFixed(2)}</div>
                         {/* Delete button */}
-                        <a href='#' className='btn-danger' onClick={() => onDeleteSubscription(index)}><MdDelete /></a>
+                        <a className='btn-danger' onClick={() => onDeleteSubscription(index)}><MdDelete /></a>
                     </li>
                 ))}
             </ul>
