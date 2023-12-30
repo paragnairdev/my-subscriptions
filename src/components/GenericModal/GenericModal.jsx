@@ -1,5 +1,4 @@
 import React from 'react';
-import './GenericModal.scss'; // Your custom modal styles
 import { IoClose } from "react-icons/io5";
 
 const GenericModal = ({ isOpen, onClose, children, suffix }) => {
