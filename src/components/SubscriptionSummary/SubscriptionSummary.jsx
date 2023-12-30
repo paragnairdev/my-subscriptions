@@ -1,7 +1,7 @@
 import React from 'react';
 import './SubscriptionSummary.scss';
 import Card from '../Card/Card';
-import { faHandshakeAngle } from '@fortawesome/free-solid-svg-icons';
+import { faHandshakeAngle, faPoundSign } from '@fortawesome/free-solid-svg-icons';
 
 const SubscriptionSummary = ({ subscriptions }) => {
     const totalMonthlyCost = subscriptions.reduce((acc, sub) => {
@@ -13,10 +13,10 @@ const SubscriptionSummary = ({ subscriptions }) => {
     }, 0);
 
     return (
-        <div className='subscription-summary'>
+        <div className='subscription-summary App__row App__row--3-col'>
             <Card color='green' label='Total Subscriptions' metric={subscriptions.length} icon={faHandshakeAngle} />
-            <Card color='blue' label='Total Monthly Cost' metric={`£${totalMonthlyCost.toFixed(2)}`} />
-            <Card color='purple' label='Total Yearly Cost' metric={`£${totalYearlyCost.toFixed(2)}`} />
+            <Card color='blue' label='Total Monthly Cost' metric={`£${totalMonthlyCost.toFixed(2)}`} icon={faPoundSign} />
+            <Card color='orange' label='Total Yearly Cost' metric={`£${totalYearlyCost.toFixed(2)}`} icon={faPoundSign} invertIconColor={true}/>
         </div>
     );
 };

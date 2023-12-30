@@ -2,9 +2,8 @@
 
 .card {
     background-color: white;
-    padding: 20px;
+    padding: 1.5em;
     border-radius: 4px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
     color: $color-white;
     display: grid;
     grid-template-columns: 1fr 2fr; // Two equal columns
@@ -15,10 +14,13 @@
 
     &__icon {
         grid-area: icon;
-        font-size: 40px;
+        // font-size: 40px;
         display: flex;
         justify-content: center;
         align-items: center;
+        border-radius: 50%;
+        height: 100px;
+        width: 100px;
     }
 
     &__label {

@@ -17,7 +17,7 @@ const SubscriptionList = ({ subscriptions, onDeleteSubscription, onClear }) => {
                     <div>Name</div>
                     <div>Category</div>
                     <div>Amount</div>
-                    <div>Type</div>
+                    <div>Occurrence</div>
                 </li>
                 {subscriptions.map((subscription, index) => (
                     <li key={index} className="subscription-list__item">

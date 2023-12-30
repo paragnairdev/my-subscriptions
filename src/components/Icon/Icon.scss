@@ -1,0 +1,68 @@
+@import '../../Variables.scss';
+
+.icon {
+    background-color: $color-white;
+    border-radius: 50%;
+    height: 100px;
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 4em;
+
+    &--xs {
+        height: 20px;
+        width: 20px;
+        font-size: 0.8em;
+    }
+
+    &--sm {
+        height: 40px;
+        width: 40px;
+        font-size: 1.5em;
+    }
+
+    &--md {
+        height: 60px;
+        width: 60px;
+        font-size: 2em;
+    }
+
+    &--lg {
+        height: 80px;
+        width: 80px;
+        font-size: 2.5em;
+    }
+
+    &--green {
+        background-color: $color-green-secondary;
+
+        &.icon--invert {
+            color: $color-green;
+        }
+    }
+
+    &--blue {
+        background-color: $color-blue-secondary;
+
+        &.icon--invert {
+            color: $color-blue;
+        }
+    }
+
+    &--purple {
+        background-color: $color-purple-secondary;
+
+        &.icon--invert {
+            color: $color-purple;
+        }
+    }
+
+    &--orange {
+        background-color: $color-orange-secondary;
+
+        &.icon--invert {
+            color: $color-orange;
+        }
+    }
+}

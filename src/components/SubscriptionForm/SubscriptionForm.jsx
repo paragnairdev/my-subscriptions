@@ -88,7 +88,7 @@ const SubscriptionForm = ({ addNewSubscription }) => {
                     />
                 </div>
                 <div className='form__group'>
-                    <label>Type:</label>
+                    <label>Occurrence:</label>
                     <select
                         name="type"
                         value={newSubscription.type}
