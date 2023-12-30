@@ -2,8 +2,7 @@ import React from 'react';
 import './SubscriptionCharts.scss';
 import SubscriptionChart from '../SubscriptionChart/SubscriptionChart';
 import CategoryWiseChart from '../CategoryWiseChart/CategoryWiseChart';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faColumns, faList } from '@fortawesome/free-solid-svg-icons';
+import { TbColumns1, TbColumns2 } from 'react-icons/tb';
 
 const SubscriptionCharts = ({ subscriptions }) => {
     const [twoColumnLayout, setTwoColumnLayout] = React.useState(true);
@@ -17,10 +16,10 @@ const SubscriptionCharts = ({ subscriptions }) => {
             <div className="subscription-charts__views">
                 <div className="button-group">
                     <button onClick={() => setTwoColumnLayout(false)} className={!twoColumnLayout ? 'selected' : ''}>
-                        <FontAwesomeIcon icon={faList} />
+                        <TbColumns1 />
                     </button>
                     <button onClick={() => setTwoColumnLayout(true)} className={twoColumnLayout ? 'selected' : ''}>
-                        <FontAwesomeIcon icon={faColumns} />
+                        <TbColumns2 />
                     </button>
                 </div>
             </div>

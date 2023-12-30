@@ -84,6 +84,9 @@ button {
   transition: background-color 0.3s ease;
   border: solid 1px $color-btn-primary-border;
   margin: 5px;
+  display: inline-flex;
+  justify-content: center;
+  gap: 10px;
 
   &:hover {
     background-color: $color-btn-primary-hover;

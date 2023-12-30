@@ -1,7 +1,10 @@
 import React from 'react';
 import './SubscriptionSummary.scss';
 import Card from '../Card/Card';
-import { faHandshakeAngle, faMoneyBill, faMoneyBillTrendUp } from '@fortawesome/free-solid-svg-icons';
+import { CiMoneyBill } from "react-icons/ci";
+import { FaMoneyBill, FaMoneyBillWave } from "react-icons/fa";
+import { FcMultipleDevices } from "react-icons/fc";
+
 
 const SubscriptionSummary = ({ subscriptions }) => {
     const totalMonthlyCost = subscriptions.reduce((acc, sub) => {
@@ -14,9 +17,9 @@ const SubscriptionSummary = ({ subscriptions }) => {
 
     return (
         <div className='subscription-summary App__row App__row--3-col'>
-            <Card color='green' label='Total Subscriptions' metric={subscriptions.length} icon={faHandshakeAngle} />
-            <Card color='blue' label='Total Monthly Cost' metric={`£${totalMonthlyCost.toFixed(2)}`} icon={faMoneyBill} />
-            <Card color='pink' label='Total Yearly Cost' metric={`£${totalYearlyCost.toFixed(2)}`} icon={faMoneyBillTrendUp}/>
+            <Card color='green' label='Total Subscriptions' metric={subscriptions.length} icon={FcMultipleDevices} />
+            <Card color='blue' label='Total Monthly Cost' metric={`£${totalMonthlyCost.toFixed(2)}`} icon={FaMoneyBill} />
+            <Card color='pink' label='Total Yearly Cost' metric={`£${totalYearlyCost.toFixed(2)}`} icon={FaMoneyBillWave}/>
         </div>
     );
 };

@@ -4,10 +4,10 @@ import SubscriptionForm from './components/SubscriptionForm/SubscriptionForm';
 import SubscriptionList from './components/SubscriptionList/SubscriptionList';
 import SubscriptionSummary from './components/SubscriptionSummary/SubscriptionSummary';
 import SubscriptionCharts from './components/SubscriptionCharts/SubscriptionCharts';
-import { faChargingStation, faChartGantt, faLineChart, faPlus } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { addSubscription, loadData, removeSubscription, resetData } from './services/dataService';
-import ChartCard from './components/ChartCard/ChartCard';
+import { FaBarsStaggered } from 'react-icons/fa6';
+import { FaPlus, FaChartLine } from 'react-icons/fa';
+import { MdFormatListBulleted, MdFormatListBulletedAdd } from 'react-icons/md';
 
 const App = () => {
     const [subscriptions, setSubscriptions] = useState([]);
@@ -93,7 +93,7 @@ const App = () => {
 
             <main className='App-body'>
               <button onClick={toggleSummaryVisibility}>
-                  {showSummary ? 'Hide' : 'Show'} Summary <FontAwesomeIcon icon={faChargingStation} />
+              <FaBarsStaggered /> {showSummary ? 'Hide' : 'Show'} Summary
               </button>
               {showSummary && (
                 <SubscriptionSummary subscriptions={subscriptions} />
@@ -102,7 +102,7 @@ const App = () => {
                 (<button onClick={toggleFormVisibility}>Hide Form</button>) : 
                 (
                   <button onClick={toggleFormVisibility}>
-                    <FontAwesomeIcon icon={faPlus} /> Add Subscription
+                    <MdFormatListBulletedAdd /> Add Subscription
                   </button>
                 )
               }
@@ -113,7 +113,7 @@ const App = () => {
                 <SubscriptionForm addNewSubscription={addNewSubscription} />
               )}
               <button onClick={toggleListVisibility}>
-                  {showList ? 'Hide' : 'Show'} Subscriptions
+                <MdFormatListBulleted /> {showList ? 'Hide' : 'Show'} Subscriptions
               </button>
               {showList && (
                   <SubscriptionList 
@@ -123,7 +123,7 @@ const App = () => {
                   />
               )}
               <button onClick={toggleChartVisibility}>
-                  {showChart ? 'Hide' : 'Show'} <FontAwesomeIcon icon={faLineChart} />
+                  {showChart ? 'Hide' : 'Show'} <FaChartLine />
               </button>
               {showChart && (
                 <div className='App__section'>

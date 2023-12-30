@@ -1,5 +1,6 @@
 import React from 'react';
 import './SubscriptionList.scss';
+import { VscClearAll } from "react-icons/vsc";
 
 const SubscriptionList = ({ subscriptions, onDeleteSubscription, onClear }) => {
     if (!subscriptions || subscriptions.length === 0) {
@@ -10,7 +11,9 @@ const SubscriptionList = ({ subscriptions, onDeleteSubscription, onClear }) => {
         <div>
             <div className='subscription-list__header'>
                 <h2>My Subscriptions</h2>
-                <button className='clear-btn' onClick={onClear}>Clear All</button>
+                <div className='subscription-list__actions'>
+                    <button className='clear-btn' onClick={onClear}><VscClearAll /> Clear All</button>
+                </div>
             </div>
             <ul className="subscription-list">
                 <li className="subscription-list__item subscription-list__item--header">
