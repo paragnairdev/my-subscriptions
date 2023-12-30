@@ -22,7 +22,7 @@ const SubscriptionsLoader = ({ onSubscriptionsLoaded }) => {
     };
 
     return (
-        <div>
+        <div className="btn-import">
             <input 
                 type="file" 
                 onChange={handleFileChange} 

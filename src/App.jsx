@@ -5,7 +5,7 @@ import SubscriptionList from './components/SubscriptionList/SubscriptionList';
 import SubscriptionSummary from './components/SubscriptionSummary/SubscriptionSummary';
 import SubscriptionCharts from './components/SubscriptionCharts/SubscriptionCharts';
 import { addSubscription, hydrateSubscriptions, loadData, removeSubscription, resetData } from './services/dataService';
-import { FaBarsStaggered, FaFileExport, FaFileImport } from 'react-icons/fa6';
+import { FaBarsStaggered, FaFileExport } from 'react-icons/fa6';
 import { FaChartLine } from 'react-icons/fa';
 import { MdFormatListBulleted, MdFormatListBulletedAdd } from 'react-icons/md';
 import { Tooltip } from 'react-tooltip';
@@ -122,20 +122,13 @@ const App = () => {
                 <button onClick={toggleChartVisibility}>
                   <FaChartLine /> {showChart ? 'Hide' : 'Show'} Charts
                 </button>
-                <div>
+                <div className="btn-export">
                   <button onClick={() => exportToJson(subscriptions)} 
                     data-tooltip-id="exportTip" 
                     data-tooltip-content="Download the subscriptions in a json format"
                     data-tooltip-place="bottom"><FaFileExport /> Export</button>
                   <Tooltip id="exportTip" />
                 </div>
-                {/* <div>
-                  <button onClick={() => setShowUploader(true)} 
-                    data-tooltip-id="importTip" 
-                    data-tooltip-content="Upload the json format subscriptions you downloaded"
-                    data-tooltip-place="bottom"><FaFileImport /> Import</button>
-                  <Tooltip id="importTip" />
-                </div> */}
                 <SubscriptionsLoader onSubscriptionsLoaded={onSubscriptionsLoaded} />
               </div>
               
