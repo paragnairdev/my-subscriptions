@@ -10,7 +10,7 @@ const SubscriptionChart = ({ subscriptions }) => {
             {
                 label: 'Monthly Cost (£)',
                 data: subscriptions.map(sub => {
-                    return sub.type === 'annually' ? parseFloat(sub.amount) / 12 : parseFloat(sub.amount);
+                    return parseFloat(sub.type === 'annually' ? parseFloat(sub.amount) / 12 : parseFloat(sub.amount)).toFixed(2);
                 }),
                 backgroundColor: 'rgba(0, 123, 255, 0.5)',
                 borderColor: 'rgba(0, 123, 255, 1)',

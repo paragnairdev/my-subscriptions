@@ -8,7 +8,7 @@ const CategoryWiseChart = ({ subscriptions }) => {
         return subscriptions
             .filter(sub => sub.category === category)
             .reduce((acc, sub) => {
-                return acc + (sub.type === 'annually' ? parseFloat(sub.amount) / 12 : parseFloat(sub.amount));
+                return parseFloat(acc + (sub.type === 'annually' ? parseFloat(sub.amount) / 12 : parseFloat(sub.amount))).toFixed(2);
             }, 0);
     });
 
