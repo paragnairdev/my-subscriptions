@@ -10,6 +10,7 @@ import { FaChartLine } from 'react-icons/fa';
 import { MdFormatListBulleted, MdFormatListBulletedAdd } from 'react-icons/md';
 import { Tooltip } from 'react-tooltip';
 import SubscriptionsLoader from './components/SubscriptionsLoader/SubscriptionsLoaded';
+import GenericModal from './components/GenericModal/GenericModal';
 
 const App = () => {
     const [subscriptions, setSubscriptions] = useState([]);
@@ -33,7 +34,7 @@ const App = () => {
             setShowList(false);
             setShowChart(false);
         }
-    }, []);
+    }, [showForm]);
 
     const addNewSubscription = (newSubscription) => {
       addSubscription(newSubscription);
@@ -137,9 +138,13 @@ const App = () => {
 
               <hr />
 
-              {showForm && (
+              {/* {showForm && (
                 <SubscriptionForm addNewSubscription={addNewSubscription} onClose={onFormClosed}/>
-              )}
+              )} */}
+
+              <GenericModal isOpen={showForm} onClose={onFormClosed} suffix="subscription-form">
+                <SubscriptionForm addNewSubscription={addNewSubscription} onClose={onFormClosed}/>
+              </GenericModal>
 
               {showSummary && (
                 <SubscriptionSummary subscriptions={subscriptions} />
