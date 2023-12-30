@@ -7,6 +7,7 @@ import SubscriptionCharts from './components/SubscriptionCharts/SubscriptionChar
 import { faLineChart } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { addSubscription, loadData, removeSubscription, resetData } from './services/dataService';
+import ChartCard from './components/ChartCard/ChartCard';
 
 const App = () => {
     const [subscriptions, setSubscriptions] = useState([]);
@@ -121,6 +122,11 @@ const App = () => {
                   <SubscriptionCharts subscriptions={subscriptions} />
                 </div>
               )}
+
+              <div className="App__row App__row--4-col">
+                <ChartCard label="Monthly Total" subscriptions={subscriptions} type="monthly" />
+                <ChartCard label="Yearly Total" subscriptions={subscriptions} type="annually" />
+              </div>
             </main>
         </div>
     );
