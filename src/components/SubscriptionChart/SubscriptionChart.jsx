@@ -18,7 +18,29 @@ const SubscriptionChart = ({ subscriptions }) => {
         ],
     };
 
-    return <Bar data={chartData} />;
+    const options = {
+        plugins: {
+            legend: {
+                labels: {
+                    color: 'white'
+                }
+            }
+        },
+        scales: {
+            x: {
+                ticks: {
+                    color: 'white' // Sets x-axis labels to white
+                }
+            },
+            y: {
+                ticks: {
+                    color: 'white' // Sets y-axis labels to white
+                }
+            }
+        },
+    };
+
+    return <Bar data={chartData} options={options}/>;
 };
 
 export default SubscriptionChart;

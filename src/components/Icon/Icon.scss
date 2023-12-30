@@ -65,4 +65,12 @@
             color: $color-orange;
         }
     }
+
+    &--pink {
+        background-color: $color-pink-secondary;
+
+        &.icon--invert {
+            color: $color-pink;
+        }
+    }
 }

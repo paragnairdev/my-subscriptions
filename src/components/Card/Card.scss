@@ -14,7 +14,6 @@
 
     &__icon {
         grid-area: icon;
-        // font-size: 40px;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -25,14 +24,16 @@
 
     &__label {
         grid-area: label;
-        font-weight: bold;
+        font-size: 1em;
+        font-weight: 400;
         margin-bottom: 30px;
         text-align: right;
     }
 
     &__metric {
         grid-area: metric;
-        font-size: 24px;
+        font-size: 2em;
+        font-weight: 500;
         margin-bottom: 10px;
         text-align: right;
     }
@@ -61,5 +62,9 @@
 
     &--orange{
         background-color: $color-orange;
+    }
+
+    &--pink{
+        background-color: $color-pink;
     }
 }

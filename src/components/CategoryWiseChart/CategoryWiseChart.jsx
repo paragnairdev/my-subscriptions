@@ -29,7 +29,17 @@ const CategoryWiseChart = ({ subscriptions }) => {
         }]
     };
 
-    return <Pie data={chartData} />;
+    const options = {
+        plugins: {
+            legend: {
+                labels: {
+                    color: 'white'
+                }
+            }
+        }
+    };
+
+    return <Pie data={chartData} options={options} />;
 };
 
 export default CategoryWiseChart;

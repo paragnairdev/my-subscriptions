@@ -4,7 +4,7 @@ import SubscriptionForm from './components/SubscriptionForm/SubscriptionForm';
 import SubscriptionList from './components/SubscriptionList/SubscriptionList';
 import SubscriptionSummary from './components/SubscriptionSummary/SubscriptionSummary';
 import SubscriptionCharts from './components/SubscriptionCharts/SubscriptionCharts';
-import { faLineChart } from '@fortawesome/free-solid-svg-icons';
+import { faChargingStation, faChartGantt, faLineChart, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { addSubscription, loadData, removeSubscription, resetData } from './services/dataService';
 import ChartCard from './components/ChartCard/ChartCard';
@@ -93,14 +93,22 @@ const App = () => {
 
             <main className='App-body'>
               <button onClick={toggleSummaryVisibility}>
-                  {showSummary ? 'Hide' : 'Show'} Summary
+                  {showSummary ? 'Hide' : 'Show'} Summary <FontAwesomeIcon icon={faChargingStation} />
               </button>
               {showSummary && (
                 <SubscriptionSummary subscriptions={subscriptions} />
               )}
-              <button onClick={toggleFormVisibility}>
-                  {showForm ? 'Hide Form' : 'Add Subscriptions'}
-              </button>
+              {showForm ? 
+                (<button onClick={toggleFormVisibility}>Hide Form</button>) : 
+                (
+                  <button onClick={toggleFormVisibility}>
+                    <FontAwesomeIcon icon={faPlus} /> Add Subscription
+                  </button>
+                )
+              }
+              {/* <button onClick={toggleFormVisibility}>
+                  {showForm ? 'Hide Form' : `Add Subscriptions ${<FontAwesomeIcon icon={faChartGantt} />}`}
+              </button> */}
               {showForm && (
                 <SubscriptionForm addNewSubscription={addNewSubscription} />
               )}
@@ -123,10 +131,10 @@ const App = () => {
                 </div>
               )}
 
-              <div className="App__row App__row--4-col">
+              {/* <div className="App__row App__row--4-col">
                 <ChartCard label="Monthly Total" subscriptions={subscriptions} type="monthly" />
                 <ChartCard label="Yearly Total" subscriptions={subscriptions} type="annually" />
-              </div>
+              </div> */}
             </main>
         </div>
     );
