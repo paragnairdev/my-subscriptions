@@ -86,7 +86,6 @@ form {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  margin-bottom: 20px;
 }
 
 input, select, button {
@@ -275,6 +274,56 @@ li div {
   }
 }
 
+// modal
+.modal {
+  &__overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); // Semi-transparent background
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: $secondary-background-color;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+    z-index: 1000;
+    color: $primary-color-foreground;
+    position: relative;
+
+    &--hint-subscription-form {
+      width: 90%;
+    }
+  }
+
+  &__close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1em;
+    cursor: pointer;
+    color: $primary-color-foreground;
+    border: none;
+    border-radius: 50%;
+  }
+
+  // responsive on phones
+  @media (max-width: 600px) {
+    &__content {
+      width: 70%;
+    }
+  }
+}
+
 // responsive styles
 
 // phones
@@ -335,6 +384,13 @@ li div {
       &--2-col {
         grid-template-columns: 1fr;
       }
+    }
+
+    &__footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
     }
   }
 
