@@ -6,7 +6,7 @@ import SubscriptionSummary from './components/SubscriptionSummary/SubscriptionSu
 import SubscriptionCharts from './components/SubscriptionCharts/SubscriptionCharts';
 import { addSubscription, loadData, removeSubscription, resetData } from './services/dataService';
 import { FaBarsStaggered } from 'react-icons/fa6';
-import { FaPlus, FaChartLine } from 'react-icons/fa';
+import { FaChartLine } from 'react-icons/fa';
 import { MdFormatListBulleted, MdFormatListBulletedAdd } from 'react-icons/md';
 
 const App = () => {

@@ -1,7 +1,6 @@
 import React from 'react';
 import './SubscriptionSummary.scss';
 import Card from '../Card/Card';
-import { CiMoneyBill } from "react-icons/ci";
 import { FaMoneyBill, FaMoneyBillWave } from "react-icons/fa";
 import { FcMultipleDevices } from "react-icons/fc";
 

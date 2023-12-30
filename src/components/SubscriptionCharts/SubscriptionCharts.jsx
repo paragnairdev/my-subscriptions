@@ -7,10 +7,6 @@ import { TbColumns1, TbColumns2 } from 'react-icons/tb';
 const SubscriptionCharts = ({ subscriptions }) => {
     const [twoColumnLayout, setTwoColumnLayout] = React.useState(true);
 
-    const toggleLayout = () => {
-        setTwoColumnLayout(!twoColumnLayout);
-    };
-
     return (
         <div>
             <div className="subscription-charts__views">
