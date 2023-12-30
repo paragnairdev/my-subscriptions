@@ -28,6 +28,27 @@
     border-radius: 4px;
     display: flex;
     flex-direction: column;
+    margin: 10px 0;
+  }
+
+  &__row {
+    display: grid;
+    grid-template-columns: 1fr;
+    padding: 0;
+    margin-bottom: 0;
+    gap: 20px;
+
+    &--2-col {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    &--3-col {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    &--4-col {
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
   }
 }
 
@@ -75,6 +96,12 @@ button {
     color: $color-white;
     border: solid 1px $color-btn-primary-hover;
   }
+}
+
+hr {
+  border: none;
+  border-top: solid 1px $color-input-border;
+  margin: 20px 0;
 }
 
 .button-group {

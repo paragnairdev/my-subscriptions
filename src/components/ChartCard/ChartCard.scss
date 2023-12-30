@@ -1,0 +1,30 @@
+@import '../../variables.scss';
+
+.chart-card {
+    display: grid;
+    color: $color-input-text;
+    grid-template-columns: 1fr 1fr;
+
+    &__graph {
+        align-items: flex-end;
+    }
+
+    &__details {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-end;
+        gap: 10px;
+    }
+
+    &__total {
+        font-size: 2em;
+        font-weight: bold;
+    }
+
+    &__count {
+        font-size: 0.8em;
+        font-weight: bold;
+        color: $color-status-danger;
+    }
+}
