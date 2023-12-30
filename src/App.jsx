@@ -4,11 +4,12 @@ import SubscriptionForm from './components/SubscriptionForm/SubscriptionForm';
 import SubscriptionList from './components/SubscriptionList/SubscriptionList';
 import SubscriptionSummary from './components/SubscriptionSummary/SubscriptionSummary';
 import SubscriptionCharts from './components/SubscriptionCharts/SubscriptionCharts';
-import { addSubscription, loadData, removeSubscription, resetData } from './services/dataService';
-import { FaBarsStaggered } from 'react-icons/fa6';
+import { addSubscription, hydrateSubscriptions, loadData, removeSubscription, resetData } from './services/dataService';
+import { FaBarsStaggered, FaFileExport } from 'react-icons/fa6';
 import { FaChartLine } from 'react-icons/fa';
 import { MdFormatListBulleted, MdFormatListBulletedAdd } from 'react-icons/md';
 import { Tooltip } from 'react-tooltip';
+import SubscriptionsLoader from './components/SubscriptionsLoader/SubscriptionsLoaded';
 
 const App = () => {
     const [subscriptions, setSubscriptions] = useState([]);
@@ -86,6 +87,14 @@ const App = () => {
       setShowForm(false);
     };
 
+    const onSubscriptionsLoaded = (subscriptions) => {
+      hydrateSubscriptions(subscriptions);
+      setSubscriptions(subscriptions);
+      setShowForm(false);
+      setShowList(true);
+      setShowChart(true);
+    };
+
     return (
         <div className="App">
             <header className="App-header">
@@ -93,41 +102,45 @@ const App = () => {
                 <img src="logo.png" alt="Subscription App Logo" className="app-logo" />
               </div>
               <div className="App__title">Subscription Tracker</div>
-              <div>
-                <button onClick={() => exportToJson(subscriptions)} 
-                  data-tooltip-id="exportTip" 
-                  data-tooltip-content="Download the subscriptions in a json format"
-                  data-tooltip-place="bottom"
-                  >Export</button>
-                <Tooltip id="exportTip" />
-              </div>
+              
             </header>
 
             <main className='App-body'>
 
-              {!showForm && (
-                <button onClick={toggleFormVisibility}>
-                  <MdFormatListBulletedAdd /> Add Subscription
+              <div className="App__actions">
+                {!showForm && (
+                  <button onClick={toggleFormVisibility}>
+                    <MdFormatListBulletedAdd /> Add Subscription
+                  </button>
+                )}
+                <button onClick={toggleSummaryVisibility}>
+                  <FaBarsStaggered /> {showSummary ? 'Hide' : 'Show'} Summary
                 </button>
-              )}
-              <button onClick={toggleSummaryVisibility}>
-                <FaBarsStaggered /> {showSummary ? 'Hide' : 'Show'} Summary
-              </button>
-              <button onClick={toggleListVisibility}>
-                <MdFormatListBulleted /> {showList ? 'Hide' : 'Show'} Subscriptions
-              </button>
-              <button onClick={toggleChartVisibility}>
-                <FaChartLine /> {showChart ? 'Hide' : 'Show'} Charts
-              </button>
+                <button onClick={toggleListVisibility}>
+                  <MdFormatListBulleted /> {showList ? 'Hide' : 'Show'} Subscriptions
+                </button>
+                <button onClick={toggleChartVisibility}>
+                  <FaChartLine /> {showChart ? 'Hide' : 'Show'} Charts
+                </button>
+                <div className="btn-export">
+                  <button onClick={() => exportToJson(subscriptions)} 
+                    data-tooltip-id="exportTip" 
+                    data-tooltip-content="Download the subscriptions in a json format"
+                    data-tooltip-place="bottom"><FaFileExport /> Export</button>
+                  <Tooltip id="exportTip" />
+                </div>
+                <SubscriptionsLoader onSubscriptionsLoaded={onSubscriptionsLoaded} />
+              </div>
+              
 
               <hr />
 
-              {showSummary && (
-                <SubscriptionSummary subscriptions={subscriptions} />
-              )}
-              
               {showForm && (
                 <SubscriptionForm addNewSubscription={addNewSubscription} onClose={onFormClosed}/>
+              )}
+
+              {showSummary && (
+                <SubscriptionSummary subscriptions={subscriptions} />
               )}
               
               {showList && (

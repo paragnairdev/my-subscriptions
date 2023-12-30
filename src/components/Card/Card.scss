@@ -67,4 +67,31 @@
     &--pink{
         background-color: $color-pink;
     }
+
+    // responsive on phone
+    @media (max-width: 600px) {
+        grid-template-columns: 1fr; // Single column on phone
+        grid-template-areas: "icon" "metric" "label";
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+
+        .card__label, .card__metric {
+            text-align: center;
+        }
+
+        &__label {
+            font-size: 0.8em;
+        }
+
+        &__metric {
+            font-size: 1.5em;
+            margin-top: 10px;
+        }
+
+        &__icon {
+            width: 100%;
+            height: auto;
+        }
+    }
 }

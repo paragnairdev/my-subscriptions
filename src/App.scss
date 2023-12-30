@@ -15,7 +15,7 @@ body, html {
 
   &-header {
     display: grid;
-    grid-template-columns: 50px 1fr 100px;
+    grid-template-columns: 50px 1fr;
     align-items: center;
     background-color: $primary-color;
     padding: 0 20px;
@@ -48,6 +48,12 @@ body, html {
     display: flex;
     flex-direction: column;
     margin: 10px 0;
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
   }
 
   &__row {
@@ -153,7 +159,7 @@ ul {
   border-radius: 4px;
   border: solid 1px #354049;
   background-color: #354049;
-  color: #8B97A4;
+  color: $color-lists;
 }
 
 li {
@@ -210,6 +216,9 @@ li div {
     height: auto;
   }
 }
+.btn-danger {
+  color: $color-status-danger;
+}
 
 // forms
 .form {
@@ -263,5 +272,81 @@ li div {
 
   &.info-tooltip {
     background-color: $color-status-info;
+  }
+}
+
+// responsive styles
+
+// phones
+@media screen and (max-width: 600px) {
+  .App {
+    margin: 0 auto;
+
+    &__title {
+      font-size: 1em;
+    }
+
+    &__section {
+      padding: 20px;
+      border-radius: 4px;
+      display: flex;
+      flex-direction: column;
+      margin: 10px 0;
+    }
+
+    &__actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      justify-content: flex-start;
+      gap: 10px;
+
+      button {
+        width: 100%;
+      }
+    }
+
+    &__row {
+      display: grid;
+      grid-template-columns: 1fr;
+      padding: 0;
+      margin-bottom: 0;
+      gap: 20px;
+
+      &--2-col {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      &--3-col {
+        grid-template-columns: 1fr;
+      }
+
+      &--4-col {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  }
+
+  .form {
+    &__body {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+
+      &--2-col {
+        grid-template-columns: 1fr;
+      }
+    }
+  }
+
+  .btn-export, .btn-import {
+    display: none;
+  }
+
+  // all buttons font smaller
+  button {
+    font-size: 0.8em;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
   }
 }

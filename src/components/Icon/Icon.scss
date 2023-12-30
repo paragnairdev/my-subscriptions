@@ -73,4 +73,11 @@
             color: $color-pink;
         }
     }
+
+    // responsive on phone
+    @media (max-width: 600px) {
+        height: 50px;
+        width: 50px;
+        font-size: 2em;
+    }
 }

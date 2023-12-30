@@ -31,6 +31,12 @@ export const removeSubscription = (index) => {
     saveData(data);
 };
 
+export const hydrateSubscriptions = (subscriptions) => {
+    const data = loadData();
+    data.subscriptions = subscriptions;
+    saveData(data);
+};
+
 export const addCategory = (category) => {
     const data = loadData();
     // sort categories alphabetically

@@ -14,29 +14,87 @@
     &__item {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr 100px;
+
+        &-amount {
+            text-align: right;
+            color: $color-white;
+            padding-right: 10px;
+        }
+
+        &-billing {
+            text-align: center;
+        }
+
+        &-type {
+            display: flex;
+            align-items: center;
+
+            > div {
+                height: 30px;
+                width: 30px;
+                border-radius: 50%;
+                background-color: #fff;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+
+        &--type-m {
+            .subscription-list__item-type {
+                > div {
+                    background-color: $color-frequency-monthly;
+                    color: $color-white;
+                }
+            }
+        }
+
+        &--type-y {
+            .subscription-list__item-type {
+                > div {
+                    background-color: $color-frequency-yearly;
+                    color: $color-white;
+                }
+            }
+        }
+    }
+
+    &--sm {
+        display: none;
+    }
+
+    // responsive on phone
+    @media (max-width: 600px) {
+        
+
+        &__item {
+            grid-template-columns: 50px 1fr 100px 20px;
+            border-bottom: solid 1px #8B97A4;
+
+            &:first-child {
+                margin-top: 20px;
+                color: $color-lists;
+                font-weight: normal;
+            }
+
+            &:last-child {
+                border-bottom: none;
+            }
+
+            &-category {
+                color: $color-green-secondary;
+                font-size: 0.8em;
+            }
+        }
+
+        &--md {
+            visibility: hidden;
+            display: none;
+        }
+
+        &--sm {
+            visibility: visible;
+            display: grid;
+        }
     }
 }
-
-// .clear-btn {
-//     position: relative;
-// }
-
-// .tooltip-text {
-//     visibility: hidden;
-//     width: 120px;
-//     background-color: $color-status-danger;
-//     color: #fff;
-//     text-align: center;
-//     border-radius: 6px;
-//     padding: 10px;
-//     position: absolute;
-//     z-index: 1;
-//     bottom: 110%;
-//     left: 40%;
-//     margin-left: -60px;
-//     /* Adjust above as needed */
-// }
-
-// .clear-btn:hover .tooltip-text {
-//     visibility: visible;
-// }
