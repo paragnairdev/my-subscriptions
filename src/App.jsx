@@ -138,10 +138,6 @@ const App = () => {
 
               <hr />
 
-              {/* {showForm && (
-                <SubscriptionForm addNewSubscription={addNewSubscription} onClose={onFormClosed}/>
-              )} */}
-
               <GenericModal isOpen={showForm} onClose={onFormClosed} suffix="subscription-form">
                 <SubscriptionForm addNewSubscription={addNewSubscription} onClose={onFormClosed}/>
               </GenericModal>
