@@ -275,9 +275,8 @@ li div {
 // responsive styles
 
 // phones
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 600px) {
   .App {
-    max-width: 700px;
     margin: 0 auto;
 
     &__section {
@@ -290,7 +289,7 @@ li div {
 
     &__actions {
       display: grid;
-      grid-template-columns: 1fr;
+      grid-template-columns: 1fr 1fr;
       justify-content: flex-start;
       gap: 10px;
 
@@ -307,7 +306,7 @@ li div {
       gap: 20px;
 
       &--2-col {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr;
       }
 
       &--3-col {
@@ -315,7 +314,7 @@ li div {
       }
 
       &--4-col {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr;
       }
     }
   }
