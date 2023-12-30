@@ -16,6 +16,13 @@ const SubscriptionList = ({ subscriptions, onDeleteSubscription, onClear }) => {
         setIsModalOpen(true);
     };
 
+    // order subscriptions by name
+    const finalSubscriptions = subscriptions.sort((a, b) => {
+        const nameA = a.name.toLowerCase();
+        const nameB = b.name.toLowerCase();
+        return nameA < nameB ? -1 : nameA > nameB ? 1 : 0;
+    });
+
     return (
         <div>
             <div className='subscription-list__header'>
@@ -33,7 +40,7 @@ const SubscriptionList = ({ subscriptions, onDeleteSubscription, onClear }) => {
                     <div className="subscription-list__item-billing">Billing</div>
                     <div>&nbsp;</div>
                 </li>
-                {subscriptions.map((subscription, index) => (
+                {finalSubscriptions.map((subscription, index) => (
                     <li key={index} className="subscription-list__item">
                         {/* Subscription details */}
                         <div>{subscription.name}</div>
@@ -47,7 +54,7 @@ const SubscriptionList = ({ subscriptions, onDeleteSubscription, onClear }) => {
             </ul>
 
             <ul className="subscription-list subscription-list--sm">
-                {subscriptions.map((subscription, index) => (
+                {finalSubscriptions.map((subscription, index) => (
                     <li key={index} className={`subscription-list__item subscription-list__item--type-${subscription.type === 'monthly' ? 'm' : 'y'}`}>
                         {/* Subscription details */}
                         <div className="subscription-list__item-type" title={subscription.type}>
