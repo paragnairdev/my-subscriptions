@@ -1,20 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './SubscriptionList.scss';
 import { VscClearAll } from "react-icons/vsc";
 import { Tooltip } from 'react-tooltip';
 import { MdDelete } from "react-icons/md";
+import ConfirmationModal from '../ConfirmationModal/ConfirmationModal';
 
 const SubscriptionList = ({ subscriptions, onDeleteSubscription, onClear }) => {
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
     if (!subscriptions || subscriptions.length === 0) {
         return <p>No subscriptions added yet.</p>;
     }
+
+    const showConfirmationModal = () => {
+        setIsModalOpen(true);
+    };
 
     return (
         <div>
             <div className='subscription-list__header'>
                 <h2>My Subscriptions</h2>
                 <div className='subscription-list__actions'>
-                    <button data-tooltip-id="clearAllTip" data-tooltip-content="This will delete all the subscriptions" className='clear-btn' onClick={onClear}><VscClearAll /> Clear All</button>
+                    <button data-tooltip-id="clearAllTip" data-tooltip-content="This will delete all the subscriptions" className='clear-btn' onClick={showConfirmationModal}><VscClearAll /> Clear All</button>
                     <Tooltip id="clearAllTip" className="danger-tooltip" />
                 </div>
             </div>
@@ -56,6 +63,13 @@ const SubscriptionList = ({ subscriptions, onDeleteSubscription, onClear }) => {
                     </li>
                 ))}
             </ul>
+
+            <ConfirmationModal 
+                isOpen={isModalOpen}
+                onClose={() => setIsModalOpen(false)}
+                onConfirm={onClear}
+                message="Are you sure you want to delete all the subscriptions?"
+                />
         </div>
     );
 };
