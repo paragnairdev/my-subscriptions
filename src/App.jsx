@@ -89,8 +89,10 @@ const App = () => {
     return (
         <div className="App">
             <header className="App-header">
-              <img src="logo.png" alt="Subscription App Logo" className="app-logo" />
-              <h1>Subscription Tracker</h1>
+              <div className="App__logo-container">
+                <img src="logo.png" alt="Subscription App Logo" className="app-logo" />
+              </div>
+              <div className="App__title">Subscription Tracker</div>
               <div>
                 <button onClick={() => exportToJson(subscriptions)} 
                   data-tooltip-id="exportTip" 
@@ -117,6 +119,8 @@ const App = () => {
               <button onClick={toggleChartVisibility}>
                 <FaChartLine /> {showChart ? 'Hide' : 'Show'} Charts
               </button>
+
+              <hr />
 
               {showSummary && (
                 <SubscriptionSummary subscriptions={subscriptions} />

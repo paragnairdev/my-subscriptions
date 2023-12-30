@@ -1,21 +1,41 @@
 @import 'Variables';
 
-
-.App, body, html {
+body, html {
   margin: 0 auto;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
   font-family: 'Arial', sans-serif;
   background-color: $main-background-color;
   color: $color-white;
+}
+
+.App {
+  margin: 0 auto;
 
   &-header {
     display: grid;
     grid-template-columns: 50px 1fr 100px;
     align-items: center;
     background-color: $primary-color;
+    padding: 0 20px;
 
     h1 {
       color: $primary-color-foreground;
     }
+  }
+
+  &__logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    background-color: $primary-color;
+  }
+
+  &__title {
+    font-size: 1.5em;
   }
 
   &-body {
