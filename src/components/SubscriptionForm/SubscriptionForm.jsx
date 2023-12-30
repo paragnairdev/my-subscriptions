@@ -52,7 +52,7 @@ const SubscriptionForm = ({ addNewSubscription, onClose }) => {
         <form onSubmit={handleSubmit} className="subscription-form form__section">
             <div className='form__body form__body--2-col'>
                 <div className='form__group'>
-                    <label>Name:</label>
+                    <label>Service:</label>
                     <input
                         ref={nameInputRef}
                         type="text"
