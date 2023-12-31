@@ -10,6 +10,12 @@ body, html {
   color: $color-white;
 }
 
+a, a:active, a:visited {
+  color: $color-white;
+  text-decoration: underline;
+  font-size: 1em;
+}
+
 .App {
   margin: 0 auto;
 
@@ -50,10 +56,28 @@ body, html {
     margin: 10px 0;
   }
 
+  &__toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
   &__actions {
     display: flex;
     justify-content: flex-start;
     gap: 10px;
+  }
+
+  &__switches {
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+    margin: 10px 0;
+
+    &--align-right {
+      justify-content: flex-end;
+    }
   }
 
   &__row {
@@ -88,6 +112,7 @@ body, html {
 h1 {
   color: #333;
   text-align: center;
+  padding-bottom: 10px;
 }
 
 form {
@@ -154,11 +179,14 @@ hr {
 .button-group {
   display: flex;
   gap: 0;
+  align-items: center;
 
   button {
     flex: 1;
     margin: 0;
     border-radius: 0;
+    text-align: center;
+    justify-content: center;
 
     &:first-child {
       border-top-left-radius: 4px;
@@ -205,10 +233,6 @@ li {
   }
 }
 
-li div {
-  margin-bottom: 5px;
-}
-
 .app-logo {
   height: 50px; // Adjust the size as needed
   margin-right: 10px;
@@ -236,7 +260,7 @@ li div {
   }
 }
 .btn-danger {
-  color: $color-status-danger;
+  color: $color-status-danger !important;
 }
 
 // forms
@@ -345,6 +369,12 @@ li div {
     }
   }
 
+  &__title {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
   &__close {
     position: absolute;
     top: 10px;
@@ -360,6 +390,10 @@ li div {
   @media (max-width: 600px) {
     &__content {
       width: 70%;
+
+      h1 {
+        font-size: 1.5em;
+      }
     }
   }
 }
@@ -383,15 +417,67 @@ li div {
       margin: 10px 0;
     }
 
-    &__actions {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      justify-content: flex-start;
-      gap: 10px;
+    &__toolbar {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
 
-      button {
-        width: 100%;
+    &__actions {
+      flex: 1;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 0;
+
+      > button {
+        margin: 0;
+        border-radius: 0;
+        border-left: none;
+
+        &:first-child {
+          border-left: solid 1px $color-input-border;
+          border-top-left-radius: 4px;
+          border-bottom-left-radius: 4px;          
+        }
+
+        &:last-child {
+          border-top-right-radius: 4px;
+          border-bottom-right-radius: 4px;
+        }
       }
+
+      > div {
+        margin: 0;
+        border-radius: 0;
+
+        button {
+          border-radius: 0;
+          margin: 0;
+        }
+
+        &:first-child {
+          button {
+            border-top-left-radius: 4px;
+            border-bottom-left-radius: 4px;
+          }
+        }
+
+        &:last-child {
+          button {
+            border-left: solid 1px $color-input-border;
+            border-top-right-radius: 4px;
+            border-bottom-right-radius: 4px;
+          }
+        }
+
+        button {
+          border-radius: 0;
+          margin: 0;
+        }
+      }
+
     }
 
     &__row {
@@ -440,5 +526,10 @@ li div {
     display: flex;
     align-items: center;
     justify-content: flex-start;
+  }
+  .hide {
+    &--sm {
+      display: none;
+    }
   }
 }

@@ -2,7 +2,7 @@ import React from 'react';
 import { Bar } from 'react-chartjs-2';
 // eslint-disable-next-line no-unused-vars
 import Chart from 'chart.js/auto';
-import { SUBSCRIPTION_TYPES_LABELS } from '../../services/dataService';
+import { SUBSCRIPTION_TYPES_LABELS, COLORS } from '../../services/dataService';
 import { calculateSubscriptionCost } from "../../services/statsService";
 
 const SubscriptionChart = ({ subscriptions, calculatePerMonth }) => {
@@ -16,9 +16,9 @@ const SubscriptionChart = ({ subscriptions, calculatePerMonth }) => {
             {
                 label: `${calculatePerMonth ? SUBSCRIPTION_TYPES_LABELS.MONTHLY : SUBSCRIPTION_TYPES_LABELS.YEARLY} Cost (£)`,
                 data: finalData,
-                backgroundColor: 'rgba(0, 123, 255, 0.5)',
-                borderColor: 'rgba(0, 123, 255, 1)',
-                borderWidth: 1,
+                backgroundColor: subscriptions.map((_, index) => COLORS[index % COLORS.length]), // Assign color from array
+                borderColor: subscriptions.map((_, index) => COLORS[index % COLORS.length]),
+                borderWidth: 0,
             },
         ],
     };
@@ -43,6 +43,7 @@ const SubscriptionChart = ({ subscriptions, calculatePerMonth }) => {
                 }
             }
         },
+        indexAxis: 'y',
     };
 
     return <Bar data={chartData} options={options}/>;

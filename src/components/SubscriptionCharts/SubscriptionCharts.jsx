@@ -2,10 +2,8 @@ import React from 'react';
 import './SubscriptionCharts.scss';
 import SubscriptionChart from '../SubscriptionChart/SubscriptionChart';
 import CategoryWiseChart from '../CategoryWiseChart/CategoryWiseChart';
-import SubscriptionStackedChart from '../SubscriptionStackedChart/SubscriptionStackedChart';
 
 const SubscriptionCharts = ({ subscriptions }) => {
-    const [twoColumnLayout, setTwoColumnLayout] = React.useState(true);
     const [showMonthly, setShowMonthly] = React.useState(true);
 
     const hasSubscriptions = subscriptions && subscriptions.length > 0;
@@ -30,11 +28,11 @@ const SubscriptionCharts = ({ subscriptions }) => {
             <div className={`subscription-charts subscription-charts--two-column`}>
                 <div>
                     <h2>{showMonthly ? 'Monthly' : 'Yearly'} Service</h2>
-                    <SubscriptionChart key={twoColumnLayout ? 'two-column' : 'single-column'} subscriptions={subscriptions} calculatePerMonth={showMonthly} />
+                    <SubscriptionChart key="service" subscriptions={subscriptions} calculatePerMonth={showMonthly} />
                 </div>
                 <div>
                     <h2>{showMonthly ? 'Monthly' : 'Yearly'} Category</h2>
-                    <CategoryWiseChart key={twoColumnLayout ? 'two-column' : 'single-column'} subscriptions={subscriptions} calculatePerMonth={showMonthly} />
+                    <CategoryWiseChart key="category" subscriptions={subscriptions} calculatePerMonth={showMonthly} />
                 </div>
             </div>
         </div>

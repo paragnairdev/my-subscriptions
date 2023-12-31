@@ -1,0 +1,38 @@
+@import "../../Variables.scss";
+
+.option-selector {
+    display: flex;
+    padding: 0;
+    border-radius: 5px;
+    gap: 0;
+
+    &__option {
+        &--selected {
+            background-color: $color-btn-primary-hover;
+            color: $color-white;
+            border: solid 1px $color-btn-primary-hover;
+        }
+    }
+
+    &--fill {
+        button {
+            flex: 1;
+            justify-content: center;
+        }
+    }
+
+    button {
+        margin: 0;
+        border-radius: 0;
+
+        &:first-child {
+            border-top-left-radius: 5px;
+            border-bottom-left-radius: 5px;
+        }
+
+        &:last-child {
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+        }
+    }
+}

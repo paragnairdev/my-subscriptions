@@ -9,6 +9,31 @@
     &__header {
         display: flex;
         justify-content: space-between;
+        align-items: center;
+    }
+
+    &__actions {
+        // display: flex;
+        align-items: center;
+        gap: 0;
+
+        button {
+            flex: 1;
+            margin: 0;
+            border-radius: 0;
+            text-align: center;
+            justify-content: center;
+
+            &:first-child {
+                border-top-left-radius: 4px;
+                border-bottom-left-radius: 4px;
+            }
+
+            &:last-child {
+                border-top-right-radius: 4px;
+                border-bottom-right-radius: 4px;
+            }
+        }
     }
 
     &__item {
@@ -66,10 +91,13 @@
     // responsive on phone
     @media (max-width: 600px) {
         
+        &__actions {
+            display: flex;
+        }
 
         &__item {
             grid-template-columns: 50px 1fr 100px 20px;
-            border-bottom: solid 1px #8B97A4;
+            box-shadow: 1px 1px 2px rgba(255, 255, 255, 0.1);
 
             &:first-child {
                 margin-top: 0;

@@ -5,20 +5,18 @@ import SubscriptionList from './components/SubscriptionList/SubscriptionList';
 import SubscriptionSummary from './components/SubscriptionSummary/SubscriptionSummary';
 import SubscriptionCharts from './components/SubscriptionCharts/SubscriptionCharts';
 import { addSubscription, hydrateSubscriptions, loadData, removeSubscription, resetData } from './services/dataService';
-import { FaBarsStaggered, FaFileExport } from 'react-icons/fa6';
-import { FaChartLine } from 'react-icons/fa';
-import { MdFormatListBulleted, MdFormatListBulletedAdd } from 'react-icons/md';
+import { FaFileExport } from 'react-icons/fa6';
 import { Tooltip } from 'react-tooltip';
 import SubscriptionsLoader from './components/SubscriptionsLoader/SubscriptionsLoaded';
 import GenericModal from './components/GenericModal/GenericModal';
 import PrivacyPolicy from './components/PrivacyPolicy/PrivacyPolicy';
+import Switch from './components/Switch/Switch';
 
 const App = () => {
     const [subscriptions, setSubscriptions] = useState([]);
     const [showList, setShowList] = useState(true);
     const [showChart, setShowChart] = useState(true);
     const [showForm, setShowForm] = useState(false);
-    const [showSummary, setShowSummary] = useState(true);
     const [currency, setCurrency] = useState('£');
     const [showPrivacyModal, setShowPrivacyModal] = useState(false);
 
@@ -31,7 +29,6 @@ const App = () => {
         // if there are no subscriptions, show the form
         if (subscriptions.length === 0) {
             // hide the list and charts
-            setShowList(false);
             setShowChart(false);
         }
     }, [showForm]);
@@ -55,9 +52,7 @@ const App = () => {
     const clearData = () => {
       resetData();
       setSubscriptions([]);
-      setShowList(false);
       setShowChart(false);
-      setShowForm(true);
     };
 
     const toggleListVisibility = () => {
@@ -67,11 +62,7 @@ const App = () => {
     const toggleFormVisibility = () => {
       setShowForm(!showForm);
     };
-
-    const toggleSummaryVisibility = () => {
-      setShowSummary(!showSummary);
-    };
-
+    
     const toggleChartVisibility = () => {
       setShowChart(!showChart);
     };
@@ -98,6 +89,14 @@ const App = () => {
       setShowChart(true);
     };
 
+    const handleSubscriptionToggle = () => {
+      setShowList(!showList);
+    };
+
+    const handleChartsToggle = () => {
+      setShowChart(!showChart);
+    };
+
     return (
         <div className="App">
             <header className="App-header">
@@ -110,46 +109,38 @@ const App = () => {
 
             <main className='App-body'>
 
-              <div className="App__actions">
-                {!showForm && (
-                  <button onClick={toggleFormVisibility}>
-                    <MdFormatListBulletedAdd /> Add Subscription
-                  </button>
-                )}
-                {/* <button onClick={toggleSummaryVisibility}>
-                  <FaBarsStaggered /> {showSummary ? 'Hide' : 'Show'} Summary
-                </button> */}
-                <button onClick={toggleListVisibility}>
-                  <MdFormatListBulleted /> {showList ? 'Hide' : 'Show'} Subscriptions
-                </button>
-                <button onClick={toggleChartVisibility}>
-                  <FaChartLine /> {showChart ? 'Hide' : 'Show'} Charts
-                </button>
-                <div className="btn-export">
-                  <button onClick={() => exportToJson(subscriptions)} 
-                    data-tooltip-id="exportTip" 
-                    data-tooltip-content="Download the subscriptions in a json format"
-                    data-tooltip-place="bottom"><FaFileExport /> Export</button>
-                  <Tooltip id="exportTip" />
+              <div className="App__toolbar">
+                <div className="App__switches App__switches--align-right">
+                  <Switch label={`Subscriptions`} isOn={showList} handleToggle={handleSubscriptionToggle} />
+                  <Switch label={`Charts`} isOn={showChart} handleToggle={handleChartsToggle}/>
                 </div>
-                <SubscriptionsLoader onSubscriptionsLoaded={onSubscriptionsLoaded} />
+                <div className="App__actions hide--sm">
+                  <div className="btn-export">
+                    <button onClick={() => exportToJson(subscriptions)} 
+                      data-tooltip-id="exportTip" 
+                      data-tooltip-content="Download the subscriptions in a json format"
+                      data-tooltip-place="bottom"><FaFileExport /> Export</button>
+                    <Tooltip id="exportTip" />
+                  </div>
+                  <SubscriptionsLoader onSubscriptionsLoaded={onSubscriptionsLoaded} />
+                </div>
               </div>
-              
 
-              <hr />
-
-              <GenericModal isOpen={showForm} onClose={onFormClosed} suffix="subscription-form">
+              <GenericModal isOpen={showForm} onClose={onFormClosed} suffix="subscription-form" heading="Add a subscription">
                 <SubscriptionForm addNewSubscription={addNewSubscription} onClose={onFormClosed}/>
               </GenericModal>
 
               <SubscriptionSummary subscriptions={subscriptions} />
               
               {showList && (
+                <div className='App__section'>
                   <SubscriptionList 
                       subscriptions={subscriptions} 
                       onDeleteSubscription={deleteSubscription} 
                       onClear={clearData}
+                      onAddSubscription={toggleFormVisibility}
                   />
+                </div>
               )}
               
               {showChart && (
@@ -157,11 +148,6 @@ const App = () => {
                   <SubscriptionCharts subscriptions={subscriptions} />
                 </div>
               )}
-
-              {/* <div className="App__row App__row--4-col">
-                <ChartCard label="Monthly Total" subscriptions={subscriptions} type="monthly" />
-                <ChartCard label="Yearly Total" subscriptions={subscriptions} type="yearly" />
-              </div> */}
             </main>
             <footer className="App__footer">
               <button className="btn__link" onClick={() => setShowPrivacyModal(true)}>Privacy Policy</button>
