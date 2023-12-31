@@ -10,6 +10,12 @@ body, html {
   color: $color-white;
 }
 
+a, a:active, a:visited {
+  color: $color-white;
+  text-decoration: underline;
+  font-size: 1em;
+}
+
 .App {
   margin: 0 auto;
 
@@ -209,9 +215,9 @@ li {
   }
 }
 
-li div {
-  margin-bottom: 5px;
-}
+// li div {
+//   margin-bottom: 5px;
+// }
 
 .app-logo {
   height: 50px; // Adjust the size as needed
@@ -454,5 +460,10 @@ li div {
     display: flex;
     align-items: center;
     justify-content: flex-start;
+  }
+  .hide {
+    &--sm {
+      display: none;
+    }
   }
 }

@@ -5,9 +5,7 @@ import SubscriptionList from './components/SubscriptionList/SubscriptionList';
 import SubscriptionSummary from './components/SubscriptionSummary/SubscriptionSummary';
 import SubscriptionCharts from './components/SubscriptionCharts/SubscriptionCharts';
 import { addSubscription, hydrateSubscriptions, loadData, removeSubscription, resetData } from './services/dataService';
-import { FaBarsStaggered, FaFileExport } from 'react-icons/fa6';
-import { FaChartLine } from 'react-icons/fa';
-import { MdFormatListBulleted, MdFormatListBulletedAdd } from 'react-icons/md';
+import { FaFileExport, FaCirclePlus, FaChartLine, FaList } from 'react-icons/fa6';
 import { Tooltip } from 'react-tooltip';
 import SubscriptionsLoader from './components/SubscriptionsLoader/SubscriptionsLoaded';
 import GenericModal from './components/GenericModal/GenericModal';
@@ -18,7 +16,6 @@ const App = () => {
     const [showList, setShowList] = useState(true);
     const [showChart, setShowChart] = useState(true);
     const [showForm, setShowForm] = useState(false);
-    const [showSummary, setShowSummary] = useState(true);
     const [currency, setCurrency] = useState('£');
     const [showPrivacyModal, setShowPrivacyModal] = useState(false);
 
@@ -31,7 +28,6 @@ const App = () => {
         // if there are no subscriptions, show the form
         if (subscriptions.length === 0) {
             // hide the list and charts
-            setShowList(false);
             setShowChart(false);
         }
     }, [showForm]);
@@ -55,9 +51,7 @@ const App = () => {
     const clearData = () => {
       resetData();
       setSubscriptions([]);
-      setShowList(false);
       setShowChart(false);
-      setShowForm(true);
     };
 
     const toggleListVisibility = () => {
@@ -67,11 +61,7 @@ const App = () => {
     const toggleFormVisibility = () => {
       setShowForm(!showForm);
     };
-
-    const toggleSummaryVisibility = () => {
-      setShowSummary(!showSummary);
-    };
-
+    
     const toggleChartVisibility = () => {
       setShowChart(!showChart);
     };
@@ -113,14 +103,11 @@ const App = () => {
               <div className="App__actions">
                 {!showForm && (
                   <button onClick={toggleFormVisibility}>
-                    <MdFormatListBulletedAdd /> Add Subscription
+                    <FaCirclePlus /> Add Subscription
                   </button>
                 )}
-                {/* <button onClick={toggleSummaryVisibility}>
-                  <FaBarsStaggered /> {showSummary ? 'Hide' : 'Show'} Summary
-                </button> */}
                 <button onClick={toggleListVisibility}>
-                  <MdFormatListBulleted /> {showList ? 'Hide' : 'Show'} Subscriptions
+                  <FaList /> {showList ? 'Hide' : 'Show'} Subscriptions
                 </button>
                 <button onClick={toggleChartVisibility}>
                   <FaChartLine /> {showChart ? 'Hide' : 'Show'} Charts
@@ -134,7 +121,6 @@ const App = () => {
                 </div>
                 <SubscriptionsLoader onSubscriptionsLoaded={onSubscriptionsLoaded} />
               </div>
-              
 
               <hr />
 
@@ -145,11 +131,14 @@ const App = () => {
               <SubscriptionSummary subscriptions={subscriptions} />
               
               {showList && (
+                <div className='App__section'>
                   <SubscriptionList 
                       subscriptions={subscriptions} 
                       onDeleteSubscription={deleteSubscription} 
                       onClear={clearData}
+                      onAddSubscription={toggleFormVisibility}
                   />
+                </div>
               )}
               
               {showChart && (

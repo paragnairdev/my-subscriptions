@@ -51,7 +51,7 @@ const SubscriptionForm = ({ addNewSubscription, onClose }) => {
         // remove the property customCategory from the newSubscription object
         delete newSubscription.customCategory;
         addNewSubscription({ ...newSubscription, category: finalCategory });
-        setNewSubscription({ name: '', category: '', customCategory: '', amount: '', type: SUBSCRIPTION_TYPES.MONTHLY });
+        setNewSubscription({ ...newSubscription, name: '', category: '', customCategory: '', amount: '' });
         setIsSubmitted(true);
         nameInputRef.current.focus();
     };

@@ -1,5 +1,30 @@
 const STORAGE_KEY = 'appData';
 const defaultCategories = ["Education", "Entertainment", "Finance", "Health & Fitness", "Productivity", "Shopping", "Social", "Utilities", "Other"];
+export const COLORS = [
+    "#a8cc01",
+    "#2bf8b8",
+    "#2efc0f",
+    "#821ac2",
+    "#2982d7",
+    "#25c144",
+    "#7514c9",
+    "#d8f805",
+    "#d81369",
+    "#8fbf20"
+];
+
+export const CATEGORY_COLORS = [
+    "#355890",
+    "#1d773a",
+    "#eaeec8",
+    "#2a0341",
+    "#717925",
+    "#079345",
+    "#92e614",
+    "#febfec",
+    "#9eef45",
+    "#5e4161"
+];
 
 // Function to load data from localStorage
 export const loadData = () => {

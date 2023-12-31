@@ -2,19 +2,26 @@ import React, { useState } from 'react';
 import './SubscriptionList.scss';
 import { VscClearAll } from "react-icons/vsc";
 import { Tooltip } from 'react-tooltip';
-import { MdDelete } from "react-icons/md";
 import ConfirmationModal from '../ConfirmationModal/ConfirmationModal';
 import { SUBSCRIPTION_TYPES } from '../../services/dataService';
+import { FaCirclePlus, FaTrash } from "react-icons/fa6";
 
-const SubscriptionList = ({ subscriptions, onDeleteSubscription, onClear }) => {
+const SubscriptionList = ({ subscriptions, onDeleteSubscription, onClear, onAddSubscription }) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const hasSubscriptions = subscriptions && subscriptions.length > 0;
 
-    if (!subscriptions || subscriptions.length === 0) {
-        return <p>No subscriptions added yet.</p>;
-    }
+    const handleAdd = (event) => { 
+        event.preventDefault();
+        onAddSubscription();
+    };
 
     const showConfirmationModal = () => {
         setIsModalOpen(true);
+    };
+
+    const handleConfirm = () => {
+        setIsModalOpen(false);
+        onClear();
     };
 
     // order subscriptions by name
@@ -29,10 +36,12 @@ const SubscriptionList = ({ subscriptions, onDeleteSubscription, onClear }) => {
             <div className='subscription-list__header'>
                 <h2>My Subscriptions</h2>
                 <div className='subscription-list__actions'>
-                    <button data-tooltip-id="clearAllTip" data-tooltip-content="This will delete all the subscriptions" className='clear-btn' onClick={showConfirmationModal}><VscClearAll /> Clear All</button>
-                    <Tooltip id="clearAllTip" className="danger-tooltip" />
+                    <button className='btn-primary' onClick={handleAdd}><FaCirclePlus /><span className='hide--sm'>Add</span></button>
+                    <button data-tooltip-id="clearAllTip" data-tooltip-content="This will delete all the subscriptions" onClick={showConfirmationModal}><VscClearAll /><span className='hide--sm'>Clear All</span></button>
                 </div>
+                <Tooltip id="clearAllTip" className="danger-tooltip" />
             </div>
+            {!hasSubscriptions && (<p>No subscriptions added yet. <a href="#" onClick={handleAdd}>Add your first subscription</a></p>)}
             <ul className="subscription-list subscription-list--md">
                 <li className="subscription-list__item subscription-list__item--header">
                     <div>#</div>
@@ -51,7 +60,7 @@ const SubscriptionList = ({ subscriptions, onDeleteSubscription, onClear }) => {
                         <div className="subscription-list__item-amount">£{parseFloat(subscription.amount).toFixed(2)}</div>
                         <div className="subscription-list__item-billing">{subscription.type.charAt(0).toUpperCase() + subscription.type.slice(1)}</div>
                         {/* Delete button */}
-                        <button className='btn-danger' onClick={() => onDeleteSubscription(index)}><MdDelete />Delete</button>
+                        <button className='btn-danger' onClick={() => onDeleteSubscription(index)}><FaTrash />Delete</button>
                     </li>
                 ))}
             </ul>
@@ -69,7 +78,7 @@ const SubscriptionList = ({ subscriptions, onDeleteSubscription, onClear }) => {
                         </div>
                         <div className="subscription-list__item-amount">£{parseFloat(subscription.amount).toFixed(2)}</div>
                         {/* Delete button */}
-                        <a href="#" className='btn-danger' onClick={() => onDeleteSubscription(index)}><MdDelete /></a>
+                        <a href="#" className='btn-danger' onClick={() => onDeleteSubscription(index)}><FaTrash /></a>
                     </li>
                 ))}
             </ul>
@@ -77,8 +86,8 @@ const SubscriptionList = ({ subscriptions, onDeleteSubscription, onClear }) => {
             <ConfirmationModal 
                 isOpen={isModalOpen}
                 onClose={() => setIsModalOpen(false)}
-                onConfirm={onClear}
-                message="Are you sure you want to delete all the subscriptions?"
+                onConfirm={handleConfirm}
+                message="This will delete all the subscriptions you have added till now. Are you sure you want to delete all the subscriptions?"
                 />
         </div>
     );
