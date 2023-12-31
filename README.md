@@ -72,3 +72,6 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 ### Fontawesome Icons used ###
 
 The project uses `react-icons`. For full set of icons, please visit: [https://react-icons.github.io/react-icons/](https://react-icons.github.io/react-icons/)
+
+### Charting Library used ###
+The project uses `react-chartjs-2`. For full set of charts, please visit: [https://www.npmjs.com/package/react-chartjs-2](https://www.npmjs.com/package/react-chartjs-2)

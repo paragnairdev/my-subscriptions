@@ -121,7 +121,7 @@ const App = () => {
                   <MdFormatListBulleted /> {showList ? 'Hide' : 'Show'} Subscriptions
                 </button>
                 <button onClick={toggleChartVisibility}>
-                  <FaChartLine /> {showChart ? 'Hide' : 'Show'} Charts
+                  <FaChartLine /> {showChart ? 'Hide' : 'Show'} Monthly Charts
                 </button>
                 <div className="btn-export">
                   <button onClick={() => exportToJson(subscriptions)} 
