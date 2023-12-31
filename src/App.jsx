@@ -116,22 +116,11 @@ const App = () => {
                   <Switch label={`Charts`} isOn={showChart} handleToggle={handleChartsToggle}/>
                 </div>
                 <div className="App__actions hide--sm">
-                  {/* {!showForm && (
-                    <button onClick={toggleFormVisibility}>
-                      <FaCirclePlus /> <span className="hide--sm">Add Subscription</span>
-                    </button>
-                  )} */}
-                  {/* <button onClick={toggleListVisibility}>
-                    <FaList /> <span className="hide--sm">{showList ? 'Hide' : 'Show'} Subscriptions</span>
-                  </button>
-                  <button onClick={toggleChartVisibility}>
-                    <FaChartBar /> <span className="hide--sm">{showChart ? 'Hide' : 'Show'} Charts</span>
-                  </button> */}
                   <div className="btn-export">
                     <button onClick={() => exportToJson(subscriptions)} 
                       data-tooltip-id="exportTip" 
                       data-tooltip-content="Download the subscriptions in a json format"
-                      data-tooltip-place="bottom"><FaFileExport /> <span className="hide--sm">Export</span></button>
+                      data-tooltip-place="bottom"><FaFileExport /> Export</button>
                     <Tooltip id="exportTip" />
                   </div>
                   <SubscriptionsLoader onSubscriptionsLoaded={onSubscriptionsLoaded} />
@@ -160,11 +149,6 @@ const App = () => {
                   <SubscriptionCharts subscriptions={subscriptions} />
                 </div>
               )}
-
-              {/* <div className="App__row App__row--4-col">
-                <ChartCard label="Monthly Total" subscriptions={subscriptions} type="monthly" />
-                <ChartCard label="Yearly Total" subscriptions={subscriptions} type="yearly" />
-              </div> */}
             </main>
             <footer className="App__footer">
               <button className="btn__link" onClick={() => setShowPrivacyModal(true)}>Privacy Policy</button>
