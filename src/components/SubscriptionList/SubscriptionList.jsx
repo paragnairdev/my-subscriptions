@@ -4,6 +4,7 @@ import { VscClearAll } from "react-icons/vsc";
 import { Tooltip } from 'react-tooltip';
 import { MdDelete } from "react-icons/md";
 import ConfirmationModal from '../ConfirmationModal/ConfirmationModal';
+import { SUBSCRIPTION_TYPES } from '../../services/dataService';
 
 const SubscriptionList = ({ subscriptions, onDeleteSubscription, onClear }) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -57,10 +58,10 @@ const SubscriptionList = ({ subscriptions, onDeleteSubscription, onClear }) => {
 
             <ul className="subscription-list subscription-list--sm">
                 {finalSubscriptions.map((subscription, index) => (
-                    <li key={index} className={`subscription-list__item subscription-list__item--type-${subscription.type === 'monthly' ? 'm' : 'y'}`}>
+                    <li key={index} className={`subscription-list__item subscription-list__item--type-${subscription.type === SUBSCRIPTION_TYPES.MONTHLY ? 'm' : 'y'}`}>
                         {/* Subscription details */}
                         <div className="subscription-list__item-type" title={subscription.type}>
-                            <div>{subscription.type === 'monthly' ? 'M' : 'Y'}</div>
+                            <div>{subscription.type === SUBSCRIPTION_TYPES.MONTHLY ? 'M' : 'Y'}</div>
                         </div>
                         <div>
                             {subscription.name}

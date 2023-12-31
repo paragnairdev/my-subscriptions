@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { loadData, addCategory } from '../../services/dataService';
+import { loadData, addCategory, SUBSCRIPTION_TYPES, SUBSCRIPTION_TYPES_LABELS } from '../../services/dataService';
 
 const SubscriptionForm = ({ addNewSubscription, onClose }) => {
     const [isSubmitted, setIsSubmitted] = useState(false);
@@ -105,8 +105,8 @@ const SubscriptionForm = ({ addNewSubscription, onClose }) => {
                         onChange={handleInputChange}
                         required
                     >
-                        <option value="monthly">Monthly</option>
-                        <option value="annually">Annually</option>
+                        <option value={SUBSCRIPTION_TYPES.MONTHLY}>{`${SUBSCRIPTION_TYPES_LABELS.MONTHLY}`}</option>
+                        <option value={SUBSCRIPTION_TYPES.YEARLY}>{`${SUBSCRIPTION_TYPES_LABELS.YEARLY}`}</option>
                     </select>
                 </div>
             </div>

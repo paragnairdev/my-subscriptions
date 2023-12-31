@@ -28,8 +28,6 @@ const App = () => {
 
         // if there are no subscriptions, show the form
         if (subscriptions.length === 0) {
-            setShowForm(true);
-
             // hide the list and charts
             setShowList(false);
             setShowChart(false);
@@ -162,7 +160,7 @@ const App = () => {
 
               {/* <div className="App__row App__row--4-col">
                 <ChartCard label="Monthly Total" subscriptions={subscriptions} type="monthly" />
-                <ChartCard label="Yearly Total" subscriptions={subscriptions} type="annually" />
+                <ChartCard label="Yearly Total" subscriptions={subscriptions} type="yearly" />
               </div> */}
             </main>
         </div>

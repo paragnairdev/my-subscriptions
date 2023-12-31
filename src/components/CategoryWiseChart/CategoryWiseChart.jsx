@@ -1,21 +1,23 @@
 import React from 'react';
 import { Pie } from 'react-chartjs-2';
+import { SUBSCRIPTION_TYPES, SUBSCRIPTION_TYPES_LABELS } from '../../services/dataService';
 
 const CategoryWiseChart = ({ subscriptions }) => {
+    const yearly = SUBSCRIPTION_TYPES.YEARLY;
     const categories = [...new Set(subscriptions.map(sub => sub.category))];
     
     const categoryData = categories.map(category => {
         return subscriptions
             .filter(sub => sub.category === category)
             .reduce((acc, sub) => {
-                return parseFloat(acc + (sub.type === 'annually' ? parseFloat(sub.amount) / 12 : parseFloat(sub.amount))).toFixed(2);
+                return parseFloat(acc + (sub.type === yearly ? parseFloat(sub.amount) / 12 : parseFloat(sub.amount))).toFixed(2);
             }, 0);
     });
 
     const chartData = {
         labels: categories,
         datasets: [{
-            label: 'Yearly (£)',
+            label: `${SUBSCRIPTION_TYPES_LABELS.YEARLY} (£)`,
             data: categoryData,
             backgroundColor: [
                 'rgba(255, 99, 132, 0.5)',

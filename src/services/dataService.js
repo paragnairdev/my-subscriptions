@@ -60,3 +60,13 @@ export const exportToJson = (data) => {
     link.download = "appData.json";
     link.click();
 };
+
+export const SUBSCRIPTION_TYPES = {
+    YEARLY: 'yearly',
+    MONTHLY: 'monthly'
+};
+
+export const SUBSCRIPTION_TYPES_LABELS = {
+    YEARLY: 'Yearly',
+    MONTHLY: 'Monthly'
+};
