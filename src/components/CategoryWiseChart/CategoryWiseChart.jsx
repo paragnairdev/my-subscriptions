@@ -1,31 +1,27 @@
 import React from 'react';
 import { Pie } from 'react-chartjs-2';
-import { SUBSCRIPTION_TYPES, SUBSCRIPTION_TYPES_LABELS } from '../../services/dataService';
+import { SUBSCRIPTION_TYPES_LABELS } from '../../services/dataService';
+import { calculateSubscriptionCost } from "../../services/statsService";
 
 const CategoryWiseChart = ({ subscriptions, calculatePerMonth }) => {
-    const yearly = SUBSCRIPTION_TYPES.YEARLY;
     const categories = [...new Set(subscriptions.map(sub => sub.category))];
     
     const categoryData = categories.map(category => {
         return subscriptions
             .filter(sub => sub.category === category)
             .reduce((acc, sub) => {
-                // if calculatePerMonth is true, then we need to calculate the monthly cost
-                return calculatePerMonth 
-                ? parseFloat(
-                    sub.type === yearly ? parseFloat(sub.amount) / 12 : parseFloat(sub.amount)
-                ).toFixed(2) 
-                // otherwise, we just need to return the amount
-                : parseFloat(
-                    sub.type === yearly ? parseFloat(sub.amount) : parseFloat(sub.amount) * 12
-                ).toFixed(2);
+                const cost = calculateSubscriptionCost(sub, calculatePerMonth);
+                return acc + cost;
             }, 0);
     });
+
+    // normalize all the data to 2 decimal places
+    categoryData.map((data, index) => categoryData[index] = Math.round(data * 100) / 100);
 
     const chartData = {
         labels: categories,
         datasets: [{
-            label: `${SUBSCRIPTION_TYPES_LABELS.YEARLY} (£)`,
+            label: `${calculatePerMonth ? SUBSCRIPTION_TYPES_LABELS.MONTHLY : SUBSCRIPTION_TYPES_LABELS.YEARLY} (£)`,
             data: categoryData,
             backgroundColor: [
                 'rgba(255, 99, 132, 0.5)',
@@ -48,7 +44,6 @@ const CategoryWiseChart = ({ subscriptions, calculatePerMonth }) => {
             }
         }
     };
-
     return <Pie data={chartData} options={options} />;
 };
 
