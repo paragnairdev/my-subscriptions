@@ -2,16 +2,20 @@ import React from 'react';
 import { Bar } from 'react-chartjs-2';
 // eslint-disable-next-line no-unused-vars
 import Chart from 'chart.js/auto';
+import { SUBSCRIPTION_TYPES_LABELS } from '../../services/dataService';
+import { calculateSubscriptionCost } from "../../services/statsService";
 
-const SubscriptionChart = ({ subscriptions }) => {
+const SubscriptionChart = ({ subscriptions, calculatePerMonth }) => {
+    const finalData = subscriptions.map(sub => calculateSubscriptionCost(sub, calculatePerMonth));
+
+    // normalize all the data to 2 decimal places
+    finalData.map((data, index) => finalData[index] = Math.round(data * 100) / 100);
     const chartData = {
         labels: subscriptions.map(sub => sub.name),
         datasets: [
             {
-                label: 'Monthly Cost (£)',
-                data: subscriptions.map(sub => {
-                    return parseFloat(sub.type === 'annually' ? parseFloat(sub.amount) / 12 : parseFloat(sub.amount)).toFixed(2);
-                }),
+                label: `${calculatePerMonth ? SUBSCRIPTION_TYPES_LABELS.MONTHLY : SUBSCRIPTION_TYPES_LABELS.YEARLY} Cost (£)`,
+                data: finalData,
                 backgroundColor: 'rgba(0, 123, 255, 0.5)',
                 borderColor: 'rgba(0, 123, 255, 1)',
                 borderWidth: 1,

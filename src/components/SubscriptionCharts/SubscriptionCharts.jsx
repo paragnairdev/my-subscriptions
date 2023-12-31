@@ -2,10 +2,11 @@ import React from 'react';
 import './SubscriptionCharts.scss';
 import SubscriptionChart from '../SubscriptionChart/SubscriptionChart';
 import CategoryWiseChart from '../CategoryWiseChart/CategoryWiseChart';
-import { TbColumns1, TbColumns2 } from 'react-icons/tb';
+import SubscriptionStackedChart from '../SubscriptionStackedChart/SubscriptionStackedChart';
 
 const SubscriptionCharts = ({ subscriptions }) => {
     const [twoColumnLayout, setTwoColumnLayout] = React.useState(true);
+    const [showMonthly, setShowMonthly] = React.useState(true);
 
     const hasSubscriptions = subscriptions && subscriptions.length > 0;
 
@@ -17,23 +18,23 @@ const SubscriptionCharts = ({ subscriptions }) => {
         <div>
             <div className="subscription-charts__views">
                 <div className="button-group">
-                    <button onClick={() => setTwoColumnLayout(false)} className={!twoColumnLayout ? 'selected' : ''}>
-                        <TbColumns1 />
+                    <button title="Monthly" onClick={() => setShowMonthly(true)} className={showMonthly ? 'selected' : ''}>
+                        M
                     </button>
-                    <button onClick={() => setTwoColumnLayout(true)} className={twoColumnLayout ? 'selected' : ''}>
-                        <TbColumns2 />
+                    <button title="Yearly" onClick={() => setShowMonthly(false)} className={!showMonthly ? 'selected' : ''}>
+                        Y
                     </button>
                 </div>
             </div>
             
-            <div className={`subscription-charts ${twoColumnLayout ? 'subscription-charts--two-column' : ''}`}>
+            <div className={`subscription-charts subscription-charts--two-column`}>
                 <div>
-                    <h2>By Service</h2>
-                    <SubscriptionChart key={twoColumnLayout ? 'two-column' : 'single-column'} subscriptions={subscriptions} />
+                    <h2>{showMonthly ? 'Monthly' : 'Yearly'} Service</h2>
+                    <SubscriptionChart key={twoColumnLayout ? 'two-column' : 'single-column'} subscriptions={subscriptions} calculatePerMonth={showMonthly} />
                 </div>
                 <div>
-                    <h2>By Category</h2>
-                    <CategoryWiseChart key={twoColumnLayout ? 'two-column' : 'single-column'} subscriptions={subscriptions} />
+                    <h2>{showMonthly ? 'Monthly' : 'Yearly'} Category</h2>
+                    <CategoryWiseChart key={twoColumnLayout ? 'two-column' : 'single-column'} subscriptions={subscriptions} calculatePerMonth={showMonthly} />
                 </div>
             </div>
         </div>
