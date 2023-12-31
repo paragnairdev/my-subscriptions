@@ -4,7 +4,7 @@ on:
     branches:
       - master
 env:
-  REACT_APP_MAIN_TEXT: "Successfully deployed in AWS"
+  REACT_APP_CONTACT_EMAIL: ${{ secrets.REACT_APP_CONTACT_EMAIL }}
   AWS_S3_BUCKET: ${{ secrets.AWS_BUCKET_NAME }}
   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}

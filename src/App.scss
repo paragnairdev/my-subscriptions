@@ -75,6 +75,14 @@ body, html {
       grid-template-columns: 1fr 1fr 1fr 1fr;
     }
   }
+
+  &__footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    padding: 20px;
+    background-color: $color-shade-3;
+  }
 }
 
 h1 {
@@ -122,6 +130,18 @@ button {
     background-color: $color-btn-primary-hover;
     color: $color-white;
     border: solid 1px $color-btn-primary-hover;
+  }
+}
+
+.btn {
+  &__link {
+    background-color: $color-shade-3;
+    border-color: $color-shade-3;
+    color: $color-white;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }
 
@@ -299,9 +319,29 @@ li div {
     z-index: 1000;
     color: $primary-color-foreground;
     position: relative;
+    width: 90%;
 
     &--hint-subscription-form {
       width: 90%;
+    }
+
+    h1 {
+      font-size: 2em;
+      color: $color-white;
+      border-bottom: solid 1px $color-input-border;
+    }
+
+    h2 {
+      font-size: 1.5em;
+    }
+
+    p {
+      font-size: 0.8em;
+    }
+
+    a, a:active, a:visited {
+      color: $color-white;
+      text-decoration: underline;
     }
   }
 
