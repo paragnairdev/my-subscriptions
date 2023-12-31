@@ -1,5 +1,5 @@
 const STORAGE_KEY = 'appData';
-const defaultCategories = ["Entertainment", "Productivity", "Finance", "Education", "Health & Fitness"];
+const defaultCategories = ["Education", "Entertainment", "Finance", "Health & Fitness", "Productivity", "Shopping", "Social", "Utilities", "Other"];
 
 // Function to load data from localStorage
 export const loadData = () => {

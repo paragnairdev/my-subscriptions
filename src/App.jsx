@@ -138,7 +138,7 @@ const App = () => {
 
               <hr />
 
-              <GenericModal isOpen={showForm} onClose={onFormClosed} suffix="subscription-form">
+              <GenericModal isOpen={showForm} onClose={onFormClosed} suffix="subscription-form" heading="Add a subscription">
                 <SubscriptionForm addNewSubscription={addNewSubscription} onClose={onFormClosed}/>
               </GenericModal>
 

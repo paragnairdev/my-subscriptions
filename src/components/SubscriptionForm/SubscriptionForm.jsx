@@ -1,8 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { loadData, addCategory, SUBSCRIPTION_TYPES, SUBSCRIPTION_TYPES_LABELS } from '../../services/dataService';
+import OptionSelector from '../OptionSelector/OptionSelector';
 
 const SubscriptionForm = ({ addNewSubscription, onClose }) => {
+    const options = [
+        { label: SUBSCRIPTION_TYPES_LABELS.MONTHLY, value: SUBSCRIPTION_TYPES.MONTHLY },
+        { label: SUBSCRIPTION_TYPES_LABELS.YEARLY, value: SUBSCRIPTION_TYPES.YEARLY },
+    ];
     const [isSubmitted, setIsSubmitted] = useState(false);
+    const [billingFrequency, setBillingFrequency] = useState(options[0]); // [monthly, yearly
     const nameInputRef = useRef(null);
 
     const [newSubscription, setNewSubscription] = useState({
@@ -10,7 +16,7 @@ const SubscriptionForm = ({ addNewSubscription, onClose }) => {
         category: '',
         customCategory: '',
         amount: '',
-        type: 'monthly',
+        type: billingFrequency.value,
     });
 
     // Predefined categories
@@ -42,10 +48,17 @@ const SubscriptionForm = ({ addNewSubscription, onClose }) => {
                 setCategories([...categories, finalCategory]);
             }
         }
+        // remove the property customCategory from the newSubscription object
+        delete newSubscription.customCategory;
         addNewSubscription({ ...newSubscription, category: finalCategory });
-        setNewSubscription({ name: '', category: '', customCategory: '', amount: '', type: 'monthly' });
+        setNewSubscription({ name: '', category: '', customCategory: '', amount: '', type: SUBSCRIPTION_TYPES.MONTHLY });
         setIsSubmitted(true);
         nameInputRef.current.focus();
+    };
+
+    const handleBillingSelection = (option) => {
+        setBillingFrequency(option);
+        setNewSubscription({ ...newSubscription, type: option.value });
     };
 
     return (
@@ -57,6 +70,7 @@ const SubscriptionForm = ({ addNewSubscription, onClose }) => {
                         ref={nameInputRef}
                         type="text"
                         name="name"
+                        placeholder='Netflix'
                         value={newSubscription.name}
                         onChange={handleInputChange}
                         required
@@ -92,6 +106,7 @@ const SubscriptionForm = ({ addNewSubscription, onClose }) => {
                     <input
                         type="number"
                         name="amount"
+                        placeholder='9.99'
                         value={newSubscription.amount}
                         onChange={handleInputChange}
                         required
@@ -99,15 +114,7 @@ const SubscriptionForm = ({ addNewSubscription, onClose }) => {
                 </div>
                 <div className='form__group'>
                     <label>Billing:</label>
-                    <select
-                        name="type"
-                        value={newSubscription.type}
-                        onChange={handleInputChange}
-                        required
-                    >
-                        <option value={SUBSCRIPTION_TYPES.MONTHLY}>{`${SUBSCRIPTION_TYPES_LABELS.MONTHLY}`}</option>
-                        <option value={SUBSCRIPTION_TYPES.YEARLY}>{`${SUBSCRIPTION_TYPES_LABELS.YEARLY}`}</option>
-                    </select>
+                    <OptionSelector options={options} selectedOption={billingFrequency} onOptionSelected={handleBillingSelection} fill={true}/>
                 </div>
             </div>
             <div className='form__footer'>

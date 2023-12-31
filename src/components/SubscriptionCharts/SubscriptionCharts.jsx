@@ -2,7 +2,6 @@ import React from 'react';
 import './SubscriptionCharts.scss';
 import SubscriptionChart from '../SubscriptionChart/SubscriptionChart';
 import CategoryWiseChart from '../CategoryWiseChart/CategoryWiseChart';
-import SubscriptionStackedChart from '../SubscriptionStackedChart/SubscriptionStackedChart';
 
 const SubscriptionCharts = ({ subscriptions }) => {
     const [twoColumnLayout, setTwoColumnLayout] = React.useState(true);

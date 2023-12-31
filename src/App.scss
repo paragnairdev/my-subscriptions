@@ -88,6 +88,7 @@ body, html {
 h1 {
   color: #333;
   text-align: center;
+  padding-bottom: 10px;
 }
 
 form {
@@ -154,11 +155,14 @@ hr {
 .button-group {
   display: flex;
   gap: 0;
+  align-items: center;
 
   button {
     flex: 1;
     margin: 0;
     border-radius: 0;
+    text-align: center;
+    justify-content: center;
 
     &:first-child {
       border-top-left-radius: 4px;
@@ -345,6 +349,12 @@ li div {
     }
   }
 
+  &__title {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
   &__close {
     position: absolute;
     top: 10px;
@@ -360,6 +370,10 @@ li div {
   @media (max-width: 600px) {
     &__content {
       width: 70%;
+
+      h1 {
+        font-size: 1.5em;
+      }
     }
   }
 }
