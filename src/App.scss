@@ -102,10 +102,19 @@ a, a:active, a:visited {
 
   &__footer {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     gap: 10px;
     padding: 20px;
     background-color: $color-shade-3;
+
+    &-logo {
+      display: flex;
+      align-items: center;
+      font-size: 0.7em;
+      img {
+        height: 40px;
+      }
+    }
   }
 }
 

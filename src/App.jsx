@@ -150,6 +150,10 @@ const App = () => {
               )}
             </main>
             <footer className="App__footer">
+              <div className="App__footer-logo">
+                <img src="logo.png" alt="Subscription App Logo" className="app-logo" />
+                &copy; 2024 Subscription Tracker
+              </div>
               <button className="btn__link" onClick={() => setShowPrivacyModal(true)}>Privacy Policy</button>
             </footer>
             <GenericModal isOpen={showPrivacyModal} onClose={() => setShowPrivacyModal(false)} suffix="privacy-policy">
