@@ -1,7 +1,7 @@
 import React from 'react';
 import './SubscriptionSummary.scss';
 import Card from '../Card/Card';
-import { FaMoneyBill, FaMoneyBillWave } from "react-icons/fa";
+import { FaMoneyBill, FaMoneyBillWave } from "react-icons/fa6";
 import { FcMultipleDevices } from "react-icons/fc";
 import { SUBSCRIPTION_TYPES, SUBSCRIPTION_TYPES_LABELS } from '../../services/dataService';
 

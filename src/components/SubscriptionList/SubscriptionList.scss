@@ -97,7 +97,7 @@
 
         &__item {
             grid-template-columns: 50px 1fr 100px 20px;
-            border-bottom: solid 1px #8B97A4;
+            box-shadow: 1px 1px 2px rgba(255, 255, 255, 0.1);
 
             &:first-child {
                 margin-top: 0;

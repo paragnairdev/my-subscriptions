@@ -5,11 +5,13 @@ import SubscriptionList from './components/SubscriptionList/SubscriptionList';
 import SubscriptionSummary from './components/SubscriptionSummary/SubscriptionSummary';
 import SubscriptionCharts from './components/SubscriptionCharts/SubscriptionCharts';
 import { addSubscription, hydrateSubscriptions, loadData, removeSubscription, resetData } from './services/dataService';
-import { FaFileExport, FaCirclePlus, FaChartLine, FaList } from 'react-icons/fa6';
+import { FaFileExport, FaCirclePlus, FaChartBar, FaList } from 'react-icons/fa6';
+import { FcComboChart, FcPlus, FcViewDetails } from "react-icons/fc";
 import { Tooltip } from 'react-tooltip';
 import SubscriptionsLoader from './components/SubscriptionsLoader/SubscriptionsLoaded';
 import GenericModal from './components/GenericModal/GenericModal';
 import PrivacyPolicy from './components/PrivacyPolicy/PrivacyPolicy';
+import Switch from './components/Switch/Switch';
 
 const App = () => {
     const [subscriptions, setSubscriptions] = useState([]);
@@ -88,6 +90,14 @@ const App = () => {
       setShowChart(true);
     };
 
+    const handleSubscriptionToggle = () => {
+      setShowList(!showList);
+    };
+
+    const handleChartsToggle = () => {
+      setShowChart(!showChart);
+    };
+
     return (
         <div className="App">
             <header className="App-header">
@@ -100,29 +110,33 @@ const App = () => {
 
             <main className='App-body'>
 
-              <div className="App__actions">
-                {!showForm && (
-                  <button onClick={toggleFormVisibility}>
-                    <FaCirclePlus /> Add Subscription
-                  </button>
-                )}
-                <button onClick={toggleListVisibility}>
-                  <FaList /> {showList ? 'Hide' : 'Show'} Subscriptions
-                </button>
-                <button onClick={toggleChartVisibility}>
-                  <FaChartLine /> {showChart ? 'Hide' : 'Show'} Charts
-                </button>
-                <div className="btn-export">
-                  <button onClick={() => exportToJson(subscriptions)} 
-                    data-tooltip-id="exportTip" 
-                    data-tooltip-content="Download the subscriptions in a json format"
-                    data-tooltip-place="bottom"><FaFileExport /> Export</button>
-                  <Tooltip id="exportTip" />
+              <div className="App__toolbar">
+                <div className="App__switches App__switches--align-right">
+                  <Switch label={`Subscriptions`} isOn={showList} handleToggle={handleSubscriptionToggle} />
+                  <Switch label={`Charts`} isOn={showChart} handleToggle={handleChartsToggle}/>
                 </div>
-                <SubscriptionsLoader onSubscriptionsLoaded={onSubscriptionsLoaded} />
+                <div className="App__actions hide--sm">
+                  {/* {!showForm && (
+                    <button onClick={toggleFormVisibility}>
+                      <FaCirclePlus /> <span className="hide--sm">Add Subscription</span>
+                    </button>
+                  )} */}
+                  {/* <button onClick={toggleListVisibility}>
+                    <FaList /> <span className="hide--sm">{showList ? 'Hide' : 'Show'} Subscriptions</span>
+                  </button>
+                  <button onClick={toggleChartVisibility}>
+                    <FaChartBar /> <span className="hide--sm">{showChart ? 'Hide' : 'Show'} Charts</span>
+                  </button> */}
+                  <div className="btn-export">
+                    <button onClick={() => exportToJson(subscriptions)} 
+                      data-tooltip-id="exportTip" 
+                      data-tooltip-content="Download the subscriptions in a json format"
+                      data-tooltip-place="bottom"><FaFileExport /> <span className="hide--sm">Export</span></button>
+                    <Tooltip id="exportTip" />
+                  </div>
+                  <SubscriptionsLoader onSubscriptionsLoaded={onSubscriptionsLoaded} />
+                </div>
               </div>
-
-              <hr />
 
               <GenericModal isOpen={showForm} onClose={onFormClosed} suffix="subscription-form" heading="Add a subscription">
                 <SubscriptionForm addNewSubscription={addNewSubscription} onClose={onFormClosed}/>
