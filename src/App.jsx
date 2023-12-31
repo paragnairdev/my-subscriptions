@@ -116,14 +116,14 @@ const App = () => {
                     <MdFormatListBulletedAdd /> Add Subscription
                   </button>
                 )}
-                <button onClick={toggleSummaryVisibility}>
+                {/* <button onClick={toggleSummaryVisibility}>
                   <FaBarsStaggered /> {showSummary ? 'Hide' : 'Show'} Summary
-                </button>
+                </button> */}
                 <button onClick={toggleListVisibility}>
                   <MdFormatListBulleted /> {showList ? 'Hide' : 'Show'} Subscriptions
                 </button>
                 <button onClick={toggleChartVisibility}>
-                  <FaChartLine /> {showChart ? 'Hide' : 'Show'} Monthly Charts
+                  <FaChartLine /> {showChart ? 'Hide' : 'Show'} Charts
                 </button>
                 <div className="btn-export">
                   <button onClick={() => exportToJson(subscriptions)} 
@@ -142,9 +142,7 @@ const App = () => {
                 <SubscriptionForm addNewSubscription={addNewSubscription} onClose={onFormClosed}/>
               </GenericModal>
 
-              {showSummary && (
-                <SubscriptionSummary subscriptions={subscriptions} />
-              )}
+              <SubscriptionSummary subscriptions={subscriptions} />
               
               {showList && (
                   <SubscriptionList 
