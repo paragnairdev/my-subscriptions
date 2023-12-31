@@ -11,6 +11,7 @@ import { MdFormatListBulleted, MdFormatListBulletedAdd } from 'react-icons/md';
 import { Tooltip } from 'react-tooltip';
 import SubscriptionsLoader from './components/SubscriptionsLoader/SubscriptionsLoaded';
 import GenericModal from './components/GenericModal/GenericModal';
+import PrivacyPolicy from './components/PrivacyPolicy/PrivacyPolicy';
 
 const App = () => {
     const [subscriptions, setSubscriptions] = useState([]);
@@ -19,6 +20,7 @@ const App = () => {
     const [showForm, setShowForm] = useState(false);
     const [showSummary, setShowSummary] = useState(true);
     const [currency, setCurrency] = useState('£');
+    const [showPrivacyModal, setShowPrivacyModal] = useState(false);
 
     // Load subscriptions from localStorage when the component mounts
     useEffect(() => {
@@ -163,6 +165,12 @@ const App = () => {
                 <ChartCard label="Yearly Total" subscriptions={subscriptions} type="yearly" />
               </div> */}
             </main>
+            <footer className="App__footer">
+              <button className="btn__link" onClick={() => setShowPrivacyModal(true)}>Privacy Policy</button>
+            </footer>
+            <GenericModal isOpen={showPrivacyModal} onClose={() => setShowPrivacyModal(false)} suffix="privacy-policy">
+              <PrivacyPolicy />
+            </GenericModal>
         </div>
     );
 };
