@@ -1,34 +1,32 @@
 import React, { useState, useEffect } from 'react';
 
-const AnimatedNumber = ({ target, decimal }) => {
+const AnimatedNumber = ({ target, decimal, duration = 500 }) => {
     const [currentValue, setCurrentValue] = useState(0);
+    const threshold = 0.01; // Define a small threshold for comparison
 
     useEffect(() => {
-        // Only animate if the target number is different from the current value
-        if (currentValue < target) {
-            // Calculate the increment per frame to achieve a smooth animation
-            const increment = target / 100;
+        const difference = target - currentValue;
+        const steps = duration / 10; // Number of steps based on duration, 10ms per step
+        const increment = difference / steps; // Amount to change each step
 
-            // Create an interval to update the current value
-            const interval = setInterval(() => {
+        if (difference !== 0) {
+            const timer = setInterval(() => {
                 setCurrentValue(prevValue => {
-                    const newValue = prevValue + increment;
-                    if (newValue >= target) {
-                        clearInterval(interval);
-                        return target; // Ensure we don't exceed the target
+                    let nextValue = prevValue + increment;
+                    // Check if the difference is within the threshold
+                    if (Math.abs(nextValue - target) < threshold) {
+                        clearInterval(timer);
+                        return target; // Snap to the target value
                     }
-                    return newValue;
+                    return nextValue;
                 });
-            }, 5); // Adjust interval timing for speed
+            }, 10); // Run every 10ms
 
-            // Clear interval on component unmount
-            return () => clearInterval(interval);
+            return () => clearInterval(timer); // Cleanup
         }
-    }, [target, currentValue]);
+    }, [target, currentValue, duration]);
 
-    return (
-        <span>{currentValue.toFixed(decimal)}</span> // You can adjust decimal places
-    );
+    return <span>{currentValue.toFixed(decimal)}</span>;
 };
 
 export default AnimatedNumber;
