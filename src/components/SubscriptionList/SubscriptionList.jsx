@@ -58,7 +58,7 @@ const SubscriptionList = ({ subscriptions, onDeleteSubscription, onClear, onAddS
                     <li key={index} className="subscription-list__item">
                         {/* Subscription details */}
                         <div>{index+1}</div>
-                        <div>{subscription.name}</div>
+                        <div className="subscription-list__item-name">{subscription.name}</div>
                         <div style={{ color: getCategoryColor(subscription.category)}}>{subscription.category}</div>
                         <div className="subscription-list__item-amount hint-amount"><Cur/>{parseFloat(subscription.amount).toFixed(2)}</div>
                         <div className={`subscription-list__item-billing subscription-list__item-billing--${subscription.type.charAt(0).toLowerCase() }`}>{subscription.type.charAt(0).toUpperCase() + subscription.type.slice(1)}</div>
