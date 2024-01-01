@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import './CurrencySelector.scss';
 
 const CurrencySelector = ({ currentCurrency, onCurrencyChange, availableCurrencies }) => {
     const [showDropdown, setShowDropdown] = useState(false);
