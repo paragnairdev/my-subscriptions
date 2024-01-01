@@ -4,6 +4,7 @@ import { Tooltip } from 'react-tooltip';
 import ConfirmationModal from '../ConfirmationModal/ConfirmationModal';
 import { SUBSCRIPTION_TYPES } from '../../services/dataService';
 import { FaCirclePlus, FaTrash } from "react-icons/fa6";
+import Cur from '../Cur/Cur';
 
 const SubscriptionList = ({ subscriptions, onDeleteSubscription, onClear, onAddSubscription }) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -58,7 +59,7 @@ const SubscriptionList = ({ subscriptions, onDeleteSubscription, onClear, onAddS
                         <div>{index+1}</div>
                         <div>{subscription.name}</div>
                         <div>{subscription.category}</div>
-                        <div className="subscription-list__item-amount">£{parseFloat(subscription.amount).toFixed(2)}</div>
+                        <div className="subscription-list__item-amount"><Cur/>{parseFloat(subscription.amount).toFixed(2)}</div>
                         <div className="subscription-list__item-billing">{subscription.type.charAt(0).toUpperCase() + subscription.type.slice(1)}</div>
                         {/* Delete button */}
                         <button className='btn-danger' onClick={() => onDeleteSubscription(index)}><FaTrash />Delete</button>
@@ -77,7 +78,7 @@ const SubscriptionList = ({ subscriptions, onDeleteSubscription, onClear, onAddS
                             {subscription.name}
                             <div className="subscription-list__item-category">{subscription.category}</div>
                         </div>
-                        <div className="subscription-list__item-amount">£{parseFloat(subscription.amount).toFixed(2)}</div>
+                        <div className="subscription-list__item-amount"><Cur/>{parseFloat(subscription.amount).toFixed(2)}</div>
                         {/* Delete button */}
                         <a href="#" className='btn-danger' onClick={() => onDeleteSubscription(index)}><FaTrash /></a>
                     </li>
