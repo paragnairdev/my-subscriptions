@@ -44,6 +44,12 @@ export const saveData = (data) => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
 };
 
+// Function to load the currency symbol from localStorage
+export const loadCurrencySymbol = () => {
+    const data = loadData();
+    return data.currencySymbol;
+};
+
 export const addSubscription = (subscription) => {
     const data = loadData();
     data.subscriptions.push(subscription);

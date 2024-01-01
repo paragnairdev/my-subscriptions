@@ -1,11 +1,12 @@
 import React from 'react';
 import { Pie } from 'react-chartjs-2';
-import { SUBSCRIPTION_TYPES_LABELS, CATEGORY_COLORS } from '../../services/dataService';
+import { SUBSCRIPTION_TYPES_LABELS, CATEGORY_COLORS, loadCurrencySymbol } from '../../services/dataService';
 import { calculateSubscriptionCost } from "../../services/statsService";
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 
 const CategoryWiseChart = ({ subscriptions, calculatePerMonth }) => {
     const categories = [...new Set(subscriptions.map(sub => sub.category))];
+    const currency = loadCurrencySymbol();
     
     const categoryData = categories.map(category => {
         return subscriptions
@@ -22,7 +23,7 @@ const CategoryWiseChart = ({ subscriptions, calculatePerMonth }) => {
     const chartData = {
         labels: categories,
         datasets: [{
-            label: `${calculatePerMonth ? SUBSCRIPTION_TYPES_LABELS.MONTHLY : SUBSCRIPTION_TYPES_LABELS.YEARLY} (£)`,
+            label: `${calculatePerMonth ? SUBSCRIPTION_TYPES_LABELS.MONTHLY : SUBSCRIPTION_TYPES_LABELS.YEARLY} (${currency})`,
             data: categoryData,
             backgroundColor: CATEGORY_COLORS,
             borderWidth: 1
@@ -39,7 +40,7 @@ const CategoryWiseChart = ({ subscriptions, calculatePerMonth }) => {
             datalabels: {
                 color: 'white',
                 formatter: function(value, context) {
-                    return `£${value}`;
+                    return `${currency}${value}`;
                 }
             }
         }
