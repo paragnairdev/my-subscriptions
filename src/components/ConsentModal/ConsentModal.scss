@@ -5,11 +5,13 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    // width: 100%;
-    background-color: $color-shade-3;
+    max-width: 1400px;
+    background-color: $color-white;// $color-shade-3;
+    color: $color-shade-3;
     border: solid 1px $color-shade-5;
-    margin: 5px;
+    margin: 0;
     padding: 10px;
+    font-size: 0.8em;
 
     p {
         margin: 0;

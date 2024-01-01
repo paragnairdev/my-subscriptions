@@ -179,10 +179,12 @@ const App = () => {
                   <SubscriptionCharts subscriptions={subscriptions} />
                 </div>
               )}
+
+              {showConsentModal && (
+                <ConsentModal onAccept={handleAccept} onDecline={handleDecline} />
+              )}
             </main>
-            {showConsentModal && (
-              <ConsentModal onAccept={handleAccept} onDecline={handleDecline} />
-            )}
+            
             <footer className="App__footer">
               <div className="App__footer-content">
                 <div className="App__footer-logo">
