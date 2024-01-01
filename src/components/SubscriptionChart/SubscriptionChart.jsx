@@ -4,6 +4,7 @@ import { Bar } from 'react-chartjs-2';
 import Chart from 'chart.js/auto';
 import { SUBSCRIPTION_TYPES_LABELS, COLORS } from '../../services/dataService';
 import { calculateSubscriptionCost } from "../../services/statsService";
+import ChartDataLabels from 'chartjs-plugin-datalabels';
 
 const SubscriptionChart = ({ subscriptions, calculatePerMonth }) => {
     const finalData = subscriptions.map(sub => calculateSubscriptionCost(sub, calculatePerMonth));
@@ -29,6 +30,14 @@ const SubscriptionChart = ({ subscriptions, calculatePerMonth }) => {
                 labels: {
                     color: 'white'
                 }
+            },
+            datalabels: {
+                color: 'white',
+                anchor: 'end', // Position of the label
+                align: 'end', // Alignment of the label
+                formatter: function(value, context) {
+                    return `£${value}`;
+                }
             }
         },
         scales: {
@@ -46,7 +55,7 @@ const SubscriptionChart = ({ subscriptions, calculatePerMonth }) => {
         indexAxis: 'y',
     };
 
-    return <Bar data={chartData} options={options}/>;
+    return <Bar data={chartData} options={options} plugins={[ChartDataLabels]}/>;
 };
 
 export default SubscriptionChart;

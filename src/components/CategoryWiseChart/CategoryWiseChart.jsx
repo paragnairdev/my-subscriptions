@@ -2,6 +2,7 @@ import React from 'react';
 import { Pie } from 'react-chartjs-2';
 import { SUBSCRIPTION_TYPES_LABELS, CATEGORY_COLORS } from '../../services/dataService';
 import { calculateSubscriptionCost } from "../../services/statsService";
+import ChartDataLabels from 'chartjs-plugin-datalabels';
 
 const CategoryWiseChart = ({ subscriptions, calculatePerMonth }) => {
     const categories = [...new Set(subscriptions.map(sub => sub.category))];
@@ -34,10 +35,16 @@ const CategoryWiseChart = ({ subscriptions, calculatePerMonth }) => {
                 labels: {
                     color: 'white'
                 }
+            },
+            datalabels: {
+                color: 'white',
+                formatter: function(value, context) {
+                    return `£${value}`;
+                }
             }
         }
     };
-    return <Pie data={chartData} options={options} />;
+    return <Pie data={chartData} options={options} plugins={[ChartDataLabels]}/>;
 };
 
 export default CategoryWiseChart;
