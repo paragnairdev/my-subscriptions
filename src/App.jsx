@@ -29,9 +29,11 @@ const App = () => {
     useEffect(() => {
         setShowConsentModal(!isGaConsentSet());
         const userConsent = getGaConsent();
-        if (userConsent) {
-          initializeAnalytics();
-        }
+        // if (userConsent) {
+        //   initializeAnalytics();
+        // }
+
+        initializeAnalytics();
         
         const { subscriptions, currencySymbol } = loadData();
         setSubscriptions(subscriptions);
@@ -156,12 +158,6 @@ const App = () => {
                   <CurrencySelector currentCurrency={currency} onCurrencyChange={handleCurrencyChange} availableCurrencies={availableCurrencies} />
                 </div>
               </div>
-
-              <GenericModal isOpen={showForm} onClose={onFormClosed} suffix="subscription-form" heading="Add a subscription">
-                <SubscriptionForm addNewSubscription={addNewSubscription} onClose={onFormClosed}/>
-              </GenericModal>
-
-              
               
               {showList && (
                 <div className='App__section'>
@@ -180,9 +176,13 @@ const App = () => {
                 </div>
               )}
 
-              {showConsentModal && (
+              {/* {showConsentModal && (
                 <ConsentModal onAccept={handleAccept} onDecline={handleDecline} />
-              )}
+              )} */}
+
+              <GenericModal isOpen={showForm} onClose={onFormClosed} suffix="subscription-form" heading="Add a subscription">
+                <SubscriptionForm addNewSubscription={addNewSubscription} onClose={onFormClosed}/>
+              </GenericModal>
             </main>
             
             <footer className="App__footer">
