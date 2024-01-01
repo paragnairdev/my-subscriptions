@@ -157,9 +157,7 @@ const App = () => {
                 </div>
               </div>
 
-              <GenericModal isOpen={showForm} onClose={onFormClosed} suffix="subscription-form" heading="Add a subscription">
-                <SubscriptionForm addNewSubscription={addNewSubscription} onClose={onFormClosed}/>
-              </GenericModal>
+              
 
               
               
@@ -183,6 +181,10 @@ const App = () => {
               {showConsentModal && (
                 <ConsentModal onAccept={handleAccept} onDecline={handleDecline} />
               )}
+
+              <GenericModal isOpen={showForm} onClose={onFormClosed} suffix="subscription-form" heading="Add a subscription">
+                <SubscriptionForm addNewSubscription={addNewSubscription} onClose={onFormClosed}/>
+              </GenericModal>
             </main>
             
             <footer className="App__footer">
