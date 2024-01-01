@@ -14,17 +14,23 @@ export const COLORS = [
 ];
 
 export const CATEGORY_COLORS = [
-    "#355890",
-    "#1d773a",
-    "#eaeec8",
-    "#2a0341",
-    "#717925",
-    "#079345",
-    "#92e614",
-    "#febfec",
-    "#9eef45",
-    "#5e4161"
+    "#ff0000",
+    "#ff8700",
+    "#ffd300",
+    "#deff0a",
+    "#a1ff0a",
+    "#0aff99",
+    "#0aefff",
+    "#147df5",
+    "#580aff",
+    "#be0aff"
 ];
+
+// mapping of category to color
+export const CATEGORY_COLOR_MAP = defaultCategories.reduce((acc, category, index) => {
+    acc[category] = CATEGORY_COLORS[index];
+    return acc;
+}, {});
 
 // rupee symbol
 export const RUPEE = `₹`;
@@ -104,6 +110,14 @@ export const exportToJson = (data) => {
     link.href = jsonString;
     link.download = "appData.json";
     link.click();
+};
+
+export const getCategoryColor = (category) => {
+    // if the category is not in the map, return a random color
+    if (!CATEGORY_COLOR_MAP[category]) {
+        return CATEGORY_COLORS[Math.floor(Math.random() * CATEGORY_COLORS.length)];
+    }
+    return CATEGORY_COLOR_MAP[category];
 };
 
 export const SUBSCRIPTION_TYPES = {

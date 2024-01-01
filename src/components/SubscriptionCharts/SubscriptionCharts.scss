@@ -1,3 +1,5 @@
+@import '../../Variables.scss';
+
 .subscription-charts {
     display: grid;
     grid-template-columns: 1fr;
@@ -12,6 +14,25 @@
         gap: 0;
         align-items: center;
         justify-content: flex-end;
+
+        button {
+            &.selected {
+                &.subscription-charts__view--m {
+                    color: $color-frequency-monthly;
+                }
+                &.subscription-charts__view--y {
+                    color: $color-frequency-yearly;
+                }
+            }
+        }
+    }
+
+    &__view--m {
+        color: $color-frequency-monthly;
+    }
+
+    &__view--y {
+        color: $color-frequency-yearly;
     }
 
     // responsive on phone
@@ -19,9 +40,5 @@
         &--two-column {
             grid-template-columns: 1fr;
         }
-
-        // &__views {
-        //     display: none;
-        // }
     }
 }

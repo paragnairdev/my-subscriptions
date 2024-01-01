@@ -57,17 +57,11 @@ const App = () => {
       setShowChart(false);
     };
 
-    const toggleListVisibility = () => {
-      setShowList(!showList);
-    };
 
     const toggleFormVisibility = () => {
       setShowForm(!showForm);
     };
     
-    const toggleChartVisibility = () => {
-      setShowChart(!showChart);
-    };
 
     const exportToJson = (data) => {
       const jsonString = `data:text/json;charset=utf-8,${encodeURIComponent(
