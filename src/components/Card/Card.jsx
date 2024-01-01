@@ -11,7 +11,7 @@ const Card = ({ color, label, metric, icon, invertIconColor }) => {
                     <Icon icon={icon} color={color} invertIconColor={invertIconColor} />
                 </div>
             )}
-            <div className="card__metric">{metric}</div>
+            <div className="card__metric hint-amount">{metric}</div>
             <div className="card__label">
                 {label}
             </div>

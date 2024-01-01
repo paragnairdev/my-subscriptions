@@ -5,7 +5,7 @@ body {
   padding: 0;
   height: 100%;
   width: 100%;
-  font-family: 'Arial', sans-serif;
+  font-family: 'Roboto', sans-serif;
   background-color: $main-background-color;
   color: $color-white;
 }
@@ -430,6 +430,14 @@ li {
       }
     }
   }
+}
+
+.hint {
+
+  &-currency {
+    font-family: 'Roboto', sans-serif;
+  }
+  
 }
 
 // responsive styles

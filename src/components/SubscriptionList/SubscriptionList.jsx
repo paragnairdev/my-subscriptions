@@ -60,7 +60,7 @@ const SubscriptionList = ({ subscriptions, onDeleteSubscription, onClear, onAddS
                         <div>{index+1}</div>
                         <div>{subscription.name}</div>
                         <div style={{ color: getCategoryColor(subscription.category)}}>{subscription.category}</div>
-                        <div className="subscription-list__item-amount"><Cur/>{parseFloat(subscription.amount).toFixed(2)}</div>
+                        <div className="subscription-list__item-amount hint-amount"><Cur/>{parseFloat(subscription.amount).toFixed(2)}</div>
                         <div className={`subscription-list__item-billing subscription-list__item-billing--${subscription.type.charAt(0).toLowerCase() }`}>{subscription.type.charAt(0).toUpperCase() + subscription.type.slice(1)}</div>
                         {/* Delete button */}
                         <button className='btn-danger' onClick={() => onDeleteSubscription(index)}><FaTrash />Delete</button>

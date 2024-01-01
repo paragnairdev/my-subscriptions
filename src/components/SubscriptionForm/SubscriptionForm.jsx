@@ -106,6 +106,7 @@ const SubscriptionForm = ({ addNewSubscription, onClose }) => {
                     <input
                         type="number"
                         name="amount"
+                        className='hint-amount'
                         placeholder='9.99'
                         value={newSubscription.amount}
                         onChange={handleInputChange}
