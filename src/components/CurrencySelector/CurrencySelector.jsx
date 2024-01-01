@@ -5,7 +5,7 @@ const CurrencySelector = ({ currentCurrency, onCurrencyChange, availableCurrenci
     const [showDropdown, setShowDropdown] = useState(false);
 
     return (
-        <div className='button-group'>
+        <div className='button-group' title='Change currency'>
             <button onClick={() => setShowDropdown(!showDropdown)}>
                 {currentCurrency}
             </button>

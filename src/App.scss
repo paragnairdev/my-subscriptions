@@ -231,17 +231,6 @@ hr {
       border-bottom-right-radius: 4px;
     }
   }
-
-  &__button-group {
-    display: flex;
-
-    &--not-frist {
-      button:first-child {
-        border-top-left-radius: 0;
-        border-bottom-left-radius: 0;
-      }
-    }
-  }
 }
 
 ul {
