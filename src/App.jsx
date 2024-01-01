@@ -4,7 +4,7 @@ import SubscriptionForm from './components/SubscriptionForm/SubscriptionForm';
 import SubscriptionList from './components/SubscriptionList/SubscriptionList';
 import SubscriptionSummary from './components/SubscriptionSummary/SubscriptionSummary';
 import SubscriptionCharts from './components/SubscriptionCharts/SubscriptionCharts';
-import { CURRENCIES, addSubscription, hydrateSubscriptions, loadData, removeSubscription, resetData, updateCurrencySymbol } from './services/dataService';
+import { CURRENCIES, addSubscription, getGaConsent, hydrateSubscriptions, isGaConsentSet, loadData, removeSubscription, resetData, setGaConsent, updateCurrencySymbol } from './services/dataService';
 import { FaFileExport } from 'react-icons/fa6';
 import { Tooltip } from 'react-tooltip';
 import SubscriptionsLoader from './components/SubscriptionsLoader/SubscriptionsLoaded';
@@ -12,6 +12,8 @@ import GenericModal from './components/GenericModal/GenericModal';
 import PrivacyPolicy from './components/PrivacyPolicy/PrivacyPolicy';
 import Switch from './components/Switch/Switch';
 import CurrencySelector from './components/CurrencySelector/CurrencySelector';
+import ReactGA from 'react-ga';
+import ConsentModal from './components/ConsentModal/ConsentModal';
 
 const App = () => {
     const [subscriptions, setSubscriptions] = useState([]);
@@ -20,10 +22,19 @@ const App = () => {
     const [showForm, setShowForm] = useState(false);
     const [currency, setCurrency] = useState('£');
     const [showPrivacyModal, setShowPrivacyModal] = useState(false);
+    const [consent, setConsent] = useState(false);
+    const [showConsentModal, setShowConsentModal] = useState(false);
     const availableCurrencies = CURRENCIES;
 
     // Load subscriptions from localStorage when the component mounts
     useEffect(() => {
+        setShowConsentModal(!isGaConsentSet());
+        const userConsent = getGaConsent();
+        setConsent(userConsent);
+        if (userConsent) {
+          ReactGA.initialize(process.env.REACT_APP_GA_TRACKING_ID);
+        }
+        
         const { subscriptions, currencySymbol } = loadData();
         setSubscriptions(subscriptions);
         setCurrency(currencySymbol);
@@ -98,6 +109,21 @@ const App = () => {
       setCurrency(newCurrency);
     };
 
+    // Google analytics cookie consent
+    const handleAccept = () => {
+      setConsent(true);
+      setGaConsent(true);
+      setShowConsentModal(false);
+      ReactGA.initialize(process.env.REACT_APP_GA_TRACKING_ID);
+    };
+
+    const handleDecline = () => {
+        setConsent(false);
+        setGaConsent(false);
+        setShowConsentModal(false);
+        // Handle decline case, e.g., disable non-essential cookies
+    };
+
     return (
         <div className="App">
             <header className="App__header">
@@ -153,7 +179,12 @@ const App = () => {
                   <SubscriptionCharts subscriptions={subscriptions} />
                 </div>
               )}
+
+              {showConsentModal && (
+                <ConsentModal onAccept={handleAccept} onDecline={handleDecline} />
+              )}
             </main>
+            
             <footer className="App__footer">
               <div className="App__footer-content">
                 <div className="App__footer-logo">
