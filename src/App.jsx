@@ -123,7 +123,6 @@ const App = () => {
                 <div className="App__switches App__switches--align-right">
                   <Switch label={`Subscriptions`} isOn={showList} handleToggle={handleSubscriptionToggle} />
                   <Switch label={`Charts`} isOn={showChart} handleToggle={handleChartsToggle}/>
-                  <CurrencySelector currentCurrency={currency} onCurrencyChange={handleCurrencyChange} availableCurrencies={availableCurrencies} />
                 </div>
                 <div className="App__actions">
                   <div className="btn-export">
@@ -134,6 +133,7 @@ const App = () => {
                     <Tooltip id="exportTip" />
                   </div>
                   <SubscriptionsLoader onSubscriptionsLoaded={onSubscriptionsLoaded} />
+                  <CurrencySelector currentCurrency={currency} onCurrencyChange={handleCurrencyChange} availableCurrencies={availableCurrencies} />
                 </div>
               </div>
 

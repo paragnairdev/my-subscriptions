@@ -9,18 +9,14 @@ const CurrencySelector = ({ currentCurrency, onCurrencyChange, availableCurrenci
             <button onClick={() => setShowDropdown(!showDropdown)}>
                 {currentCurrency}
             </button>
-            {showDropdown && (
-                <div>
-                    {availableCurrencies.filter(c => c !== currentCurrency).map(currency => (
-                        <button key={currency} onClick={() => {
-                            onCurrencyChange(currency);
-                            setShowDropdown(false);
-                        }}>
-                            {currency}
-                        </button>
-                    ))}
-                </div>
-            )}
+            {showDropdown && (availableCurrencies.filter(c => c !== currentCurrency).map(currency => (
+                <button key={currency} onClick={() => {
+                    onCurrencyChange(currency);
+                    setShowDropdown(false);
+                }}>
+                    {currency}
+                </button>
+            )))}
         </div>
     );
 };
