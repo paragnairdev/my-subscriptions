@@ -12,8 +12,8 @@ import GenericModal from './components/GenericModal/GenericModal';
 import PrivacyPolicy from './components/PrivacyPolicy/PrivacyPolicy';
 import Switch from './components/Switch/Switch';
 import CurrencySelector from './components/CurrencySelector/CurrencySelector';
-import ReactGA from 'react-ga';
 import ConsentModal from './components/ConsentModal/ConsentModal';
+import TagManager from 'react-gtm-module';
 
 const App = () => {
     const [subscriptions, setSubscriptions] = useState([]);
@@ -22,7 +22,6 @@ const App = () => {
     const [showForm, setShowForm] = useState(false);
     const [currency, setCurrency] = useState('£');
     const [showPrivacyModal, setShowPrivacyModal] = useState(false);
-    const [consent, setConsent] = useState(false);
     const [showConsentModal, setShowConsentModal] = useState(false);
     const availableCurrencies = CURRENCIES;
 
@@ -30,9 +29,8 @@ const App = () => {
     useEffect(() => {
         setShowConsentModal(!isGaConsentSet());
         const userConsent = getGaConsent();
-        setConsent(userConsent);
         if (userConsent) {
-          ReactGA.initialize(process.env.REACT_APP_GA_TRACKING_ID);
+          initializeAnalytics();
         }
         
         const { subscriptions, currencySymbol } = loadData();
@@ -45,6 +43,10 @@ const App = () => {
             setShowChart(false);
         }
     }, [showForm]);
+
+    const initializeAnalytics = () => {
+      TagManager.initialize({ gtmId: process.env.REACT_APP_GTM_ID });
+    };
 
     const addNewSubscription = (newSubscription) => {
       addSubscription(newSubscription);
@@ -111,14 +113,12 @@ const App = () => {
 
     // Google analytics cookie consent
     const handleAccept = () => {
-      setConsent(true);
       setGaConsent(true);
       setShowConsentModal(false);
-      ReactGA.initialize(process.env.REACT_APP_GA_TRACKING_ID);
+      initializeAnalytics();
     };
 
     const handleDecline = () => {
-        setConsent(false);
         setGaConsent(false);
         setShowConsentModal(false);
         // Handle decline case, e.g., disable non-essential cookies
