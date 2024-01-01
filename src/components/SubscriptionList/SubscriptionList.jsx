@@ -43,6 +43,7 @@ const SubscriptionList = ({ subscriptions, onDeleteSubscription, onClear, onAddS
             </div>
             {!hasSubscriptions && (<p>No subscriptions added yet. <a href="#" onClick={handleAdd}>Add your first subscription</a></p>)}
             <ul className="subscription-list subscription-list--md">
+                {hasSubscriptions && (
                 <li className="subscription-list__item subscription-list__item--header">
                     <div>#</div>
                     <div>Service</div>
@@ -51,6 +52,7 @@ const SubscriptionList = ({ subscriptions, onDeleteSubscription, onClear, onAddS
                     <div className="subscription-list__item-billing">Billing</div>
                     <div>&nbsp;</div>
                 </li>
+                )}
                 {finalSubscriptions.map((subscription, index) => (
                     <li key={index} className="subscription-list__item">
                         {/* Subscription details */}
