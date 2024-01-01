@@ -21,8 +21,8 @@ const SubscriptionSummary = ({ subscriptions }) => {
     return (
         <div className='subscription-summary App__row App__row--3-col'>
             <Card color='green' label='Total Subscriptions' metric={subscriptions.length} icon={FcMultipleDevices} />
-            <Card color='blue' label={`Total ${SUBSCRIPTION_TYPES_LABELS.MONTHLY} Cost`} metric={`${currency}${totalMonthlyCost.toFixed(2)}`} icon={FaMoneyBill} />
-            <Card color='pink' label={`Total ${SUBSCRIPTION_TYPES_LABELS.YEARLY} Cost`} metric={`${currency}${totalYearlyCost.toFixed(2)}`} icon={FaMoneyBillWave}/>
+            <Card color='blue' label={`Total ${SUBSCRIPTION_TYPES_LABELS.MONTHLY} Cost`} metric={totalMonthlyCost} metricSymbol={currency} icon={FaMoneyBill} />
+            <Card color='pink' label={`Total ${SUBSCRIPTION_TYPES_LABELS.YEARLY} Cost`} metric={totalYearlyCost} metricSymbol={currency} icon={FaMoneyBillWave}/>
         </div>
     );
 };
