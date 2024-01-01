@@ -75,3 +75,65 @@ The project uses `react-icons`. For full set of icons, please visit: [https://re
 
 ### Charting Library used ###
 The project uses `react-chartjs-2`. For full set of charts, please visit: [https://www.npmjs.com/package/react-chartjs-2](https://www.npmjs.com/package/react-chartjs-2)
+
+
+### Deployment ###
+
+The project is deployed to AWS S3 bucket using Github Actions. Ensure your S3 Bucket has the following policy:
+
+```json
+{
+    "Version": "2008-10-17",
+    "Id": "PolicyForCloudFrontPrivateContent",
+    "Statement": [
+        {
+            "Sid": "AllowCloudFrontServicePrincipal",
+            "Effect": "Allow",
+            "Principal": {
+                "Service": "cloudfront.amazonaws.com"
+            },
+            "Action": "s3:GetObject",
+            "Resource": "arn:aws:s3:::<BUCKET-NAME>/*",
+            "Condition": {
+                "StringEquals": {
+                    "AWS:SourceArn": "arn:aws:cloudfront::<ACCOUNT-ID>:distribution/<DISTRIBUTION-ID>"
+                }
+            }
+        }
+    ]
+}
+```
+
+The IAM role you setup to use for deployment needs the following policy:
+
+```json
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "BucketAccess",
+            "Effect": "Allow",
+            "Action": [
+                "s3:PutObject",
+                "s3:GetObject",
+                "s3:ListBucket",
+                "s3:DeleteObject"
+            ],
+            "Resource": [
+                "arn:aws:s3:::<BUCKET-NAME>/*",
+                "arn:aws:s3:::<BUCKET-NAME>"
+            ]
+        },
+        {
+            "Sid": "DistributionInvalidateCache",
+            "Effect": "Allow",
+            "Action": [
+                "cloudfront:ListInvalidations",
+                "cloudfront:GetInvalidation",
+                "cloudfront:CreateInvalidation"
+            ],
+            "Resource": "arn:aws:cloudfront::<ACCOUNT-ID>:distribution/<DISTRIBUTION-ID>"
+        }
+    ]
+}
+```

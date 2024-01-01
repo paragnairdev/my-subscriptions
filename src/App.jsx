@@ -99,22 +99,25 @@ const App = () => {
 
     return (
         <div className="App">
-            <header className="App-header">
-              <div className="App__logo-container">
-                <img src="logo.png" alt="Subscription App Logo" className="app-logo" />
+            <header className="App__header">
+              <div className="App__header-content">
+                <div className="App__logo-container">
+                  <img src="logo.png" alt="Subscription App Logo" className="app-logo" />
+                </div>
+                <div className="App__title">Subscription Tracker</div>
               </div>
-              <div className="App__title">Subscription Tracker</div>
-              
             </header>
 
-            <main className='App-body'>
+            <main className='App__body'>
+
+              <SubscriptionSummary subscriptions={subscriptions} />
 
               <div className="App__toolbar">
                 <div className="App__switches App__switches--align-right">
                   <Switch label={`Subscriptions`} isOn={showList} handleToggle={handleSubscriptionToggle} />
                   <Switch label={`Charts`} isOn={showChart} handleToggle={handleChartsToggle}/>
                 </div>
-                <div className="App__actions hide--sm">
+                <div className="App__actions">
                   <div className="btn-export">
                     <button onClick={() => exportToJson(subscriptions)} 
                       data-tooltip-id="exportTip" 
@@ -130,7 +133,7 @@ const App = () => {
                 <SubscriptionForm addNewSubscription={addNewSubscription} onClose={onFormClosed}/>
               </GenericModal>
 
-              <SubscriptionSummary subscriptions={subscriptions} />
+              
               
               {showList && (
                 <div className='App__section'>
@@ -150,11 +153,13 @@ const App = () => {
               )}
             </main>
             <footer className="App__footer">
-              <div className="App__footer-logo">
-                <img src="logo.png" alt="Subscription App Logo" className="app-logo" />
-                &copy; 2024 Subscription Tracker
+              <div className="App__footer-content">
+                <div className="App__footer-logo">
+                  <img src="logo.png" alt="Subscription App Logo" className="app-logo" />
+                  &copy; 2024 Subscription Tracker
+                </div>
+                <button className="btn__link" onClick={() => setShowPrivacyModal(true)}>Privacy Policy</button>
               </div>
-              <button className="btn__link" onClick={() => setShowPrivacyModal(true)}>Privacy Policy</button>
             </footer>
             <GenericModal isOpen={showPrivacyModal} onClose={() => setShowPrivacyModal(false)} suffix="privacy-policy">
               <PrivacyPolicy />

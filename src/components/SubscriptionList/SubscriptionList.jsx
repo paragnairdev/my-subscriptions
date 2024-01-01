@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import './SubscriptionList.scss';
-import { VscClearAll } from "react-icons/vsc";
 import { Tooltip } from 'react-tooltip';
 import ConfirmationModal from '../ConfirmationModal/ConfirmationModal';
 import { SUBSCRIPTION_TYPES } from '../../services/dataService';
@@ -37,7 +36,7 @@ const SubscriptionList = ({ subscriptions, onDeleteSubscription, onClear, onAddS
                 <h2>My Subscriptions</h2>
                 <div className='subscription-list__actions'>
                     <button className='btn-primary' onClick={handleAdd}><FaCirclePlus /><span className='hide--sm'>Add</span></button>
-                    <button data-tooltip-id="clearAllTip" data-tooltip-content="This will delete all the subscriptions" onClick={showConfirmationModal}><VscClearAll /><span className='hide--sm'>Clear All</span></button>
+                    <button data-tooltip-id="clearAllTip" data-tooltip-content="This will delete all the subscriptions" onClick={showConfirmationModal}><FaTrash /><span className='hide--sm'>Delete All</span></button>
                 </div>
                 <Tooltip id="clearAllTip" className="danger-tooltip" />
             </div>

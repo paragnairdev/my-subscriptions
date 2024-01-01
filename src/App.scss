@@ -1,6 +1,6 @@
 @import 'Variables';
 
-body, html {
+body {
   margin: 0 auto;
   padding: 0;
   height: 100%;
@@ -18,16 +18,53 @@ a, a:active, a:visited {
 
 .App {
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  align-items: center;
 
-  &-header {
-    display: grid;
-    grid-template-columns: 50px 1fr;
+  &__header {
+    display: flex;
+    justify-content: center;
     align-items: center;
     background-color: $primary-color;
     padding: 0 20px;
+    width: 100%;
+
+    &-content {
+      display: grid;
+      grid-template-columns: 50px 1fr;
+      align-items: center;
+    }
 
     h1 {
       color: $primary-color-foreground;
+    }
+  }
+
+  &__footer {
+    display: flex;
+    justify-content: space-around;
+    gap: 10px;
+    padding: 20px;
+    background-color: $color-shade-3;
+    width: 100%;
+
+    &-content {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      gap: 10px;
+      max-width: 1400px;
+    }
+
+    &-logo {
+      display: flex;
+      align-items: center;
+      font-size: 0.7em;
+      img {
+        height: 40px;
+      }
     }
   }
 
@@ -43,7 +80,8 @@ a, a:active, a:visited {
     font-size: 1.5em;
   }
 
-  &-body {
+  &__body {
+    max-width: 1400px;
     padding: 20px;
   }
 
@@ -100,22 +138,7 @@ a, a:active, a:visited {
     }
   }
 
-  &__footer {
-    display: flex;
-    justify-content: space-between;
-    gap: 10px;
-    padding: 20px;
-    background-color: $color-shade-3;
-
-    &-logo {
-      display: flex;
-      align-items: center;
-      font-size: 0.7em;
-      img {
-        height: 40px;
-      }
-    }
-  }
+  
 }
 
 h1 {
@@ -353,6 +376,7 @@ li {
     color: $primary-color-foreground;
     position: relative;
     width: 90%;
+    max-width: 1400px;
 
     &--hint-subscription-form {
       width: 90%;
