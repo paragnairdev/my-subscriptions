@@ -16,10 +16,10 @@ const SubscriptionCharts = ({ subscriptions }) => {
         <div>
             <div className="subscription-charts__views">
                 <div className="button-group">
-                    <button title="Monthly" onClick={() => setShowMonthly(true)} className={showMonthly ? 'selected' : ''}>
+                    <button title="Monthly" onClick={() => setShowMonthly(true)} className={showMonthly ? 'subscription-charts__view--m selected' : 'subscription-charts__view--m'}>
                         M
                     </button>
-                    <button title="Yearly" onClick={() => setShowMonthly(false)} className={!showMonthly ? 'selected' : ''}>
+                    <button title="Yearly" onClick={() => setShowMonthly(false)} className={!showMonthly ? 'subscription-charts__view--y selected' : 'subscription-charts__view--y'}>
                         Y
                     </button>
                 </div>

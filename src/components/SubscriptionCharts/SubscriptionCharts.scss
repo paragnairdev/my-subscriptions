@@ -1,3 +1,5 @@
+@import '../../Variables.scss';
+
 .subscription-charts {
     display: grid;
     grid-template-columns: 1fr;
@@ -14,14 +16,18 @@
         justify-content: flex-end;
     }
 
+    &__view--m {
+        color: $color-frequency-monthly;
+    }
+
+    &__view--y {
+        color: $color-frequency-yearly;
+    }
+
     // responsive on phone
     @media (max-width: 600px) {
         &--two-column {
             grid-template-columns: 1fr;
         }
-
-        // &__views {
-        //     display: none;
-        // }
     }
 }

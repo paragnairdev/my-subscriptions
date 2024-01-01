@@ -5,6 +5,7 @@ import ConfirmationModal from '../ConfirmationModal/ConfirmationModal';
 import { SUBSCRIPTION_TYPES } from '../../services/dataService';
 import { FaCirclePlus, FaTrash } from "react-icons/fa6";
 import Cur from '../Cur/Cur';
+import { getCategoryColor } from '../../services/dataService';
 
 const SubscriptionList = ({ subscriptions, onDeleteSubscription, onClear, onAddSubscription }) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -58,9 +59,9 @@ const SubscriptionList = ({ subscriptions, onDeleteSubscription, onClear, onAddS
                         {/* Subscription details */}
                         <div>{index+1}</div>
                         <div>{subscription.name}</div>
-                        <div>{subscription.category}</div>
+                        <div style={{ color: getCategoryColor(subscription.category)}}>{subscription.category}</div>
                         <div className="subscription-list__item-amount"><Cur/>{parseFloat(subscription.amount).toFixed(2)}</div>
-                        <div className="subscription-list__item-billing">{subscription.type.charAt(0).toUpperCase() + subscription.type.slice(1)}</div>
+                        <div className={`subscription-list__item-billing subscription-list__item-billing--${subscription.type.charAt(0).toLowerCase() }`}>{subscription.type.charAt(0).toUpperCase() + subscription.type.slice(1)}</div>
                         {/* Delete button */}
                         <button className='btn-danger' onClick={() => onDeleteSubscription(index)}><FaTrash />Delete</button>
                     </li>
@@ -76,7 +77,7 @@ const SubscriptionList = ({ subscriptions, onDeleteSubscription, onClear, onAddS
                         </div>
                         <div>
                             {subscription.name}
-                            <div className="subscription-list__item-category">{subscription.category}</div>
+                            <div className="subscription-list__item-category" style={{ color: getCategoryColor(subscription.category)}}>{subscription.category}</div>
                         </div>
                         <div className="subscription-list__item-amount"><Cur/>{parseFloat(subscription.amount).toFixed(2)}</div>
                         {/* Delete button */}

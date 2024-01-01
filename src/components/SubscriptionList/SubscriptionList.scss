@@ -48,6 +48,14 @@
 
         &-billing {
             text-align: center;
+
+            &--m {
+                color: $color-frequency-monthly;
+            }
+
+            &--y {
+                color: $color-frequency-yearly;
+            }
         }
 
         &-type {
