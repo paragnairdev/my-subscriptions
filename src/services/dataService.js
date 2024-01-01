@@ -26,6 +26,14 @@ export const CATEGORY_COLORS = [
     "#5e4161"
 ];
 
+// rupee symbol
+export const RUPEE = `₹`;
+export const DOLLAR = `$`;
+export const EURO = `€`;
+export const POUND = `£`;
+
+export const CURRENCIES = [POUND, DOLLAR, RUPEE, EURO];
+
 // Function to load data from localStorage
 export const loadData = () => {
     const dataString = localStorage.getItem(STORAGE_KEY);
@@ -73,6 +81,12 @@ export const addCategory = (category) => {
     // sort categories alphabetically
     data.categories.push(category);
     data.categories.sort();
+    saveData(data);
+};
+
+export const updateCurrencySymbol = (currencySymbol) => {
+    const data = loadData();
+    data.currencySymbol = currencySymbol;
     saveData(data);
 };
 

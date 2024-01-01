@@ -4,13 +4,14 @@ import SubscriptionForm from './components/SubscriptionForm/SubscriptionForm';
 import SubscriptionList from './components/SubscriptionList/SubscriptionList';
 import SubscriptionSummary from './components/SubscriptionSummary/SubscriptionSummary';
 import SubscriptionCharts from './components/SubscriptionCharts/SubscriptionCharts';
-import { addSubscription, hydrateSubscriptions, loadData, removeSubscription, resetData } from './services/dataService';
+import { CURRENCIES, addSubscription, hydrateSubscriptions, loadData, removeSubscription, resetData, updateCurrencySymbol } from './services/dataService';
 import { FaFileExport } from 'react-icons/fa6';
 import { Tooltip } from 'react-tooltip';
 import SubscriptionsLoader from './components/SubscriptionsLoader/SubscriptionsLoaded';
 import GenericModal from './components/GenericModal/GenericModal';
 import PrivacyPolicy from './components/PrivacyPolicy/PrivacyPolicy';
 import Switch from './components/Switch/Switch';
+import CurrencySelector from './components/CurrencySelector/CurrencySelector';
 
 const App = () => {
     const [subscriptions, setSubscriptions] = useState([]);
@@ -19,6 +20,7 @@ const App = () => {
     const [showForm, setShowForm] = useState(false);
     const [currency, setCurrency] = useState('£');
     const [showPrivacyModal, setShowPrivacyModal] = useState(false);
+    const availableCurrencies = CURRENCIES;
 
     // Load subscriptions from localStorage when the component mounts
     useEffect(() => {
@@ -97,6 +99,11 @@ const App = () => {
       setShowChart(!showChart);
     };
 
+    const handleCurrencyChange = (newCurrency) => {
+      updateCurrencySymbol(newCurrency);
+      setCurrency(newCurrency);
+    };
+
     return (
         <div className="App">
             <header className="App__header">
@@ -116,6 +123,7 @@ const App = () => {
                 <div className="App__switches App__switches--align-right">
                   <Switch label={`Subscriptions`} isOn={showList} handleToggle={handleSubscriptionToggle} />
                   <Switch label={`Charts`} isOn={showChart} handleToggle={handleChartsToggle}/>
+                  <CurrencySelector currentCurrency={currency} onCurrencyChange={handleCurrencyChange} availableCurrencies={availableCurrencies} />
                 </div>
                 <div className="App__actions">
                   <div className="btn-export">
