@@ -39,6 +39,7 @@
     &__item {
         display: grid;
         grid-template-columns: 50px 1fr 1fr 1fr 1fr 100px;
+        border-bottom: solid 1px $color-input-border;
 
         &-name {
             font-weight: 500;
@@ -109,17 +110,12 @@
         }
 
         &__item {
-            grid-template-columns: 50px 1fr 100px 20px;
-            box-shadow: 1px 1px 2px rgba(255, 255, 255, 0.1);
+            grid-template-columns: 40px 1fr 100px 20px;
 
             &:first-child {
                 margin-top: 0;
                 color: $color-lists;
                 font-weight: normal;
-            }
-
-            &:last-child {
-                border-bottom: none;
             }
 
             &-category {
@@ -137,6 +133,53 @@
         &--sm {
             visibility: visible;
             display: grid;
+            margin: 0;
         }
+
+        
+    }
+}
+
+.scrollable-container {
+    position: relative;
+    max-height: 454px;
+    overflow: hidden;
+
+    &::before, &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        height: 20px; /* Adjust the height of the gradient effect */
+        pointer-events: none; /* Prevents the gradient from blocking interaction */
+    }
+
+    &::before {
+        top: 0;
+        background-image: linear-gradient(to bottom, rgba(55, 65, 73, 0.5), rgba(55, 65, 73, 0));
+    }
+
+    &::after {
+        bottom: 0;
+        background-image: linear-gradient(to top, rgba(55, 65, 73, 0.5), rgba(55, 65, 73, 0));
+    }
+}
+
+.scrollable-list {
+    max-height: 454px; /* Same as container */
+    overflow-y: auto;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+// responsive on phone
+@media (max-width: 600px) {
+    .scrollable-container {
+        max-height: 270px;
+    }
+
+    .scrollable-list {
+        max-height: 270px; /* Same as container */
     }
 }
