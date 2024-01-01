@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import './SubscriptionList.scss';
-import { VscClearAll } from "react-icons/vsc";
 import { Tooltip } from 'react-tooltip';
 import ConfirmationModal from '../ConfirmationModal/ConfirmationModal';
 import { SUBSCRIPTION_TYPES } from '../../services/dataService';
