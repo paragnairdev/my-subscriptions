@@ -1,4 +1,5 @@
 const STORAGE_KEY = 'appData';
+const GA_CONSENT_KEY = 'gaConsent';
 const defaultCategories = ["Education", "Entertainment", "Finance", "Health & Fitness", "Productivity", "Shopping", "Social", "Utilities", "Other"];
 export const COLORS = [
     "#a8cc01",
@@ -118,6 +119,19 @@ export const getCategoryColor = (category) => {
         return CATEGORY_COLORS[Math.floor(Math.random() * CATEGORY_COLORS.length)];
     }
     return CATEGORY_COLOR_MAP[category];
+};
+
+export const getGaConsent = () => {
+    const gaConsent = localStorage.getItem(GA_CONSENT_KEY);
+    return gaConsent === 'true';
+};
+
+export const setGaConsent = (consent) => {
+    localStorage.setItem(GA_CONSENT_KEY, consent);
+};
+
+export const isGaConsentSet = () => {
+    return localStorage.getItem(GA_CONSENT_KEY) !== null;
 };
 
 export const SUBSCRIPTION_TYPES = {

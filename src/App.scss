@@ -201,6 +201,18 @@ button {
       text-decoration: underline;
     }
   }
+
+  &__success {
+    background-color: $color-status-success;
+    border-color: $color-status-success;
+    color: $color-white;
+  }
+
+  &__danger {
+    background-color: $color-status-danger;
+    border-color: $color-status-danger;
+    color: $color-white;
+  }
 }
 
 hr {

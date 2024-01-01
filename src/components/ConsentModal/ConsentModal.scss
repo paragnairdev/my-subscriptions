@@ -1,0 +1,24 @@
+@import "../../Variables.scss";
+
+.consent-modal {    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    // width: 100%;
+    background-color: $color-shade-3;
+    border: solid 1px $color-shade-5;
+    margin: 5px;
+    padding: 10px;
+
+    p {
+        margin: 0;
+    }
+
+    &__buttons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0;
+    }
+}
