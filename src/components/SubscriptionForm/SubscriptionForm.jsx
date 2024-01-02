@@ -70,7 +70,7 @@ const SubscriptionForm = ({ addNewSubscription, onClose }) => {
                         ref={nameInputRef}
                         type="text"
                         name="name"
-                        placeholder='Netflix'
+                        placeholder='Service Name'
                         value={newSubscription.name}
                         onChange={handleInputChange}
                         required

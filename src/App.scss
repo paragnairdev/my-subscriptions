@@ -167,6 +167,18 @@ input, select {
   border: solid 1px $color-input-border;
 }
 
+// dropdown on safari
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='#fff'><polygon points='0,0 16,0 8,16'/></svg>");
+  background-repeat: no-repeat;
+  background-position-x: 95%;
+  background-position-y: 50%;
+  background-size: 10px;
+}
+
 button {
   background-color: $color-btn-primary;
   color: $color-btn-primary-foreground;
@@ -333,6 +345,7 @@ li {
     flex-direction: column;
     gap: 10px;
     margin-bottom: 20px;
+    justify-content: center;
   }
 
   &__footer {
