@@ -11,7 +11,7 @@ body {
 }
 
 a, a:active, a:visited {
-  color: $color-white;
+  color: var(--st-body-color);
   text-decoration: underline;
   font-size: 1em;
 }

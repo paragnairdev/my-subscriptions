@@ -10,7 +10,7 @@
     &__option {
         &--selected {
             background-color: $color-btn-primary-hover;
-            color: $color-white;
+            color: var(--st-body-color);;
             border: solid 1px $color-btn-primary-hover;
         }
     }

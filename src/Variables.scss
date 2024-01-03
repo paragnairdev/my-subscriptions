@@ -1,11 +1,17 @@
 // theme colors
 :root {
     --st-blue: #348cd4;
+    --st-blue-dark: #45A1C1;
+    --st-blue-light: #74C9E6;
     --st-indigo: #675aa9;
     --st-red: #f7531f;
     --st-orange: #fd7e14;
+    --st-orange-dark: #6E583F;
+    --st-orange-light: #FFE6CD;
     --st-yellow: #ff9800;
     --st-green: #78c350;
+    --st-green-dark: #97CF7F;
+    --st-green-light: #97CF7F;
     --st-teal: #02a8b5;
     --st-cyan: #45bbe0;
     --st-white: #fff;
@@ -29,7 +35,11 @@
     --st-light: #ecf2f5;
     --st-dark: #323a46;
     --st-pink: #f06292;
+    --st-pink-dark: #C85D84;
+    --st-pink-light: #F089AC;
     --st-purple: #8892d6;
+    --st-purple-dark: #7882B9;
+    --st-purple-light: #A2ABDE;
     --st-primary-rgb: 52,140,212;
     --st-secondary-rgb: 108,117,125;
     --st-success-rgb: 120,195,80;
@@ -86,6 +96,8 @@
     --st-list-border-color: #ddd;
     --st-list-color: #495057;
     --st-list-hover-bg: #f2f2f2;
+    --st-frequency-monthly: var(--st-blue);
+    --st-frequency-yearly: var(--st-pink);
 }
 
 // Dark theme
@@ -115,35 +127,25 @@
     --st-list-hover-bg: #2B333D;
 }
 
-// $secondary-background-color: #374149;
-// $primary-color: #348CD4;
-$secondary-color: #dc3545;
 
-$color-white: #fff;
-$color-black: #000;
-$color-black-secondary-light: #D0D2D4;
-$color-green: #78C351;
-$color-green-secondary-light: #97CF7F;
-$color-green-secondary: #6BA754;
-$color-blue: #45BBE0;
-$color-blue-secondary-light: #74C9E6;
-$color-blue-secondary: #45A1C1;
-$color-purple: #8892D6;
-$color-purple-secondary-light: #A2ABDE;
-$color-purple-secondary: #7882B9;
-$color-orange: #FA9F1B;
-$color-orange-secondary-light: #FFE6CD;
-$color-orange-secondary: #6E583F;
-$color-pink: #F06292;
-$color-pink-secondary-light: #F089AC;
-$color-pink-secondary: #C85D84;
+// $color-black: #000;
+// $color-black-secondary-light: #D0D2D4;
+// $color-green: #78C351;
+// $color-green-secondary-light: #97CF7F;
+// $color-green-secondary: #6BA754;
+// $color-blue: #45BBE0;
+// $color-blue-secondary-light: #74C9E6;
+// $color-blue-secondary: #45A1C1;
+// $color-purple: #8892D6;
+// $color-purple-secondary-light: #A2ABDE;
+// $color-purple-secondary: #7882B9;
+// $color-orange: #FA9F1B;
+// $color-orange-secondary-light: #FFE6CD;
+// $color-orange-secondary: #6E583F;
+// $color-pink: #F06292;
+// $color-pink-secondary-light: #F089AC;
+// $color-pink-secondary: #C85D84;
 
-// statuses
-// $color-status-success: #78C351;
-// $color-status-warning: #FA9F1B;
-// $color-status-error: #F7521F;
-// $color-status-info: #03A9F4;
-// $color-status-danger: #F7521F;
 
 // buttons
 $color-btn-primary: #354049;
@@ -159,16 +161,8 @@ $color-shade-2: #374149;
 $color-shade-4: #94A0AD; // text
 $color-shade-5: #424E5A; // border
 
-// input
-// $color-input-background: #3B4651;
-// $color-input-border: #424E5A;
-// $color-input-border-focus: #6C757D;
-// $color-input-text: #94A0AD;
-
-// $color-lists: #8B97A4;
-
-$color-frequency-monthly: $color-blue;
-$color-frequency-yearly: $color-pink;
+// $color-frequency-monthly: $color-blue;
+// $color-frequency-yearly: $color-pink;
 
 $colors-vibrant: #10e462 #befe08 #7bde28 #ce5116 #cbad1c #e30f0b #07fb50 #13cd92 #d831d4 #9dfb30;
 

@@ -18,21 +18,21 @@
         button {
             &.selected {
                 &.subscription-charts__view--m {
-                    color: $color-frequency-monthly;
+                    color: var(--st-frequency-monthly);
                 }
                 &.subscription-charts__view--y {
-                    color: $color-frequency-yearly;
+                    color: var(--st-frequency-yearly);
                 }
             }
         }
     }
 
     &__view--m {
-        color: $color-frequency-monthly;
+        color: var(--st-frequency-monthly);
     }
 
     &__view--y {
-        color: $color-frequency-yearly;
+        color: var(--st-frequency-yearly);
     }
 
     // responsive on phone

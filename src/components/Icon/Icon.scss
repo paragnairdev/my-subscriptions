@@ -1,7 +1,7 @@
 @import '../../Variables.scss';
 
 .icon {
-    background-color: $color-white;
+    background-color: var(--st-body-color);;
     border-radius: 50%;
     height: 100px;
     width: 100px;
@@ -35,42 +35,42 @@
     }
 
     &--green {
-        background-color: $color-green-secondary;
+        background-color: var(--st-green-dark);
 
         &.icon--invert {
-            color: $color-green;
+            color: var(--st-green);
         }
     }
 
     &--blue {
-        background-color: $color-blue-secondary;
+        background-color: var(--st-blue-dark);
 
         &.icon--invert {
-            color: $color-blue;
+            color: var(--st-blue);
         }
     }
 
     &--purple {
-        background-color: $color-purple-secondary;
+        background-color: var(--st-purple-dark);
 
         &.icon--invert {
-            color: $color-purple;
+            color: var(--st-purple);
         }
     }
 
     &--orange {
-        background-color: $color-orange-secondary;
+        background-color: var(--st-orange-dark);
 
         &.icon--invert {
-            color: $color-orange;
+            color: var(--st-orange);
         }
     }
 
     &--pink {
-        background-color: $color-pink-secondary;
+        background-color: var(--st-pink-dark);;
 
         &.icon--invert {
-            color: $color-pink;
+            color: var(--st-pink);
         }
     }
 

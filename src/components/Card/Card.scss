@@ -4,7 +4,7 @@
     background-color: white;
     padding: 1.5em;
     border-radius: 4px;
-    color: $color-white;
+    color: var(--st-body-color);
     display: grid;
     grid-template-columns: 1fr 2fr; // Two equal columns
     align-items: center; // Vertically align content
@@ -49,23 +49,23 @@
     }
 
     &--green{
-        background-color: $color-green;
+        background-color: var(--st-green);
     }
 
     &--blue{
-        background-color: $color-blue;
+        background-color: var(--st-blue);
     }
 
     &--purple{
-        background-color: $color-purple;
+        background-color: var(--st-purple);
     }
 
     &--orange{
-        background-color: $color-orange;
+        background-color: var(--st-orange);
     }
 
     &--pink{
-        background-color: $color-pink;
+        background-color: var(--st-pink);
     }
 
     // responsive on phone

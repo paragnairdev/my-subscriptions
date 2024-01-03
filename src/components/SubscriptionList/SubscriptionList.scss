@@ -59,11 +59,11 @@
             text-align: center;
 
             &--m {
-                color: $color-frequency-monthly;
+                color: var(--st-frequency-monthly);
             }
 
             &--y {
-                color: $color-frequency-yearly;
+                color: var(--st-frequency-yearly);
             }
         }
 
@@ -85,8 +85,8 @@
         &--type-m {
             .subscription-list__item-type {
                 > div {
-                    background-color: $color-frequency-monthly;
-                    color: $color-white;
+                    background-color: var(--st-frequency-monthly);
+                    color: var(--st-body-color);;
                 }
             }
         }
@@ -94,8 +94,8 @@
         &--type-y {
             .subscription-list__item-type {
                 > div {
-                    background-color: $color-frequency-yearly;
-                    color: $color-white;
+                    background-color: var(--st-frequency-yearly);
+                    color: var(--st-body-color);;
                 }
             }
         }
@@ -122,7 +122,7 @@
             }
 
             &-category {
-                color: $color-green-secondary-light;
+                color: var(--st-green-light);
                 font-size: 0.7em;
                 margin-top: 5px;
             }

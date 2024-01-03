@@ -28,19 +28,19 @@
 
     &__yes {
         background-color: var(--st-success);
-        color: $color-white;
+        color: var(--st-body-color);
 
         &:hover {
-            background-color: $color-green-secondary;
+            background-color: var(--st-green-dark);
         }
     }
 
     &__no {
         background-color: var(--st-error);
-        color: $color-white;
+        color: var(--st-body-color);
 
         &:hover {
-            background-color: $color-orange-secondary;
+            background-color: var(--st-orange-dark);
         }
     }
 
