@@ -2,7 +2,7 @@ import React from 'react';
 import { Bar } from 'react-chartjs-2';
 // eslint-disable-next-line no-unused-vars
 import Chart from 'chart.js/auto';
-import { SUBSCRIPTION_TYPES_LABELS, COLORS, loadCurrencySymbol } from '../../services/dataService';
+import { SUBSCRIPTION_TYPES_LABELS, COLORS, loadCurrencySymbol, getChartLabelColor } from '../../services/dataService';
 import { calculateSubscriptionCost } from "../../services/statsService";
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 
@@ -25,15 +25,17 @@ const SubscriptionChart = ({ subscriptions, calculatePerMonth }) => {
         ],
     };
 
+    const labelColor = getChartLabelColor();
+
     const options = {
         plugins: {
             legend: {
                 labels: {
-                    color: 'white'
+                    color: labelColor
                 }
             },
             datalabels: {
-                color: 'white',
+                color: labelColor,
                 anchor: 'end', // Position of the label
                 align: 'end', // Alignment of the label
                 formatter: function(value, context) {
@@ -44,12 +46,12 @@ const SubscriptionChart = ({ subscriptions, calculatePerMonth }) => {
         scales: {
             x: {
                 ticks: {
-                    color: 'white' // Sets x-axis labels to white
+                    color: labelColor // Sets x-axis labels to white
                 }
             },
             y: {
                 ticks: {
-                    color: 'white' // Sets y-axis labels to white
+                    color: labelColor // Sets y-axis labels to white
                 }
             }
         },

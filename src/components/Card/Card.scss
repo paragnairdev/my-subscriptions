@@ -1,16 +1,15 @@
-@import '../../Variables.scss';
-
 .card {
     background-color: white;
     padding: 1.5em;
     border-radius: 4px;
-    color: var(--st-body-color);
+    color: var(--st-white);
     display: grid;
     grid-template-columns: 1fr 2fr; // Two equal columns
     align-items: center; // Vertically align content
     grid-template-areas: 
         "icon metric"
         "icon label";
+    box-shadow: var(--st-box-shadow-sm);
 
     &__icon {
         grid-area: icon;
@@ -21,7 +20,7 @@
         height: 100px;
         width: 100px;
     }
-
+    
     &__label {
         grid-area: label;
         font-size: 1em;

@@ -28,7 +28,7 @@
     --st-gray-900: #323a46;
     --st-primary: #348cd4;
     --st-secondary: #6c757d;
-    --st-success: #78c350;
+    --st-success: #78C351;
     --st-info: #45bbe0;
     --st-warning: #ff9800;
     --st-danger: #f7531f;
@@ -98,6 +98,10 @@
     --st-list-hover-bg: #f2f2f2;
     --st-frequency-monthly: var(--st-blue);
     --st-frequency-yearly: var(--st-pink);
+    --st-box-shadow-sm: 0 .125rem .25rem rgba(0,0,0,.075);
+    --st-box-shadow-lg: 0 2px 5px 0 rgba(0,0,0,.16),0 2px 10px 0 rgba(0,0,0,.12);
+    --st-scrollable-before: linear-gradient(180deg,hsla(0,0%,100%,0),hsla(0,0%,100%,.5));
+    --st-scrollable-after: linear-gradient(0deg,hsla(0,0%,100%,0),hsla(0,0%,100%,.5));
 }
 
 // Dark theme
@@ -117,7 +121,7 @@
     --st-input-focus-bg: #6C757D;
     --st-input-focus-color: #fff;
     --st-button-bg: #354049;
-    --st-button-color: #6A737B;
+    --st-button-color: var(--st-body-color); //#6A737B;
     --st-button-hover-bg: #6C757D;
     --st-button-hover-color: #fff;
     --st-button-border-color: #6A737B;
@@ -125,4 +129,8 @@
     --st-list-border-color: #354049;
     --st-list-color: var(--st-body-color);
     --st-list-hover-bg: #2B333D;
+    --st-box-shadow-sm: 0 0.75rem 6rem rgba(56,65,74,.03);
+    --st-box-shadow-lg: 0 0 45px 0 rgba(0,0,0,.12);
+    --st-scrollable-before: linear-gradient(to bottom, rgba(55, 65, 73, 0.5), rgba(55, 65, 73, 0));
+    --st-scrollable-after: linear-gradient(to top, rgba(55, 65, 73, 0.5), rgba(55, 65, 73, 0));
 }

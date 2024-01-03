@@ -1,6 +1,6 @@
 import React from 'react';
 import { Pie } from 'react-chartjs-2';
-import { SUBSCRIPTION_TYPES_LABELS, CATEGORY_COLORS, loadCurrencySymbol, getCategoryColor } from '../../services/dataService';
+import { SUBSCRIPTION_TYPES_LABELS, CATEGORY_COLORS, loadCurrencySymbol, getCategoryColor, getChartLabelColor } from '../../services/dataService';
 import { calculateSubscriptionCost } from "../../services/statsService";
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 
@@ -30,15 +30,17 @@ const CategoryWiseChart = ({ subscriptions, calculatePerMonth }) => {
         }]
     };
 
+    const labelColor = getChartLabelColor();
+
     const options = {
         plugins: {
             legend: {
                 labels: {
-                    color: 'white'
+                    color: labelColor
                 }
             },
             datalabels: {
-                color: 'white',
+                color: labelColor,
                 formatter: function(value, context) {
                     return `${currency}${value}`;
                 }

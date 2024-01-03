@@ -4,7 +4,7 @@ import SubscriptionForm from './components/SubscriptionForm/SubscriptionForm';
 import SubscriptionList from './components/SubscriptionList/SubscriptionList';
 import SubscriptionSummary from './components/SubscriptionSummary/SubscriptionSummary';
 import SubscriptionCharts from './components/SubscriptionCharts/SubscriptionCharts';
-import { CURRENCIES, addSubscription, getGaConsent, hydrateSubscriptions, isGaConsentSet, loadData, removeSubscription, resetData, setGaConsent, updateCurrencySymbol } from './services/dataService';
+import { CURRENCIES, addSubscription, getGaConsent, getUserTheme, hydrateSubscriptions, isGaConsentSet, loadData, removeSubscription, resetData, setGaConsent, setUserTheme, updateCurrencySymbol } from './services/dataService';
 import { FaFileExport } from 'react-icons/fa6';
 import { Tooltip } from 'react-tooltip';
 import SubscriptionsLoader from './components/SubscriptionsLoader/SubscriptionsLoaded';
@@ -33,6 +33,10 @@ const App = () => {
         // if (userConsent) {
         //   initializeAnalytics();
         // }
+        const userTheme = getUserTheme();
+        if (userTheme) {
+          setTheme(userTheme);
+        }
 
         initializeAnalytics();
         
@@ -48,7 +52,10 @@ const App = () => {
     }, [showForm]);
 
     const toggleTheme = () => {
-      setTheme(theme === 'light' ? 'dark' : 'light');
+      const newTheme = theme === 'light' ? 'dark' : 'light';
+      
+      setUserTheme(newTheme);
+      setTheme(newTheme);
     };
 
     const initializeAnalytics = () => {
