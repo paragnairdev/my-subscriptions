@@ -16,6 +16,7 @@ import ConsentModal from './components/ConsentModal/ConsentModal';
 import TagManager from 'react-gtm-module';
 
 const App = () => {
+    const [theme, setTheme] = useState('dark'); // ['light', 'dark']
     const [subscriptions, setSubscriptions] = useState([]);
     const [showList, setShowList] = useState(true);
     const [showChart, setShowChart] = useState(true);
@@ -45,6 +46,10 @@ const App = () => {
             setShowChart(false);
         }
     }, [showForm]);
+
+    const toggleTheme = () => {
+      setTheme(theme === 'light' ? 'dark' : 'light');
+    };
 
     const initializeAnalytics = () => {
       TagManager.initialize({ gtmId: process.env.REACT_APP_GTM_ID });
@@ -127,7 +132,7 @@ const App = () => {
     };
 
     return (
-        <div className="App">
+        <div className="App" data-theme={theme}>
             <header className="App__header">
               <div className="App__header-content">
                 <div className="App__logo-container">
@@ -145,6 +150,7 @@ const App = () => {
                 <div className="App__switches App__switches--align-right">
                   <Switch label={`Subscriptions`} isOn={showList} handleToggle={handleSubscriptionToggle} />
                   <Switch label={`Charts`} isOn={showChart} handleToggle={handleChartsToggle}/>
+                  <Switch label={`Theme Dark`} isOn={theme === 'dark'} handleToggle={toggleTheme}/>
                 </div>
                 <div className="App__actions">
                   <div className="btn-export">

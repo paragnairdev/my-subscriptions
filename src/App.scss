@@ -5,9 +5,9 @@ body {
   padding: 0;
   height: 100%;
   width: 100%;
-  font-family: 'Roboto', sans-serif;
-  background-color: $main-background-color;
-  color: $color-white;
+  font-family: var(--st-body-font-family);
+  background-color: var(--st-body-bg);
+  color: var(--st-body-color);
 }
 
 a, a:active, a:visited {
@@ -22,12 +22,15 @@ a, a:active, a:visited {
   flex-direction: column;
   min-height: 100vh;
   align-items: center;
+  font-family: var(--st-body-font-family);
+  background-color: var(--st-body-bg);
+  color: var(--st-body-color);
 
   &__header {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: $primary-color;
+    background-color: var(--st-primary);
     padding: 0 20px;
     width: 100%;
 
@@ -38,7 +41,7 @@ a, a:active, a:visited {
     }
 
     h1 {
-      color: $primary-color-foreground;
+      color: var(--st-white);
     }
   }
 
@@ -47,7 +50,7 @@ a, a:active, a:visited {
     justify-content: space-around;
     gap: 10px;
     padding: 20px;
-    background-color: $color-shade-3;
+    background-color: var(--st-card-bg);
     width: 100%;
 
     &-content {
@@ -73,7 +76,6 @@ a, a:active, a:visited {
     justify-content: center;
     align-items: center;
     padding: 10px;
-    background-color: $primary-color;
   }
 
   &__title {
@@ -86,7 +88,7 @@ a, a:active, a:visited {
   }
 
   &__section {
-    background-color: $secondary-background-color;
+    background-color: var(--st-card-bg);
     padding: 20px;
     border-radius: 4px;
     display: flex;
@@ -143,7 +145,7 @@ a, a:active, a:visited {
 }
 
 h1 {
-  color: #333;
+  color: var(--st-white);
   text-align: center;
   padding-bottom: 10px;
 }
@@ -205,8 +207,8 @@ button {
 
 .btn {
   &__link {
-    background-color: $color-shade-3;
-    border-color: $color-shade-3;
+    background-color: var(--st-gray-800);
+    border-color: var(--st-gray-800);
     color: $color-white;
 
     &:hover {
@@ -395,12 +397,12 @@ li {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    background-color: $secondary-background-color;
+    background-color: var(--st-modal-bg);
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
     z-index: 1000;
-    color: $primary-color-foreground;
+    color: var(--st-white);
     position: relative;
     width: 90%;
     max-width: 1400px;
@@ -441,7 +443,7 @@ li {
     right: 10px;
     font-size: 1em;
     cursor: pointer;
-    color: $primary-color-foreground;
+    color: var(--st-white);
     border: none;
     border-radius: 50%;
   }
