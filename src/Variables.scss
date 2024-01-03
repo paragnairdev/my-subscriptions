@@ -70,6 +70,8 @@
     --st-card-bg: #fff;
     --st-card-border-color: rgba(0,0,0,.125);
     --st-modal-bg: var(--st-card-bg);
+    --st-modal-border-color: rgba(0,0,0,.125);
+    --st-modal-color: #495057;
     --st-input-bg: #fff;
     --st-input-border-color: #ddd;
     --st-input-color: #495057;
@@ -80,6 +82,10 @@
     --st-button-hover-bg: #f2f2f2;
     --st-button-hover-color: #495057;
     --st-button-border-color: #ddd;
+    --st-list-bg: #fff;
+    --st-list-border-color: #ddd;
+    --st-list-color: #495057;
+    --st-list-hover-bg: #f2f2f2;
 }
 
 // Dark theme
@@ -91,6 +97,8 @@
     --st-card-bg: #374149;
     --st-card-border-color: var(--st-card-bg);
     --st-modal-bg: var(--st-card-bg);
+    --st-modal-border-color: var(--st-card-bg);
+    --st-modal-color: #fff;
     --st-input-bg: #3B4651;
     --st-input-border-color: #424E5A;
     --st-input-color: #94A0AD;
@@ -101,6 +109,10 @@
     --st-button-hover-bg: #6C757D;
     --st-button-hover-color: #fff;
     --st-button-border-color: #6A737B;
+    --st-list-bg: #354049;
+    --st-list-border-color: #354049;
+    --st-list-color: var(--st-body-color);
+    --st-list-hover-bg: #2B333D;
 }
 
 // $secondary-background-color: #374149;
@@ -153,7 +165,7 @@ $color-shade-5: #424E5A; // border
 // $color-input-border-focus: #6C757D;
 // $color-input-text: #94A0AD;
 
-$color-lists: #8B97A4;
+// $color-lists: #8B97A4;
 
 $color-frequency-monthly: $color-blue;
 $color-frequency-yearly: $color-pink;

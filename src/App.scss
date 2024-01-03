@@ -262,9 +262,9 @@ ul {
   list-style: none;
   padding: 0;
   border-radius: 4px;
-  border: solid 1px #354049;
-  background-color: #354049;
-  color: $color-lists;
+  border: solid 1px var(--st-list-border-color);
+  background-color: var(--st-list-bg);
+  color: var(--st-body-color);
 }
 
 li {
@@ -273,7 +273,7 @@ li {
   margin-bottom: 0;
 
   &:hover {
-    background-color: #2B333D;
+    background-color: var(--st-list-hover-bg);
   }
 
   // first child rounded top corners
@@ -308,7 +308,7 @@ li {
 }
 
 .delete-btn:hover {
-  background-color: #bd2130;
+  background-color: var(--st-danger);
 }
 
 .chart-container {
@@ -324,7 +324,7 @@ li {
 // forms
 .form {
   &__section {
-    background-color: #374149;
+    background-color: var(--st-card-bg);
     padding: 20px;
     border-radius: 4px;
     display: flex;
@@ -358,12 +358,12 @@ li {
 
 // font colours in canvas
 .chartjs-render-monitor {
-  color: $color-white;
+  color: var(--st-white);
 }
 
 // react-tooltip styles
 .react-tooltip {
-  color: $color-white;
+  color: var(--st-white);
   padding: 10px;
   font-size: 1em;
   text-align: center;
@@ -401,7 +401,7 @@ li {
     border-radius: 5px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
     z-index: 1000;
-    color: var(--st-white);
+    color: var(--st-modal-color);
     position: relative;
     width: 90%;
     max-width: 1400px;
@@ -412,7 +412,7 @@ li {
 
     h1 {
       font-size: 2em;
-      color: $color-white;
+      color: var(--st-body-color);
       border-bottom: solid 1px var(--st-input-border-color);
     }
 
@@ -425,7 +425,7 @@ li {
     }
 
     a, a:active, a:visited {
-      color: $color-white;
+      color: var(--st-body-color);
       text-decoration: underline;
     }
   }
@@ -442,7 +442,7 @@ li {
     right: 10px;
     font-size: 1em;
     cursor: pointer;
-    color: var(--st-white);
+    color: var(--st-body-color);
     border: none;
     border-radius: 50%;
   }
