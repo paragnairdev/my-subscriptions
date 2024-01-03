@@ -38,16 +38,16 @@
     &__item {
         display: grid;
         grid-template-columns: 50px 1fr 1fr 1fr 1fr 100px;
-        border-bottom: solid 1px $color-input-border;
+        border-bottom: solid 1px var(--st-input-border-color);
+        color: var(--st-body-color);
 
         &-name {
             font-weight: 500;
-            color: $color-white;
+            color: var(--st-body-color);
         }
 
         &-amount {
             text-align: right;
-            color: $color-white;
             padding-right: 10px;
         }
 

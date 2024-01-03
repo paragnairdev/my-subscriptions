@@ -158,15 +158,14 @@ form {
 
 input, select, button {
   padding: 10px;
-  border: 1px solid #ddd;
   border-radius: 4px;
   font-size: 16px;
 }
 
 input, select {
-  background-color: $color-input-background;
-  color: $color-input-text;
-  border: solid 1px $color-input-border;
+  background-color: var(--st-input-bg);
+  color: var(--st-input-color);
+  border: solid 1px var(--st-input-border-color);
 }
 
 // dropdown on safari
@@ -182,34 +181,34 @@ select {
 }
 
 button {
-  background-color: $color-btn-primary;
-  color: $color-btn-primary-foreground;
+  background-color: var(--st-button-bg);
+  color: var(--st-button-color);
   cursor: pointer;
   transition: background-color 0.3s ease;
-  border: solid 1px $color-btn-primary-border;
+  border: solid 1px var(--st-button-border-color);
   margin: 5px;
   display: inline-flex;
   justify-content: center;
   gap: 10px;
 
   &:hover {
-    background-color: $color-btn-primary-hover;
-    color: $color-white;
-    border: solid 1px $color-btn-primary-hover;
+    background-color: var(--st-button-hover-bg);
+    color: var(--st-button-hover-color);
+    border: solid 1px var(--st-button-hover-bg);
   }
 
   &.selected {
-    background-color: $color-btn-primary-hover;
-    color: $color-white;
-    border: solid 1px $color-btn-primary-hover;
+    background-color: var(--st-button-hover-bg);
+    color: var(--st-button-hover-color);
+    border: solid 1px var(--st-button-hover-bg);
   }
 }
 
 .btn {
   &__link {
-    background-color: var(--st-gray-800);
-    border-color: var(--st-gray-800);
-    color: $color-white;
+    background-color: var(--st-button-bg);
+    border-color: var(--st-button-bg);
+    color: var(--st-button-color);
 
     &:hover {
       text-decoration: underline;
@@ -217,21 +216,21 @@ button {
   }
 
   &__success {
-    background-color: $color-status-success;
-    border-color: $color-status-success;
-    color: $color-white;
+    background-color: var(--st-success);
+    border-color: var(--st-success);
+    color: var(--st-button-color);
   }
 
   &__danger {
-    background-color: $color-status-danger;
-    border-color: $color-status-danger;
-    color: $color-white;
+    background-color: var(--st-danger);
+    border-color: var(--st-danger);
+    color: var(--st-button-color);
   }
 }
 
 hr {
   border: none;
-  border-top: solid 1px $color-input-border;
+  border-top: solid 1px var(--st-input-border-color);
   margin: 20px 0;
 }
 
@@ -282,7 +281,7 @@ li {
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
     font-weight: bold;
-    color: #F6F6F6;
+    color: var(--st-body-color);
   }
 
   // last child rounded bottom corners
@@ -298,7 +297,7 @@ li {
 }
 
 .delete-btn {
-  background-color: $color-status-danger;
+  background-color: var(--st-danger);
   border: none;
   padding: 5px 10px;
   font-size: 14px;
@@ -319,7 +318,7 @@ li {
   }
 }
 .btn-danger {
-  color: $color-status-danger !important;
+  color: var(--st-danger) !important;
 }
 
 // forms
@@ -370,11 +369,11 @@ li {
   text-align: center;
 
   &.danger-tooltip {
-    background-color: $color-status-danger;
+    background-color: var(--st-danger);
   }
 
   &.info-tooltip {
-    background-color: $color-status-info;
+    background-color: var(--st-info);
   }
 }
 
@@ -414,7 +413,7 @@ li {
     h1 {
       font-size: 2em;
       color: $color-white;
-      border-bottom: solid 1px $color-input-border;
+      border-bottom: solid 1px var(--st-input-border-color);
     }
 
     h2 {
@@ -507,7 +506,7 @@ li {
         border-left: none;
 
         &:first-child {
-          border-left: solid 1px $color-input-border;
+          border-left: solid 1px var(--st-input-border-color);
           border-top-left-radius: 4px;
           border-bottom-left-radius: 4px;          
         }
@@ -536,7 +535,7 @@ li {
 
         &:last-child {
           button {
-            border-left: solid 1px $color-input-border;
+            border-left: solid 1px var(--st-input-border-color);
             border-top-right-radius: 4px;
             border-bottom-right-radius: 4px;
           }

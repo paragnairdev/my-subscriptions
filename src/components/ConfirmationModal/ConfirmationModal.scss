@@ -27,7 +27,7 @@
     }
 
     &__yes {
-        background-color: $color-status-success;
+        background-color: var(--st-success);
         color: $color-white;
 
         &:hover {
@@ -36,7 +36,7 @@
     }
 
     &__no {
-        background-color: $color-status-error;
+        background-color: var(--st-error);
         color: $color-white;
 
         &:hover {
