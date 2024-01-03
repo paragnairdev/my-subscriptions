@@ -1,15 +1,15 @@
 // theme colors
 :root {
-    --st-blue: #348cd4;
+    --st-blue: #45bbe0;
     --st-blue-dark: #45A1C1;
     --st-blue-light: #74C9E6;
     --st-indigo: #675aa9;
     --st-red: #f7531f;
-    --st-orange: #fd7e14;
+    --st-orange: #FA9F1B;
     --st-orange-dark: #6E583F;
     --st-orange-light: #FFE6CD;
     --st-yellow: #ff9800;
-    --st-green: #78c350;
+    --st-green: #78C351;
     --st-green-dark: #97CF7F;
     --st-green-light: #97CF7F;
     --st-teal: #02a8b5;
@@ -126,43 +126,3 @@
     --st-list-color: var(--st-body-color);
     --st-list-hover-bg: #2B333D;
 }
-
-
-// $color-black: #000;
-// $color-black-secondary-light: #D0D2D4;
-// $color-green: #78C351;
-// $color-green-secondary-light: #97CF7F;
-// $color-green-secondary: #6BA754;
-// $color-blue: #45BBE0;
-// $color-blue-secondary-light: #74C9E6;
-// $color-blue-secondary: #45A1C1;
-// $color-purple: #8892D6;
-// $color-purple-secondary-light: #A2ABDE;
-// $color-purple-secondary: #7882B9;
-// $color-orange: #FA9F1B;
-// $color-orange-secondary-light: #FFE6CD;
-// $color-orange-secondary: #6E583F;
-// $color-pink: #F06292;
-// $color-pink-secondary-light: #F089AC;
-// $color-pink-secondary: #C85D84;
-
-
-// buttons
-$color-btn-primary: #354049;
-$color-btn-primary-foreground: #6A737B;
-$color-btn-primary-border: #6A737B;
-$color-btn-primary-hover: #6C757D;
-
-
-// shades
-$color-shade-1: #303842;
-$color-shade-2: #374149;
-// $color-shade-3: #3B4651;
-$color-shade-4: #94A0AD; // text
-$color-shade-5: #424E5A; // border
-
-// $color-frequency-monthly: $color-blue;
-// $color-frequency-yearly: $color-pink;
-
-$colors-vibrant: #10e462 #befe08 #7bde28 #ce5116 #cbad1c #e30f0b #07fb50 #13cd92 #d831d4 #9dfb30;
-

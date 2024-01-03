@@ -2,7 +2,7 @@
 
 .switch {
     height: 30px;
-    background-color: $color-shade-4;
+    background-color: var(--st-gray-600);
     border-radius: 30px;
     cursor: pointer;
     position: relative;

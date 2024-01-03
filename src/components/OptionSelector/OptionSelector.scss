@@ -9,9 +9,9 @@
 
     &__option {
         &--selected {
-            background-color: $color-btn-primary-hover;
+            background-color: var(--st-button-hover-bg);
             color: var(--st-body-color);;
-            border: solid 1px $color-btn-primary-hover;
+            border: solid 1px var(--st-button-hover-bg);
         }
     }
 
