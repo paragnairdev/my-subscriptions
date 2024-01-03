@@ -18,6 +18,7 @@ a, a:active, a:visited {
 
 .App {
   margin: 0 auto;
+  padding: 0 20px;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -28,7 +29,7 @@ a, a:active, a:visited {
 
   &__header {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     background-color: var(--st-primary);
     padding: 0 20px;
@@ -465,7 +466,16 @@ li {
 .hint {
 
   &-currency {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  &-action {
+    cursor: pointer;
+    color: var(--st-button-bg);
+
+    &:hover {
+      color: var(--st-button-hover-color);
+    }
   }
   
 }

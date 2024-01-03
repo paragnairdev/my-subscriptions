@@ -14,6 +14,7 @@ import Switch from './components/Switch/Switch';
 import CurrencySelector from './components/CurrencySelector/CurrencySelector';
 import ConsentModal from './components/ConsentModal/ConsentModal';
 import TagManager from 'react-gtm-module';
+import HeaderToolbar from './components/HeaderToolbar/HeaderToolbar';
 
 const App = () => {
     const [theme, setTheme] = useState('dark'); // ['light', 'dark']
@@ -143,9 +144,12 @@ const App = () => {
             <header className="App__header">
               <div className="App__header-content">
                 <div className="App__logo-container">
-                  <img src="logo.png" alt="Subscription App Logo" className="app-logo" />
+                  <img src="logo-64x64.png" alt="Subscription App Logo" className="app-logo" />
                 </div>
                 <div className="App__title">Subscription Tracker</div>
+              </div>
+              <div className="App__header-toolbar">
+                <HeaderToolbar theme={theme} toggleTheme={toggleTheme}/>
               </div>
             </header>
 
@@ -157,7 +161,6 @@ const App = () => {
                 <div className="App__switches App__switches--align-right">
                   <Switch label={`Subscriptions`} isOn={showList} handleToggle={handleSubscriptionToggle} />
                   <Switch label={`Charts`} isOn={showChart} handleToggle={handleChartsToggle}/>
-                  <Switch label={`Theme Dark`} isOn={theme === 'dark'} handleToggle={toggleTheme}/>
                 </div>
                 <div className="App__actions">
                   <div className="btn-export">
@@ -201,7 +204,7 @@ const App = () => {
             <footer className="App__footer">
               <div className="App__footer-content">
                 <div className="App__footer-logo">
-                  <img src="logo.png" alt="Subscription App Logo" className="app-logo" />
+                  <img src="logo-64x64.png" alt="Subscription App Logo" className="app-logo" />
                   &copy; 2024 Subscription Tracker
                 </div>
                 <button className="btn__link" onClick={() => setShowPrivacyModal(true)}>Privacy Policy</button>
