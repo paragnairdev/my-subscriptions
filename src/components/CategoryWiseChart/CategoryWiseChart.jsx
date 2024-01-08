@@ -29,7 +29,7 @@ const CategoryWiseChart = ({ subscriptions, calculatePerMonth }) => {
             borderWidth: 1
         }]
     };
-
+    
     const labelColor = getChartLabelColor();
 
     const options = {

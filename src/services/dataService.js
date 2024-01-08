@@ -156,7 +156,13 @@ export const isGaConsentSet = () => {
 };
 
 export const getUserTheme = () => {
-    return localStorage.getItem('theme');
+    let currentTheme = localStorage.getItem('theme');
+    // if no theme set, set current theme to dark
+    if (!currentTheme) {
+        currentTheme = 'light';
+        setUserTheme(currentTheme);
+    }
+    return currentTheme;
 };
 
 export const setUserTheme = (theme) => {
