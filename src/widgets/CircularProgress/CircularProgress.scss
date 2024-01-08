@@ -1,0 +1,114 @@
+.circular-progress {
+    &__background {
+        stroke: var(--st-progress-bg);
+    }
+
+    &__text {
+        fill: var(--st-blue);
+        font-weight: 600;
+        text-anchor: middle;
+    }
+
+    &__bar {
+        stroke: var(--st-blue);
+        stroke-linecap: round;
+    }
+
+    &--color {
+        &-green {
+            .circular-progress {
+                &__text {
+                    fill: var(--st-green);
+                }
+        
+                &__bar {
+                    stroke: var(--st-green);
+                }
+            }
+        }
+
+        &-blue {
+            .circular-progress {
+                &__text {
+                    fill: var(--st-blue);
+                }
+        
+                &__bar {
+                    stroke: var(--st-blue);
+                }
+            }
+        }
+
+        &-purple {
+            .circular-progress {
+                &__text {
+                    fill: var(--st-purple);
+                }
+        
+                &__bar {
+                    stroke: var(--st-purple);
+                }
+            }
+        }
+
+        &-orange {
+            .circular-progress {
+                &__text {
+                    fill: var(--st-orange);
+                }
+        
+                &__bar {
+                    stroke: var(--st-orange);
+                }
+            }
+        }
+
+        &-pink {
+            .circular-progress {
+                &__text {
+                    fill: var(--st-pink);
+                }
+        
+                &__bar {
+                    stroke: var(--st-pink);
+                }
+            }
+        }
+    }
+
+    &__animate {
+        animation: progress-animation 2s ease-out forwards;
+    }
+
+    .progress-icon {
+        fill: var(--st-progress-icon-color);
+        font-size: 1em;
+    }
+
+    &--size-sm {
+        .progress-icon {
+            font-size: 2em;
+        }
+    }
+
+    &--size-md {
+        .progress-icon {
+            font-size: 4em;
+        }
+    }
+
+    &--size-lg {
+        .progress-icon {
+            font-size: 6em;
+        }
+    }
+}
+
+@keyframes progress-animation {
+    from {
+        stroke-dashoffset: var(--initial-offset);
+    }
+    to {
+        stroke-dashoffset: var(--final-offset);
+    }
+}

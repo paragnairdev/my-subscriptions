@@ -1,13 +1,14 @@
 .subscription-list {
-    border-radius: 4px;
+    border-radius: var(--st-border-radius);
     border: solid 1px var(--st-card-border-color);
     background-color: var(--st-card-bg);
-    color: var(--st-gray-600); //#8B97A4;
+    color: var(--st-gray-600);
 
     &__header {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        margin-bottom: var(--st-spacing);
 
         &:hover {
             background-color: var(--st-list-bg);

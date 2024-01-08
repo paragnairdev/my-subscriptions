@@ -18,9 +18,10 @@ a, a:active, a:visited {
 
 .App {
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0;
   display: flex;
   flex-direction: column;
+  gap: var(--st-spacing);
   min-height: 100vh;
   align-items: center;
   font-family: var(--st-body-font-family);
@@ -32,7 +33,7 @@ a, a:active, a:visited {
     justify-content: space-between;
     align-items: center;
     background-color: var(--st-primary);
-    padding: 0 20px;
+    padding: 0 var(--st-spacing);
     width: 100%;
     max-width: 1400px;
     color: var(--st-white);
@@ -51,17 +52,16 @@ a, a:active, a:visited {
   &__footer {
     display: flex;
     justify-content: space-around;
-    gap: 10px;
-    padding: 20px;
+    padding: var(--st-spacing);
     background-color: var(--st-card-bg);
     width: 100%;
+    max-width: 1400px;
 
     &-content {
       display: flex;
       justify-content: space-around;
       align-items: center;
-      gap: 10px;
-      max-width: 1400px;
+      gap: var(--st-spacing);
     }
 
     &-logo {
@@ -87,24 +87,27 @@ a, a:active, a:visited {
   }
 
   &__body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--st-spacing);
     max-width: 1400px;
-    padding: 20px;
+    width: 100%;
+    padding: 0 var(--st-spacing);
   }
 
   &__section {
     background-color: var(--st-card-bg);
-    padding: 20px;
-    border-radius: 4px;
+    padding: var(--st-spacing);
+    border-radius: var(--st-border-radius);
     display: flex;
     flex-direction: column;
-    margin: 10px 0;
   }
 
   &__toolbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
+    margin-bottom: 0 var(--st-spacing);
   }
 
   &__actions {
@@ -130,7 +133,7 @@ a, a:active, a:visited {
     grid-template-columns: 1fr;
     padding: 0;
     margin-bottom: 0;
-    gap: 20px;
+    gap: var(--st-spacing);
 
     &--2-col {
       grid-template-columns: 1fr 1fr;
@@ -143,9 +146,15 @@ a, a:active, a:visited {
     &--4-col {
       grid-template-columns: 1fr 1fr 1fr 1fr;
     }
-  }
 
-  
+    &--5-col {
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    }
+
+    &--center {
+      justify-items: center;
+    }
+  }
 }
 
 h1 {
@@ -162,7 +171,7 @@ form {
 
 input, select, button {
   padding: 10px;
-  border-radius: 4px;
+  border-radius: var(--st-border-radius);
   font-size: 16px;
 }
 
@@ -265,7 +274,7 @@ hr {
 ul {
   list-style: none;
   padding: 0;
-  border-radius: 4px;
+  border-radius: var(--st-border-radius);
   border: solid 1px var(--st-list-border-color);
   background-color: var(--st-list-bg);
   color: var(--st-body-color);
@@ -306,7 +315,7 @@ li {
   padding: 5px 10px;
   font-size: 14px;
   color: #FCF0EF;
-  border-radius: 4px;
+  border-radius: var(--st-border-radius);
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
@@ -330,7 +339,7 @@ li {
   &__section {
     background-color: var(--st-card-bg);
     padding: 20px;
-    border-radius: 4px;
+    border-radius: var(--st-border-radius);
     display: flex;
     flex-direction: column;
   }
@@ -402,7 +411,7 @@ li {
     gap: 10px;
     background-color: var(--st-modal-bg);
     padding: 20px;
-    border-radius: 5px;
+    border-radius: var(--st-border-radius);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
     z-index: 1000;
     color: var(--st-modal-color);
@@ -454,7 +463,7 @@ li {
   // responsive on phones
   @media (max-width: 600px) {
     &__content {
-      width: 70%;
+      width: 90%;
 
       h1 {
         font-size: 1.5em;
@@ -492,11 +501,9 @@ li {
     }
 
     &__section {
-      padding: 20px;
-      border-radius: 4px;
+      border-radius: var(--st-border-radius);
       display: flex;
       flex-direction: column;
-      margin: 10px 0;
     }
 
     &__toolbar {
@@ -504,7 +511,7 @@ li {
       flex-direction: column;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 20px;
+      margin: 0;
     }
 
     &__actions {
@@ -567,14 +574,13 @@ li {
       grid-template-columns: 1fr;
       padding: 0;
       margin-bottom: 0;
-      gap: 20px;
 
       &--2-col {
         grid-template-columns: 1fr 1fr;
       }
 
       &--3-col {
-        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-columns: 1fr;
       }
 
       &--4-col {

@@ -1,5 +1,7 @@
 // theme colors
 :root {
+    --st-spacing: 1rem;
+    --st-border-radius: 4px;
     --st-blue: #45bbe0;
     --st-blue-dark: #45A1C1;
     --st-blue-light: #74C9E6;
@@ -102,6 +104,9 @@
     --st-box-shadow-lg: 0 2px 5px 0 rgba(0,0,0,.16),0 2px 10px 0 rgba(0,0,0,.12);
     --st-scrollable-before: linear-gradient(180deg,hsla(0,0%,100%,0),hsla(0,0%,100%,.5));
     --st-scrollable-after: linear-gradient(0deg,hsla(0,0%,100%,0),hsla(0,0%,100%,.5));
+    --st-progress-bg: #dee2e6;
+    --st-progress-bar-bg: #adb5bd;
+    --st-progress-icon-color: #495057;
 }
 
 // Dark theme
@@ -133,4 +138,14 @@
     --st-box-shadow-lg: 0 0 45px 0 rgba(0,0,0,.12);
     --st-scrollable-before: linear-gradient(to bottom, rgba(55, 65, 73, 0.5), rgba(55, 65, 73, 0));
     --st-scrollable-after: linear-gradient(to top, rgba(55, 65, 73, 0.5), rgba(55, 65, 73, 0));
+    --st-progress-bg: lightgray;
+    --st-progress-icon-color: #fff;
+}
+
+// phones
+@media screen and (max-width: 600px) { 
+    :root {
+        --st-spacing: 0.8rem;
+        --st-border-radius: 8px;
+    }
 }

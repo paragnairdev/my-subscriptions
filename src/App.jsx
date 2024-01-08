@@ -5,7 +5,7 @@ import SubscriptionList from './components/SubscriptionList/SubscriptionList';
 import SubscriptionSummary from './components/SubscriptionSummary/SubscriptionSummary';
 import SubscriptionCharts from './components/SubscriptionCharts/SubscriptionCharts';
 import { CURRENCIES, addSubscription, getGaConsent, getUserTheme, hydrateSubscriptions, isGaConsentSet, loadData, removeSubscription, resetData, setGaConsent, setUserTheme, updateCurrencySymbol } from './services/dataService';
-import { FaFileExport } from 'react-icons/fa6';
+import { FaCirclePlus, FaFileExport } from 'react-icons/fa6';
 import { Tooltip } from 'react-tooltip';
 import SubscriptionsLoader from './components/SubscriptionsLoader/SubscriptionsLoaded';
 import GenericModal from './components/GenericModal/GenericModal';
@@ -155,14 +155,19 @@ const App = () => {
 
             <main className='App__body'>
 
-              <SubscriptionSummary subscriptions={subscriptions} />
-
               <div className="App__toolbar">
                 <div className="App__switches App__switches--align-right">
                   <Switch label={`Subscriptions`} isOn={showList} handleToggle={handleSubscriptionToggle} />
                   <Switch label={`Charts`} isOn={showChart} handleToggle={handleChartsToggle}/>
                 </div>
                 <div className="App__actions">
+                  <div className="btn-add">
+                    <button onClick={toggleFormVisibility} 
+                      data-tooltip-id="addTip" 
+                      data-tooltip-content="Add a new subscription"
+                      data-tooltip-place="bottom"><FaCirclePlus/> Add</button>
+                    <Tooltip id="addTip" />
+                  </div>
                   <div className="btn-export">
                     <button onClick={() => exportToJson(subscriptions)} 
                       data-tooltip-id="exportTip" 
@@ -174,6 +179,8 @@ const App = () => {
                   <CurrencySelector currentCurrency={currency} onCurrencyChange={handleCurrencyChange} availableCurrencies={availableCurrencies} />
                 </div>
               </div>
+
+              <SubscriptionSummary subscriptions={subscriptions} />
               
               {showList && (
                 <div className='App__section'>

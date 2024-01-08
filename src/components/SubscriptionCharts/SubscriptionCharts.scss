@@ -1,7 +1,11 @@
 .subscription-charts {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 20px;
+    gap: var(--st-spacing);
+
+    h2 {
+        margin-bottom: var(--st-spacing);
+    }
 
     &--two-column {
         grid-template-columns: 1fr 1fr;
