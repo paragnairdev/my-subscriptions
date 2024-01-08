@@ -1,6 +1,7 @@
 // theme colors
 :root {
     --st-spacing: 1rem;
+    --st-body-gutter: 1.5rem;
     --st-blue: #45bbe0;
     --st-blue-dark: #45A1C1;
     --st-blue-light: #74C9E6;
@@ -149,5 +150,24 @@
     :root {
         --st-spacing: 0.8rem;
         --st-border-radius: 8px;
+        --st-body-gutter: 0.8rem;
+    }
+}
+
+// tablets
+@media screen and (min-width: 600px) and (max-width: 1200px) { 
+    :root {
+        --st-spacing: 1rem;
+        --st-border-radius: 8px;
+        --st-body-gutter: 1rem;
+    }
+}
+
+// large screens
+@media screen and (min-width: 1200px) { 
+    :root {
+        --st-spacing: 1.5rem;
+        --st-border-radius: 8px;
+        --st-body-gutter: 0rem;
     }
 }
