@@ -10,7 +10,9 @@ body {
   color: var(--st-body-color);
 }
 
-a, a:active, a:visited {
+a,
+a:active,
+a:visited {
   color: var(--st-body-color);
   text-decoration: underline;
   font-size: 1em;
@@ -68,6 +70,7 @@ a, a:active, a:visited {
       display: flex;
       align-items: center;
       font-size: 0.7em;
+
       img {
         height: 40px;
       }
@@ -92,7 +95,7 @@ a, a:active, a:visited {
     gap: var(--st-spacing);
     max-width: 1400px;
     width: 100%;
-    padding: 0 ;
+    padding: 0 var(--st-body-gutter);
   }
 
   &__section {
@@ -169,13 +172,16 @@ form {
   gap: 10px;
 }
 
-input, select, button {
+input,
+select,
+button {
   padding: 10px;
   border-radius: var(--st-border-radius);
   font-size: 16px;
 }
 
-input, select {
+input,
+select {
   background-color: var(--st-input-bg);
   color: var(--st-input-color);
   border: solid 1px var(--st-input-border-color);
@@ -330,6 +336,7 @@ li {
     height: auto;
   }
 }
+
 .btn-danger {
   color: var(--st-danger) !important;
 }
@@ -437,7 +444,9 @@ li {
       font-size: 0.8em;
     }
 
-    a, a:active, a:visited {
+    a,
+    a:active,
+    a:visited {
       color: var(--st-body-color);
       text-decoration: underline;
     }
@@ -486,7 +495,7 @@ li {
       color: var(--st-button-hover-color);
     }
   }
-  
+
 }
 
 // responsive styles
@@ -496,9 +505,9 @@ li {
   .App {
     margin: 0 auto;
 
-    &__body {
-      padding: 0 var(--st-spacing);
-    }
+    // &__body {
+    //   padding: 0 var(--st-spacing);
+    // }
 
     &__title {
       font-size: 1em;
@@ -524,7 +533,7 @@ li {
       justify-content: flex-start;
       gap: 0;
 
-      > button {
+      >button {
         margin: 0;
         border-radius: 0;
         border-left: none;
@@ -532,7 +541,7 @@ li {
         &:first-child {
           border-left: solid 1px var(--st-input-border-color);
           border-top-left-radius: 4px;
-          border-bottom-left-radius: 4px;          
+          border-bottom-left-radius: 4px;
         }
 
         &:last-child {
@@ -541,7 +550,7 @@ li {
         }
       }
 
-      > div {
+      >div {
         margin: 0;
         border-radius: 0;
 
@@ -619,6 +628,7 @@ li {
     align-items: center;
     justify-content: flex-start;
   }
+
   .hide {
     &--sm {
       display: none;
