@@ -92,7 +92,7 @@ a, a:active, a:visited {
     gap: var(--st-spacing);
     max-width: 1400px;
     width: 100%;
-    padding: 0 var(--st-spacing);
+    padding: 0 ;
   }
 
   &__section {
@@ -282,7 +282,7 @@ ul {
 
 li {
   align-items: center;
-  padding: 15px;
+  padding: 5px;
   margin-bottom: 0;
 
   &:hover {
@@ -495,6 +495,10 @@ li {
 @media screen and (max-width: 600px) {
   .App {
     margin: 0 auto;
+
+    &__body {
+      padding: 0 var(--st-spacing);
+    }
 
     &__title {
       font-size: 1em;

@@ -1,7 +1,6 @@
 // theme colors
 :root {
     --st-spacing: 1rem;
-    --st-border-radius: 4px;
     --st-blue: #45bbe0;
     --st-blue-dark: #45A1C1;
     --st-blue-light: #74C9E6;
@@ -107,6 +106,9 @@
     --st-progress-bg: #dee2e6;
     --st-progress-bar-bg: #adb5bd;
     --st-progress-icon-color: #495057;
+
+    //TODO: sort this out later
+    --st-border-radius: 8px;
 }
 
 // Dark theme
