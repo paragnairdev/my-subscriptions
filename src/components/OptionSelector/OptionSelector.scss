@@ -1,17 +1,15 @@
-@import "../../Variables.scss";
-
 .option-selector {
     display: flex;
     flex: 1;
     padding: 0;
-    border-radius: 5px;
+    border-radius: var(--st-border-radius);
     gap: 0;
 
     &__option {
         &--selected {
-            background-color: $color-btn-primary-hover;
-            color: $color-white;
-            border: solid 1px $color-btn-primary-hover;
+            background-color: var(--st-button-hover-bg);
+            color: var(--st-body-color);;
+            border: solid 1px var(--st-button-hover-bg);
         }
     }
 
@@ -30,13 +28,13 @@
         border-radius: 0;
 
         &:first-child {
-            border-top-left-radius: 5px;
-            border-bottom-left-radius: 5px;
+            border-top-left-radius: var(--st-border-radius);
+            border-bottom-left-radius: var(--st-border-radius);
         }
 
         &:last-child {
-            border-top-right-radius: 5px;
-            border-bottom-right-radius: 5px;
+            border-top-right-radius: var(--st-border-radius);
+            border-bottom-right-radius: var(--st-border-radius);
         }
     }
 }

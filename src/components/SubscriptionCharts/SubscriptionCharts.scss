@@ -1,9 +1,11 @@
-@import '../../Variables.scss';
-
 .subscription-charts {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 20px;
+    gap: var(--st-spacing);
+
+    h2 {
+        margin-bottom: var(--st-spacing);
+    }
 
     &--two-column {
         grid-template-columns: 1fr 1fr;
@@ -18,21 +20,21 @@
         button {
             &.selected {
                 &.subscription-charts__view--m {
-                    color: $color-frequency-monthly;
+                    color: var(--st-frequency-monthly);
                 }
                 &.subscription-charts__view--y {
-                    color: $color-frequency-yearly;
+                    color: var(--st-frequency-yearly);
                 }
             }
         }
     }
 
     &__view--m {
-        color: $color-frequency-monthly;
+        color: var(--st-frequency-monthly);
     }
 
     &__view--y {
-        color: $color-frequency-yearly;
+        color: var(--st-frequency-yearly);
     }
 
     // responsive on phone

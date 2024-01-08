@@ -5,31 +5,38 @@ body {
   padding: 0;
   height: 100%;
   width: 100%;
-  font-family: 'Roboto', sans-serif;
-  background-color: $main-background-color;
-  color: $color-white;
+  font-family: var(--st-body-font-family);
+  background-color: var(--st-body-bg);
+  color: var(--st-body-color);
 }
 
 a, a:active, a:visited {
-  color: $color-white;
+  color: var(--st-body-color);
   text-decoration: underline;
   font-size: 1em;
 }
 
 .App {
   margin: 0 auto;
+  padding: 0;
   display: flex;
   flex-direction: column;
+  gap: var(--st-spacing);
   min-height: 100vh;
   align-items: center;
+  font-family: var(--st-body-font-family);
+  background-color: var(--st-body-bg);
+  color: var(--st-body-color);
 
   &__header {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    background-color: $primary-color;
-    padding: 0 20px;
+    background-color: var(--st-primary);
+    padding: 0 var(--st-spacing);
     width: 100%;
+    max-width: 1400px;
+    color: var(--st-white);
 
     &-content {
       display: grid;
@@ -38,24 +45,23 @@ a, a:active, a:visited {
     }
 
     h1 {
-      color: $primary-color-foreground;
+      color: var(--st-white);
     }
   }
 
   &__footer {
     display: flex;
     justify-content: space-around;
-    gap: 10px;
-    padding: 20px;
-    background-color: $color-shade-3;
+    padding: var(--st-spacing);
+    background-color: var(--st-card-bg);
     width: 100%;
+    max-width: 1400px;
 
     &-content {
       display: flex;
       justify-content: space-around;
       align-items: center;
-      gap: 10px;
-      max-width: 1400px;
+      gap: var(--st-spacing);
     }
 
     &-logo {
@@ -73,32 +79,35 @@ a, a:active, a:visited {
     justify-content: center;
     align-items: center;
     padding: 10px;
-    background-color: $primary-color;
   }
 
   &__title {
     font-size: 1.5em;
+    color: var(--st-white);
   }
 
   &__body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--st-spacing);
     max-width: 1400px;
-    padding: 20px;
+    width: 100%;
+    padding: 0 ;
   }
 
   &__section {
-    background-color: $secondary-background-color;
-    padding: 20px;
-    border-radius: 4px;
+    background-color: var(--st-card-bg);
+    padding: var(--st-spacing);
+    border-radius: var(--st-border-radius);
     display: flex;
     flex-direction: column;
-    margin: 10px 0;
   }
 
   &__toolbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
+    margin-bottom: 0 var(--st-spacing);
   }
 
   &__actions {
@@ -124,7 +133,7 @@ a, a:active, a:visited {
     grid-template-columns: 1fr;
     padding: 0;
     margin-bottom: 0;
-    gap: 20px;
+    gap: var(--st-spacing);
 
     &--2-col {
       grid-template-columns: 1fr 1fr;
@@ -137,13 +146,19 @@ a, a:active, a:visited {
     &--4-col {
       grid-template-columns: 1fr 1fr 1fr 1fr;
     }
-  }
 
-  
+    &--5-col {
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    }
+
+    &--center {
+      justify-items: center;
+    }
+  }
 }
 
 h1 {
-  color: #333;
+  color: var(--st-white);
   text-align: center;
   padding-bottom: 10px;
 }
@@ -156,15 +171,14 @@ form {
 
 input, select, button {
   padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
+  border-radius: var(--st-border-radius);
   font-size: 16px;
 }
 
 input, select {
-  background-color: $color-input-background;
-  color: $color-input-text;
-  border: solid 1px $color-input-border;
+  background-color: var(--st-input-bg);
+  color: var(--st-input-color);
+  border: solid 1px var(--st-input-border-color);
 }
 
 // dropdown on safari
@@ -180,34 +194,34 @@ select {
 }
 
 button {
-  background-color: $color-btn-primary;
-  color: $color-btn-primary-foreground;
+  background-color: var(--st-button-bg);
+  color: var(--st-button-color);
   cursor: pointer;
   transition: background-color 0.3s ease;
-  border: solid 1px $color-btn-primary-border;
+  border: solid 1px var(--st-button-border-color);
   margin: 5px;
   display: inline-flex;
   justify-content: center;
   gap: 10px;
 
   &:hover {
-    background-color: $color-btn-primary-hover;
-    color: $color-white;
-    border: solid 1px $color-btn-primary-hover;
+    background-color: var(--st-button-hover-bg);
+    color: var(--st-button-hover-color);
+    border: solid 1px var(--st-button-hover-bg);
   }
 
   &.selected {
-    background-color: $color-btn-primary-hover;
-    color: $color-white;
-    border: solid 1px $color-btn-primary-hover;
+    background-color: var(--st-button-hover-bg);
+    color: var(--st-button-hover-color);
+    border: solid 1px var(--st-button-hover-bg);
   }
 }
 
 .btn {
   &__link {
-    background-color: $color-shade-3;
-    border-color: $color-shade-3;
-    color: $color-white;
+    background-color: var(--st-button-bg);
+    border-color: var(--st-button-bg);
+    color: var(--st-button-color);
 
     &:hover {
       text-decoration: underline;
@@ -215,21 +229,21 @@ button {
   }
 
   &__success {
-    background-color: $color-status-success;
-    border-color: $color-status-success;
-    color: $color-white;
+    background-color: var(--st-success);
+    border-color: var(--st-success);
+    color: var(--st-button-color);
   }
 
   &__danger {
-    background-color: $color-status-danger;
-    border-color: $color-status-danger;
-    color: $color-white;
+    background-color: var(--st-danger);
+    border-color: var(--st-danger);
+    color: var(--st-button-color);
   }
 }
 
 hr {
   border: none;
-  border-top: solid 1px $color-input-border;
+  border-top: solid 1px var(--st-input-border-color);
   margin: 20px 0;
 }
 
@@ -260,19 +274,19 @@ hr {
 ul {
   list-style: none;
   padding: 0;
-  border-radius: 4px;
-  border: solid 1px #354049;
-  background-color: #354049;
-  color: $color-lists;
+  border-radius: var(--st-border-radius);
+  border: solid 1px var(--st-list-border-color);
+  background-color: var(--st-list-bg);
+  color: var(--st-body-color);
 }
 
 li {
   align-items: center;
-  padding: 15px;
+  padding: 5px;
   margin-bottom: 0;
 
   &:hover {
-    background-color: #2B333D;
+    background-color: var(--st-list-hover-bg);
   }
 
   // first child rounded top corners
@@ -280,7 +294,7 @@ li {
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
     font-weight: bold;
-    color: #F6F6F6;
+    color: var(--st-body-color);
   }
 
   // last child rounded bottom corners
@@ -296,18 +310,18 @@ li {
 }
 
 .delete-btn {
-  background-color: $color-status-danger;
+  background-color: var(--st-danger);
   border: none;
   padding: 5px 10px;
   font-size: 14px;
   color: #FCF0EF;
-  border-radius: 4px;
+  border-radius: var(--st-border-radius);
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
 .delete-btn:hover {
-  background-color: #bd2130;
+  background-color: var(--st-danger);
 }
 
 .chart-container {
@@ -317,15 +331,15 @@ li {
   }
 }
 .btn-danger {
-  color: $color-status-danger !important;
+  color: var(--st-danger) !important;
 }
 
 // forms
 .form {
   &__section {
-    background-color: #374149;
+    background-color: var(--st-card-bg);
     padding: 20px;
-    border-radius: 4px;
+    border-radius: var(--st-border-radius);
     display: flex;
     flex-direction: column;
   }
@@ -357,22 +371,22 @@ li {
 
 // font colours in canvas
 .chartjs-render-monitor {
-  color: $color-white;
+  color: var(--st-white);
 }
 
 // react-tooltip styles
 .react-tooltip {
-  color: $color-white;
+  color: var(--st-white);
   padding: 10px;
   font-size: 1em;
   text-align: center;
 
   &.danger-tooltip {
-    background-color: $color-status-danger;
+    background-color: var(--st-danger);
   }
 
   &.info-tooltip {
-    background-color: $color-status-info;
+    background-color: var(--st-info);
   }
 }
 
@@ -395,12 +409,12 @@ li {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    background-color: $secondary-background-color;
+    background-color: var(--st-modal-bg);
     padding: 20px;
-    border-radius: 5px;
+    border-radius: var(--st-border-radius);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
     z-index: 1000;
-    color: $primary-color-foreground;
+    color: var(--st-modal-color);
     position: relative;
     width: 90%;
     max-width: 1400px;
@@ -411,8 +425,8 @@ li {
 
     h1 {
       font-size: 2em;
-      color: $color-white;
-      border-bottom: solid 1px $color-input-border;
+      color: var(--st-body-color);
+      border-bottom: solid 1px var(--st-input-border-color);
     }
 
     h2 {
@@ -424,7 +438,7 @@ li {
     }
 
     a, a:active, a:visited {
-      color: $color-white;
+      color: var(--st-body-color);
       text-decoration: underline;
     }
   }
@@ -441,7 +455,7 @@ li {
     right: 10px;
     font-size: 1em;
     cursor: pointer;
-    color: $primary-color-foreground;
+    color: var(--st-body-color);
     border: none;
     border-radius: 50%;
   }
@@ -449,7 +463,7 @@ li {
   // responsive on phones
   @media (max-width: 600px) {
     &__content {
-      width: 70%;
+      width: 90%;
 
       h1 {
         font-size: 1.5em;
@@ -461,7 +475,16 @@ li {
 .hint {
 
   &-currency {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  &-action {
+    cursor: pointer;
+    color: var(--st-button-bg);
+
+    &:hover {
+      color: var(--st-button-hover-color);
+    }
   }
   
 }
@@ -473,16 +496,18 @@ li {
   .App {
     margin: 0 auto;
 
+    &__body {
+      padding: 0 var(--st-spacing);
+    }
+
     &__title {
       font-size: 1em;
     }
 
     &__section {
-      padding: 20px;
-      border-radius: 4px;
+      border-radius: var(--st-border-radius);
       display: flex;
       flex-direction: column;
-      margin: 10px 0;
     }
 
     &__toolbar {
@@ -490,7 +515,7 @@ li {
       flex-direction: column;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 20px;
+      margin: 0;
     }
 
     &__actions {
@@ -505,7 +530,7 @@ li {
         border-left: none;
 
         &:first-child {
-          border-left: solid 1px $color-input-border;
+          border-left: solid 1px var(--st-input-border-color);
           border-top-left-radius: 4px;
           border-bottom-left-radius: 4px;          
         }
@@ -534,7 +559,7 @@ li {
 
         &:last-child {
           button {
-            border-left: solid 1px $color-input-border;
+            border-left: solid 1px var(--st-input-border-color);
             border-top-right-radius: 4px;
             border-bottom-right-radius: 4px;
           }
@@ -553,14 +578,13 @@ li {
       grid-template-columns: 1fr;
       padding: 0;
       margin-bottom: 0;
-      gap: 20px;
 
       &--2-col {
         grid-template-columns: 1fr 1fr;
       }
 
       &--3-col {
-        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-columns: 1fr;
       }
 
       &--4-col {

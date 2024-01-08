@@ -1,16 +1,15 @@
-@import '../../Variables.scss';
-
 .card {
     background-color: white;
     padding: 1.5em;
-    border-radius: 4px;
-    color: $color-white;
+    border-radius: var(--st-border-radius);
+    color: var(--st-white);
     display: grid;
     grid-template-columns: 1fr 2fr; // Two equal columns
     align-items: center; // Vertically align content
     grid-template-areas: 
         "icon metric"
         "icon label";
+    box-shadow: var(--st-box-shadow-sm);
 
     &__icon {
         grid-area: icon;
@@ -21,12 +20,11 @@
         height: 100px;
         width: 100px;
     }
-
+    
     &__label {
         grid-area: label;
         font-size: 1em;
         font-weight: 400;
-        margin-bottom: 30px;
         text-align: right;
     }
 
@@ -34,7 +32,6 @@
         grid-area: metric;
         font-size: 2em;
         font-weight: 500;
-        margin-bottom: 10px;
         text-align: right;
     }
 
@@ -49,50 +46,22 @@
     }
 
     &--green{
-        background-color: $color-green;
+        background-color: var(--st-green);
     }
 
     &--blue{
-        background-color: $color-blue;
+        background-color: var(--st-blue);
     }
 
     &--purple{
-        background-color: $color-purple;
+        background-color: var(--st-purple);
     }
 
     &--orange{
-        background-color: $color-orange;
+        background-color: var(--st-orange);
     }
 
     &--pink{
-        background-color: $color-pink;
-    }
-
-    // responsive on phone
-    @media (max-width: 600px) {
-        grid-template-columns: 1fr; // Single column on phone
-        grid-template-areas: "icon" "metric" "label";
-        align-items: center;
-        justify-content: center;
-        padding: 10px;
-
-        .card__label, .card__metric {
-            text-align: center;
-        }
-
-        &__label {
-            font-size: 0.8em;
-            margin-bottom: 0;
-        }
-
-        &__metric {
-            font-size: 1.5em;
-            margin-top: 10px;
-        }
-
-        &__icon {
-            width: 100%;
-            height: auto;
-        }
+        background-color: var(--st-pink);
     }
 }

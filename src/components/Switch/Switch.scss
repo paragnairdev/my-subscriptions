@@ -1,8 +1,6 @@
-@import '../../Variables.scss';
-
 .switch {
     height: 30px;
-    background-color: $color-shade-4;
+    background-color: var(--st-gray-600);
     border-radius: 30px;
     cursor: pointer;
     position: relative;
@@ -18,7 +16,7 @@
         left: 3px;
         width: 24px;
         height: 24px;
-        background-color: $color-white;
+        background-color: var(--st-white);
         border-radius: 50%;
         transition: left 0.3s;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); // Shadow for the handle
@@ -33,7 +31,7 @@
     }
 
     &--on {
-        background-color: $color-green-secondary;
+        background-color: var(--st-green-dark);
 
         .switch__handle {
             left: calc(100% - 27px);

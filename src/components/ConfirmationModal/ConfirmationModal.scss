@@ -1,5 +1,3 @@
-@import '../../Variables.scss';
-
 .modal {
     &__message {
         display: flex;
@@ -27,20 +25,20 @@
     }
 
     &__yes {
-        background-color: $color-status-success;
-        color: $color-white;
+        background-color: var(--st-success);
+        color: var(--st-body-color);
 
         &:hover {
-            background-color: $color-green-secondary;
+            background-color: var(--st-green-dark);
         }
     }
 
     &__no {
-        background-color: $color-status-error;
-        color: $color-white;
+        background-color: var(--st-error);
+        color: var(--st-body-color);
 
         &:hover {
-            background-color: $color-orange-secondary;
+            background-color: var(--st-orange-dark);
         }
     }
 

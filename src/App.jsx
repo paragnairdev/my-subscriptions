@@ -4,8 +4,8 @@ import SubscriptionForm from './components/SubscriptionForm/SubscriptionForm';
 import SubscriptionList from './components/SubscriptionList/SubscriptionList';
 import SubscriptionSummary from './components/SubscriptionSummary/SubscriptionSummary';
 import SubscriptionCharts from './components/SubscriptionCharts/SubscriptionCharts';
-import { CURRENCIES, addSubscription, getGaConsent, hydrateSubscriptions, isGaConsentSet, loadData, removeSubscription, resetData, setGaConsent, updateCurrencySymbol } from './services/dataService';
-import { FaFileExport } from 'react-icons/fa6';
+import { CURRENCIES, addSubscription, getGaConsent, getUserTheme, hydrateSubscriptions, isGaConsentSet, loadData, removeSubscription, resetData, setGaConsent, setUserTheme, updateCurrencySymbol } from './services/dataService';
+import { FaCirclePlus, FaFileExport } from 'react-icons/fa6';
 import { Tooltip } from 'react-tooltip';
 import SubscriptionsLoader from './components/SubscriptionsLoader/SubscriptionsLoaded';
 import GenericModal from './components/GenericModal/GenericModal';
@@ -14,8 +14,10 @@ import Switch from './components/Switch/Switch';
 import CurrencySelector from './components/CurrencySelector/CurrencySelector';
 import ConsentModal from './components/ConsentModal/ConsentModal';
 import TagManager from 'react-gtm-module';
+import HeaderToolbar from './components/HeaderToolbar/HeaderToolbar';
 
 const App = () => {
+    const [theme, setTheme] = useState('dark'); // ['light', 'dark']
     const [subscriptions, setSubscriptions] = useState([]);
     const [showList, setShowList] = useState(true);
     const [showChart, setShowChart] = useState(true);
@@ -32,6 +34,10 @@ const App = () => {
         // if (userConsent) {
         //   initializeAnalytics();
         // }
+        const userTheme = getUserTheme();
+        if (userTheme) {
+          setTheme(userTheme);
+        }
 
         initializeAnalytics();
         
@@ -45,6 +51,13 @@ const App = () => {
             setShowChart(false);
         }
     }, [showForm]);
+
+    const toggleTheme = () => {
+      const newTheme = theme === 'light' ? 'dark' : 'light';
+      
+      setUserTheme(newTheme);
+      setTheme(newTheme);
+    };
 
     const initializeAnalytics = () => {
       TagManager.initialize({ gtmId: process.env.REACT_APP_GTM_ID });
@@ -127,19 +140,20 @@ const App = () => {
     };
 
     return (
-        <div className="App">
+        <div className="App" data-theme={theme}>
             <header className="App__header">
               <div className="App__header-content">
                 <div className="App__logo-container">
-                  <img src="logo.png" alt="Subscription App Logo" className="app-logo" />
+                  <img src="logo-64x64.png" alt="Subscription App Logo" className="app-logo" />
                 </div>
                 <div className="App__title">Subscription Tracker</div>
+              </div>
+              <div className="App__header-toolbar">
+                <HeaderToolbar theme={theme} toggleTheme={toggleTheme}/>
               </div>
             </header>
 
             <main className='App__body'>
-
-              <SubscriptionSummary subscriptions={subscriptions} />
 
               <div className="App__toolbar">
                 <div className="App__switches App__switches--align-right">
@@ -147,6 +161,13 @@ const App = () => {
                   <Switch label={`Charts`} isOn={showChart} handleToggle={handleChartsToggle}/>
                 </div>
                 <div className="App__actions">
+                  <div className="btn-add">
+                    <button onClick={toggleFormVisibility} 
+                      data-tooltip-id="addTip" 
+                      data-tooltip-content="Add a new subscription"
+                      data-tooltip-place="bottom"><FaCirclePlus/> Add</button>
+                    <Tooltip id="addTip" />
+                  </div>
                   <div className="btn-export">
                     <button onClick={() => exportToJson(subscriptions)} 
                       data-tooltip-id="exportTip" 
@@ -158,6 +179,8 @@ const App = () => {
                   <CurrencySelector currentCurrency={currency} onCurrencyChange={handleCurrencyChange} availableCurrencies={availableCurrencies} />
                 </div>
               </div>
+
+              <SubscriptionSummary subscriptions={subscriptions} />
               
               {showList && (
                 <div className='App__section'>
@@ -188,7 +211,7 @@ const App = () => {
             <footer className="App__footer">
               <div className="App__footer-content">
                 <div className="App__footer-logo">
-                  <img src="logo.png" alt="Subscription App Logo" className="app-logo" />
+                  <img src="logo-64x64.png" alt="Subscription App Logo" className="app-logo" />
                   &copy; 2024 Subscription Tracker
                 </div>
                 <button className="btn__link" onClick={() => setShowPrivacyModal(true)}>Privacy Policy</button>

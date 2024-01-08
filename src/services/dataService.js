@@ -16,6 +16,19 @@ export const COLORS = [
 
 export const CATEGORY_COLORS = [
     "#ff0000",
+    "#FF9B19",
+    "#ffd300",
+    "#deff0a",
+    '#78C351',
+    "#0aff99",
+    "#0aefff",
+    "#147df5",
+    "#580aff",
+    "#be0aff"
+];
+
+export const CATEGORY_COLORS_DARK = [
+    "#ff0000",
     "#ff8700",
     "#ffd300",
     "#deff0a",
@@ -29,7 +42,10 @@ export const CATEGORY_COLORS = [
 
 // mapping of category to color
 export const CATEGORY_COLOR_MAP = defaultCategories.reduce((acc, category, index) => {
-    acc[category] = CATEGORY_COLORS[index];
+    acc[category] = {
+        light: CATEGORY_COLORS[index],
+        dark: CATEGORY_COLORS_DARK[index]
+    };
     return acc;
 }, {});
 
@@ -114,11 +130,16 @@ export const exportToJson = (data) => {
 };
 
 export const getCategoryColor = (category) => {
+    // get current theme
+    const currentTheme = getUserTheme();
+
     // if the category is not in the map, return a random color
     if (!CATEGORY_COLOR_MAP[category]) {
-        return CATEGORY_COLORS[Math.floor(Math.random() * CATEGORY_COLORS.length)];
+        const randomIndex = Math.floor(Math.random() * CATEGORY_COLORS.length);
+        return currentTheme === 'light' ? CATEGORY_COLORS[randomIndex] : CATEGORY_COLORS_DARK[randomIndex];
     }
-    return CATEGORY_COLOR_MAP[category];
+    const color = CATEGORY_COLOR_MAP[category][currentTheme];
+    return color;
 };
 
 export const getGaConsent = () => {
@@ -134,6 +155,14 @@ export const isGaConsentSet = () => {
     return localStorage.getItem(GA_CONSENT_KEY) !== null;
 };
 
+export const getUserTheme = () => {
+    return localStorage.getItem('theme');
+};
+
+export const setUserTheme = (theme) => {
+    localStorage.setItem('theme', theme);
+};
+
 export const SUBSCRIPTION_TYPES = {
     YEARLY: 'yearly',
     MONTHLY: 'monthly'
@@ -142,4 +171,9 @@ export const SUBSCRIPTION_TYPES = {
 export const SUBSCRIPTION_TYPES_LABELS = {
     YEARLY: 'Yearly',
     MONTHLY: 'Monthly'
+};
+
+export const getChartLabelColor = () => {
+    const currentTheme = getUserTheme();
+    return currentTheme === 'light' ? '#000' : '#fff';
 };
