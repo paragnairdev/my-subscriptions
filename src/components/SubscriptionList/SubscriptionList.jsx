@@ -44,8 +44,8 @@ const SubscriptionList = ({ subscriptions, onDeleteSubscription, onClear, onAddS
             </div>
             {!hasSubscriptions && (<p>No subscriptions added yet. <a href="#" onClick={handleAdd}>Add your first subscription</a></p>)}
             <div className="scrollable-container subscription-list--md">
-                <ul className="subscription-list scrollable-list">
-                    {hasSubscriptions && (
+                <ul className="subscription-list subscription-list--only-header">
+                {hasSubscriptions && (
                     <li className="subscription-list__item subscription-list__item--header">
                         <div>#</div>
                         <div>Service</div>
@@ -55,6 +55,8 @@ const SubscriptionList = ({ subscriptions, onDeleteSubscription, onClear, onAddS
                         <div>&nbsp;</div>
                     </li>
                     )}
+                </ul>
+                <ul className="subscription-list scrollable-list">
                     {finalSubscriptions.map((subscription, index) => (
                         <li key={index} className="subscription-list__item">
                             {/* Subscription details */}
