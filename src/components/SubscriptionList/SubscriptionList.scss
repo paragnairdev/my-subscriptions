@@ -1,5 +1,5 @@
 .subscription-list {
-    border-radius: var(--st-border-radius);
+    border-radius: 0;
     border: solid 1px var(--st-card-border-color);
     background-color: var(--st-card-bg);
     color: var(--st-gray-600);
@@ -104,6 +104,33 @@
         display: none;
     }
 
+    &--only-header {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+
+        li, li:first-child, li:last-child {
+            border-bottom: none;
+            border-bottom-right-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+    }
+
+    &--no-header {
+        li:first-child {
+            font-weight: 500;
+        }
+    }
+
+    &--top-rounded {
+        border-top-right-radius: var(--st-border-radius);
+        border-top-left-radius: var(--st-border-radius);
+    }
+
+    &--bottom-rounded {
+        border-bottom-right-radius: var(--st-border-radius);
+        border-bottom-left-radius: var(--st-border-radius);
+    }
+
     // responsive on phone
     @media (max-width: 600px) {
         
@@ -144,7 +171,7 @@
 
 .scrollable-container {
     position: relative;
-    max-height: 454px;
+    max-height: 428px;
     overflow: hidden;
     z-index: 1;
 
@@ -169,7 +196,7 @@
 }
 
 .scrollable-list {
-    max-height: 454px; /* Same as container */
+    max-height: 428px;
     overflow-y: auto;
     list-style-type: none;
     padding: 0;
