@@ -115,6 +115,22 @@
         }
     }
 
+    &--no-header {
+        li:first-child {
+            font-weight: 500;
+        }
+    }
+
+    &--top-rounded {
+        border-top-right-radius: var(--st-border-radius);
+        border-top-left-radius: var(--st-border-radius);
+    }
+
+    &--bottom-rounded {
+        border-bottom-right-radius: var(--st-border-radius);
+        border-bottom-left-radius: var(--st-border-radius);
+    }
+
     // responsive on phone
     @media (max-width: 600px) {
         
@@ -155,7 +171,7 @@
 
 .scrollable-container {
     position: relative;
-    max-height: 474px;
+    max-height: 428px;
     overflow: hidden;
     z-index: 1;
 
@@ -180,7 +196,7 @@
 }
 
 .scrollable-list {
-    max-height: 444px;
+    max-height: 428px;
     overflow-y: auto;
     list-style-type: none;
     padding: 0;

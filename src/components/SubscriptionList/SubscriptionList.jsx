@@ -43,20 +43,20 @@ const SubscriptionList = ({ subscriptions, onDeleteSubscription, onClear, onAddS
                 <Tooltip id="clearAllTip" className="danger-tooltip" />
             </div>
             {!hasSubscriptions && (<p>No subscriptions added yet. <a href="#" onClick={handleAdd}>Add your first subscription</a></p>)}
-            <div className="scrollable-container subscription-list--md">
-                <ul className="subscription-list subscription-list--only-header">
+            <ul className="subscription-list subscription-list--top-rounded subscription-list--md subscription-list--only-header">
                 {hasSubscriptions && (
-                    <li className="subscription-list__item subscription-list__item--header">
-                        <div>#</div>
-                        <div>Service</div>
-                        <div>Category</div>
-                        <div className="subscription-list__item-amount">Amount</div>
-                        <div className="subscription-list__item-billing">Billing</div>
-                        <div>&nbsp;</div>
-                    </li>
-                    )}
-                </ul>
-                <ul className="subscription-list scrollable-list">
+                <li className="subscription-list__item subscription-list__item--header">
+                    <div>#</div>
+                    <div>Service</div>
+                    <div>Category</div>
+                    <div className="subscription-list__item-amount">Amount</div>
+                    <div className="subscription-list__item-billing">Billing</div>
+                    <div>&nbsp;</div>
+                </li>
+                )}
+            </ul>
+            <div className="scrollable-container subscription-list--md">
+                <ul className="subscription-list subscription-list--bottom-rounded subscription-list--no-header scrollable-list">
                     {finalSubscriptions.map((subscription, index) => (
                         <li key={index} className="subscription-list__item">
                             {/* Subscription details */}
