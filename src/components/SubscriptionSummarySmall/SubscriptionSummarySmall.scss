@@ -1,0 +1,40 @@
+.subscription-summary-small {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--st-purple);
+    padding: var(--st-spacing);
+    color: var(--st-white);
+    border-radius: var(--st-border-radius);
+    gap: 0;
+
+    &__item {
+        display: grid;
+        grid-template-columns: 70px 2fr 1fr;
+        align-items: center;
+        padding: 0.5rem 0;
+        border-bottom: 1px solid var(--color-gray-300);
+    }
+
+    &__icon {
+        display: flex;
+        justify-content: center;
+        justify-self: center;
+        align-items: center;
+        border-radius: 50%;
+        height: 50px;
+        width: 50px;
+        background-color: var(--st-purple-dark);
+        font-size: 2em;
+    }
+
+    &__label {
+        padding: 0 0.5rem;
+        font-weight: 400;
+    }
+
+    &__metric {
+        justify-self: end;
+        font-size: 1.5em;
+        font-weight: 500;
+    }
+}

@@ -158,7 +158,7 @@ const App = () => {
               <div className="App__toolbar">
                 <div className="App__switches App__switches--align-right">
                   <Switch label={`Subscriptions`} isOn={showList} handleToggle={handleSubscriptionToggle} />
-                  <Switch label={`Charts`} isOn={showChart} handleToggle={handleChartsToggle}/>
+                  <Switch label={`Insights`} isOn={showChart} handleToggle={handleChartsToggle}/>
                 </div>
                 <div className="App__actions">
                   <div className="btn-add">
