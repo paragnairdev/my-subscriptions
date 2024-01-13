@@ -73,7 +73,7 @@ const SubscriptionList = ({ subscriptions, onDeleteSubscription, onClear, onAddS
             </div>
 
             <div className="scrollable-container subscription-list--sm">
-                <ul className="subscription-list scrollable-list">
+                <ul className="subscription-list subscription-list--top-rounded subscription-list--bottom-rounded scrollable-list">
                     {finalSubscriptions.map((subscription, index) => (
                         <li key={index} className={`subscription-list__item subscription-list__item--type-${subscription.type === SUBSCRIPTION_TYPES.MONTHLY ? 'm' : 'y'}`}>
                             {/* Subscription details */}
