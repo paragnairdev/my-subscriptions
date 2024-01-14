@@ -4,7 +4,7 @@ import SubscriptionForm from './components/SubscriptionForm/SubscriptionForm';
 import SubscriptionList from './components/SubscriptionList/SubscriptionList';
 import SubscriptionSummary from './components/SubscriptionSummary/SubscriptionSummary';
 import SubscriptionCharts from './components/SubscriptionCharts/SubscriptionCharts';
-import { CURRENCIES, addSubscription, getGaConsent, getUserTheme, hydrateSubscriptions, isGaConsentSet, loadData, removeSubscription, resetData, setGaConsent, setUserTheme, updateCurrencySymbol } from './services/dataService';
+import { CURRENCIES, addSubscription, getGaConsent, getUserTheme, hydrateSubscriptions, isGaConsentSet, loadData, deleteSubscriptionFromDB, removeSubscriptionByName, resetData, setGaConsent, setUserTheme, updateCurrencySymbol } from './services/dataService';
 import { FaCirclePlus, FaFileExport } from 'react-icons/fa6';
 import { Tooltip } from 'react-tooltip';
 import SubscriptionsLoader from './components/SubscriptionsLoader/SubscriptionsLoaded';
@@ -74,8 +74,8 @@ const App = () => {
       }
     };
 
-    const deleteSubscription = (index) => {
-      removeSubscription(index);
+    const deleteSubscription = (subscription) => {
+      deleteSubscriptionFromDB(subscription);
       setSubscriptions(loadData().subscriptions);
     };
 

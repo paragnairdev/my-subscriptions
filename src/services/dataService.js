@@ -87,9 +87,10 @@ export const addSubscription = (subscription) => {
     saveData(data);
 };
 
-export const removeSubscription = (index) => {
+export const deleteSubscriptionFromDB = (subscription) => {
+    const { name, amount } = subscription;
     const data = loadData();
-    data.subscriptions = data.subscriptions.filter((_, idx) => idx !== index);
+    data.subscriptions = data.subscriptions.filter((subscription) => subscription.name !== name || subscription.amount !== amount);
     saveData(data);
 };
 
