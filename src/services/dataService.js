@@ -90,7 +90,7 @@ export const addSubscription = (subscription) => {
 export const deleteSubscriptionFromDB = (subscription) => {
     const { name, amount } = subscription;
     const data = loadData();
-    data.subscriptions = data.subscriptions.filter((subscription) => subscription.name !== name || subscription.amount !== amount);
+    data.subscriptions = data.subscriptions.filter((subscription) => subscription.name !== name && subscription.amount !== amount);
     saveData(data);
 };
 
