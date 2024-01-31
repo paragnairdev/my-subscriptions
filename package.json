@@ -20,7 +20,9 @@
     "start": "react-scripts start",
     "build": "eslint . --ext .jsx && react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "eslintConfig": {
     "extends": [
@@ -43,10 +45,23 @@
   "devDependencies": {
     "@babel/eslint-parser": "^7.23.3",
     "@babel/preset-react": "^7.23.3",
+    "@storybook/addon-essentials": "^7.6.12",
+    "@storybook/addon-interactions": "^7.6.12",
+    "@storybook/addon-links": "^7.6.12",
+    "@storybook/addon-onboarding": "^1.0.11",
+    "@storybook/blocks": "^7.6.12",
+    "@storybook/preset-create-react-app": "^7.6.12",
+    "@storybook/react": "^7.6.12",
+    "@storybook/react-webpack5": "^7.6.12",
+    "@storybook/test": "^7.6.12",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "eslint": "^8.56.0",
-    "eslint-plugin-react": "^7.33.2"
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-storybook": "^0.6.15",
+    "prop-types": "^15.8.1",
+    "storybook": "^7.6.12",
+    "webpack": "^5.90.0"
   }
 }
