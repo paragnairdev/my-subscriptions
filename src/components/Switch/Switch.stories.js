@@ -4,9 +4,10 @@ import Switch from "./Switch";
 export default {
     title: "Components/Switch",
     component: Switch,
+    tags: ['autodocs'],
     argTypes: {
         label: {
-            control: "text",
+          control: "text",
         },
         isOn: {
             control: "boolean",
@@ -25,7 +26,7 @@ const Template = (args) => {
 export const Default = Template.bind({});
 Default.args = {
     label: "Switch",
-    isOn: false,
+    isOn: true,
 };
 
 export const On = Template.bind({});

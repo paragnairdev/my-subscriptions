@@ -13,6 +13,7 @@ const icons = {
 export default {
   title: 'Components/Icon',
   component: Icon,
+  tags: ['autodocs'],
   argTypes: {
     icon: {
       control: 'select',

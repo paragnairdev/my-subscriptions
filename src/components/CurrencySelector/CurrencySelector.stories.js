@@ -25,6 +25,7 @@ const CurrencySelectorWrapper = ({ currentCurrency, availableCurrencies }) => {
 export default {
     title: "Components/CurrencySelector",
     component: CurrencySelectorWrapper,
+    tags: ['autodocs'],
     argTypes: {
         currentCurrency: {
             control: "select",

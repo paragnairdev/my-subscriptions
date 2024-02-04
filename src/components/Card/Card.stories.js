@@ -1,7 +1,5 @@
 import React from 'react';
 import Card from './Card';
-import AnimatedNumber from '../AnimatedNumber/AnimatedNumber';
-import Icon from '../Icon/Icon';
 import '../../Variables.scss';
 import '../../components/Icon/Icon.scss';
 import { iconMap, colours } from '../../stories/components/Helpers';
@@ -10,6 +8,7 @@ import { iconMap, colours } from '../../stories/components/Helpers';
 export default {
     title: 'Components/Card',
     component: Card,
+    tags: ['autodocs'],
     argTypes: {
         color: {
             control: 'select',

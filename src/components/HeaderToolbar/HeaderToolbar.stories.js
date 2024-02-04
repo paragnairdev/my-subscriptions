@@ -4,6 +4,7 @@ import HeaderToolbar from "./HeaderToolbar";
 export default {
     title: "Components/HeaderToolbar",
     component: HeaderToolbar,
+    tags: ['autodocs'],
     argTypes: {
         theme: {
             control: "select",
